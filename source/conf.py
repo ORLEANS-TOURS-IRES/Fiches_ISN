@@ -85,7 +85,7 @@ exclude_patterns = []
 # 'monokai', 'manni', 'perldoc', 'borland', 'colorful', 'default',
 # 'murphy', 'vs', 'trac', 'tango', 'fruity', 'autumn', 'bw', 'emacs',
 # 'vim', 'pastie', 'friendly', 'native', 'sphinx' (defaut)
-pygments_style = 'tango'
+pygments_style = 'sphinx'
 
 # A list of ignored prefixes for module index sorting.
 #modindex_common_prefix = []
@@ -95,7 +95,7 @@ pygments_style = 'tango'
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-html_theme = 'sphinxdoc'
+html_theme = 'default'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
@@ -107,7 +107,7 @@ html_theme = 'sphinxdoc'
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
-html_title = "Fiches IRES"
+#html_title = "Fiches IRES"
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
 #html_short_title = None
@@ -168,7 +168,7 @@ html_use_index = False
 #html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'IRESdoc'
+#htmlhelp_basename = 'IRESdoc'
 
 
 # -- Options for LaTeX output --------------------------------------------------
