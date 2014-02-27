@@ -41,7 +41,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = 'IRES'
+project = 'Fiches pour ISN'
 copyright = '2014, Groupe IRES'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -85,7 +85,7 @@ exclude_patterns = []
 # 'monokai', 'manni', 'perldoc', 'borland', 'colorful', 'default',
 # 'murphy', 'vs', 'trac', 'tango', 'fruity', 'autumn', 'bw', 'emacs',
 # 'vim', 'pastie', 'friendly', 'native', 'sphinx' (defaut)
-pygments_style = 'sphinx'
+pygments_style = 'native'
 
 # A list of ignored prefixes for module index sorting.
 #modindex_common_prefix = []
