@@ -11,5 +11,6 @@ Bienvenue sur ce site dédié à ISN en Python
    :maxdepth: 1
 
    listes
+   dictionnaires
    FicheReseauxServeur01
    FicheReseauxClient01
