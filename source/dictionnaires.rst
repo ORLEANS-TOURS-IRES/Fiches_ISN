@@ -32,7 +32,7 @@ Opérations de base
         >>> "Café" in d
         False
 
-* Savoir si une **valeur** est associé à une clé - ``val in dict.values()``::
+* Savoir si une **valeur** est associée à une clé - ``val in dict.values()``::
 
         >>> d
         {0: ':(', 'I': [1, 0], 'café': ':)'}
@@ -41,7 +41,7 @@ Opérations de base
         >>> ":)" in d.values()
         True
 
-* **Récupérer** la valeur associée à une *cle* - ``dict[cle]`` ou ``dict.get(key[, defaut])``::
+* **Récupérer** la valeur associée à une clé - ``dict[cle]`` ou ``dict.get(key[, defaut])``::
 
         >>> x = d["I"]
         >>> x
@@ -51,18 +51,18 @@ Opérations de base
         >>> d["I"][0] # lire ...[0] premier élément de, d["I"] c'est à dire [1, 0]
         1
         >>> d[0] # Une clé peut être un entier
-        ":("
+        ':('
         >>> d["Café"] # attention aux erreurs si la clé n'existe pas !
         Traceback (most recent call last):
-        File "<stdin>", line 1, in <module>
+            File "<stdin>", line 1, in <module>
         KeyError: 'Café'
         >>> d.get("Café") # si «defaut» n'est pas précisé, retourne None lorsque la clé n'existe pas.
         >>> d.get("café")
-        ":)"
+        ':)'
         >>> d.get("Café", 5) # si la clé n'est pas trouvée, retourne defaut=5
         5
         >>> d.get("café", 5) # sinon, retourne la valeur associée.
-        ":)"
+        ':)'
 
 * **Modifier** ou **ajouter** un couple clé-valeur - ``dict[cle] = nouvelle_val``::
 
