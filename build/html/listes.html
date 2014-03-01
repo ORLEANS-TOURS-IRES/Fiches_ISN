@@ -56,14 +56,13 @@
 </li>
 <li><p class="first">Les éléments d&#8217;une liste sont <strong>ordonnés</strong>;</p>
 </li>
-<li><dl class="first docutils">
-<dt>Chaque élément d&#8217;une liste est <em>numéroté</em> par un entier (positif ou négatif) appelé <strong>position</strong> ou index;</dt>
-<dd><ul class="first last simple">
+<li><p class="first">Chaque élément d&#8217;une liste est <em>numéroté</em> par un entier (positif ou négatif) appelé <strong>position</strong> ou index;</p>
+<blockquote>
+<div><ul class="simple">
 <li>Le premier élément a la position 0, le second la position 1, etc.</li>
 <li>Le dernier élément a la position -1, l&#8217;avant dernier la position -2, etc.</li>
 </ul>
-</dd>
-</dl>
+</div></blockquote>
 </li>
 </ul>
 <div class="section" id="operations-de-base">
@@ -83,7 +82,9 @@
 </div>
 </li>
 <li><p class="first">Savoir si <em>elt</em> appartient ou non à une liste - <tt class="docutils literal"><span class="pre">elt</span> <span class="pre">in</span> <span class="pre">list</span></tt>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="o">-</span><span class="mf">2.3</span> <span class="ow">in</span> <span class="n">l</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">l</span>
+<span class="go">[5, &quot;liste&quot;, -2.3, (1,3)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="o">-</span><span class="mf">2.3</span> <span class="ow">in</span> <span class="n">l</span>
 <span class="go">True</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="mf">1.3</span> <span class="ow">in</span> <span class="n">l</span>
 <span class="go">False</span>
@@ -99,7 +100,9 @@
 </div>
 </li>
 <li><p class="first"><strong>Modifier</strong> l&#8217;élément de position <em>pos</em> - <tt class="docutils literal"><span class="pre">l[pos]</span> <span class="pre">=</span> <span class="pre">nouvel_elt</span></tt>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">l</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">l</span>
+<span class="go">[5, &quot;liste&quot;, -2.3, (1,3)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">l</span>
 <span class="go">[5, &quot;liste&quot;, -2.3, 0]</span>
 </pre></div>
@@ -115,7 +118,9 @@
 </div>
 </li>
 <li><p class="first"><strong>Insérer</strong> <em>elt</em> à la postion <em>pos</em> - <tt class="docutils literal"><span class="pre">list.insert(pos,</span> <span class="pre">elt)</span></tt></p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">l</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s">&quot;truc&quot;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">l</span>
+<span class="go">[5, &quot;liste&quot;, -2.3, 0, [&quot;b&quot;, &quot;a&quot;, &quot;c&quot;]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s">&quot;truc&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">l</span>
 <span class="go">[5, &quot;liste&quot;, &quot;truc&quot;, -2.3, 0, [&quot;b&quot;, &quot;a&quot;, &quot;c&quot;]]</span>
 </pre></div>
@@ -143,14 +148,12 @@
 </li>
 </ul>
 </div>
-<div class="section" id="parcourt-d-une-liste">
-<h2>Parcourt d&#8217;une liste<a class="headerlink" href="#parcourt-d-une-liste" title="Lien permanent vers ce titre">¶</a></h2>
+<div class="section" id="parcourt-d-une-liste-avec-une-boucle-for">
+<h2>Parcourt d&#8217;une liste avec une boucle <tt class="docutils literal"><span class="pre">for</span></tt><a class="headerlink" href="#parcourt-d-une-liste-avec-une-boucle-for" title="Lien permanent vers ce titre">¶</a></h2>
 <ul>
 <li><p class="first"><strong>Direct</strong> - chaque élément est récupéré successivement:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="s">&quot;truc&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.5</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">elt</span> <span class="ow">in</span> <span class="n">l</span><span class="p">:</span>
-<span class="gp">... </span>   <span class="c"># elt représente, à chaque tour de boucle,</span>
-<span class="gp">... </span>   <span class="c"># un des élément de la liste (dans l&#39;ordre)</span>
 <span class="gp">... </span>   <span class="k">print</span><span class="p">(</span><span class="n">elt</span><span class="p">)</span>
 <span class="gp">...</span>
 <span class="go">3</span>
@@ -160,27 +163,29 @@
 </div>
 </li>
 <li><p class="first"><strong>Indirect</strong> - en utilisant les positions des éléments dans la liste:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="s">&quot;truc&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.5</span><span class="p">]</span>
-<span class="go"># range(nb): intervalle d&#39;entiers [0,nb[ (nb exclus)</span>
-<span class="go"># len(l): nombre d&#39;éléments de l</span>
-<span class="go"># donc range(len(l)) représente toutes les positions possibles</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="c"># Rappels:</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c">#   range(nb): intervalle d&#39;entiers [0,nb[ (nb exclus),</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c">#   len(l): nombre d&#39;éléments de l,</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c">#     donc range(len(l)) représente toutes les positions possibles</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c">#</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">pos</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">l</span><span class="p">)):</span>
-<span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="s">&quot;Pos. de «&quot;</span><span class="p">,</span> <span class="n">l</span><span class="p">[</span><span class="n">pos</span><span class="p">],</span><span class="s">&quot;» =&quot;</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">elt</span> <span class="o">=</span> <span class="n">l</span><span class="p">[</span><span class="n">pos</span><span class="p">]</span>
+<span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="s">&quot;Pos. de «&quot;</span><span class="p">,</span> <span class="n">elt</span><span class="p">,</span><span class="s">&quot;»:&quot;</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
 <span class="gp">...</span>
-<span class="go">Pos. de « 3 » = 0</span>
-<span class="go">Pos. de « truc » = 1</span>
-<span class="go">Pos. de « -2.5 » = 2</span>
+<span class="go">Pos. de « 3 »: 0</span>
+<span class="go">Pos. de « truc »: 1</span>
+<span class="go">Pos. de « -2.5 »: 2</span>
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Même si cette façon de parcourir une liste semble plus compliquée, la connaissance dans la boucle de la position de l&#8217;élément peut être déterminante dans certain problème.</p>
 </div>
-<p>Autre façon de faire la même chose à l&#8217;aide de la fonction intégrée enumerate():</p>
+<p>Autre façon de faire la même chose à l&#8217;aide de la fonction intégrée <tt class="docutils literal"><span class="pre">enumerate()</span></tt>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="s">&quot;truc&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.5</span><span class="p">]</span>
-<span class="go"># Rappels:</span>
-<span class="go">#   str(truc): convertit «truc» en chaîne de caractères</span>
-<span class="go">#   concaténation: &quot;l[&quot; + &quot;3&quot; + &quot;]=&quot; + &quot;erreur&quot; donne &quot;l[3]=erreur&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c"># Rappels:</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c">#   str(truc): convertit «truc» en chaîne de caractères</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c">#   concaténation: &quot;l[&quot; + &quot;3&quot; + &quot;]=&quot; + &quot;erreur&quot; donne &quot;l[3]=erreur&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">pos</span><span class="p">,</span> <span class="n">elt</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">l</span><span class="p">):</span>
 <span class="gp">... </span>   <span class="k">print</span><span class="p">(</span><span class="s">&quot;l[&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;]=«&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">elt</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;»&quot;</span><span class="p">)</span>
 <span class="gp">...</span>
@@ -190,7 +195,7 @@
 </pre></div>
 </div>
 </li>
-<li><p class="first">Inverser le sens de parcourt - la fonction reversed():</p>
+<li><p class="first">Inverser le sens de parcourt - la fonction <tt class="docutils literal"><span class="pre">reversed()</span></tt>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">l</span><span class="p">))):</span>
 <span class="gp">... </span>   <span class="k">print</span><span class="p">(</span><span class="n">l</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
 <span class="gp">...</span>
@@ -211,40 +216,58 @@
 <div class="section" id="autres-operations-utiles">
 <h2>Autres opérations utiles<a class="headerlink" href="#autres-operations-utiles" title="Lien permanent vers ce titre">¶</a></h2>
 <ul>
-<li><p class="first">Extraire une sous-liste d&#8217;éléments consécutifs:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">l</span><span class="p">[</span><span class="n">pos1</span><span class="p">:</span><span class="n">pos2</span><span class="p">]</span> <span class="c"># positions récupérées = entiers de [pos1, pos2[ (pos2 exclus)</span>
-<span class="n">l</span><span class="p">[</span><span class="n">pos1</span><span class="p">:]</span> <span class="c"># de pos1 (inclus) jusqu&#39;à la fin de la liste</span>
-<span class="n">l</span><span class="p">[:</span><span class="n">pos2</span><span class="p">]</span> <span class="c"># du début de la liste jusqu&#39;à pos2 (exclus)</span>
+<li><p class="first">Extraire une sous-liste d&#8217;éléments consécutifs - <tt class="docutils literal"><span class="pre">list[pos1:pos2]</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c"># l[pos1:pos2] : positions récupérées = entiers de [pos1, pos2[ (pos2 exclus)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+<span class="go">[0, -2]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c"># l[pos1:] -&gt;  de pos1 (inclus) jusqu&#39;à la fin de la liste</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+<span class="go">[0, -2, 5]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c"># l[:pos2] -&gt; du début de la liste jusqu&#39;à pos2 (exclus)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>
+<span class="go">[3, 0]</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">«Concaténer» deux listes:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">l1</span> <span class="o">+</span> <span class="n">l2</span> <span class="c"># [2,5] + [3,0] donne [2,5,3,0]</span>
+<li><p class="first"><strong>Concaténer</strong> deux listes - <tt class="docutils literal"><span class="pre">list1</span> <span class="pre">+</span> <span class="pre">list2</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">l1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l1</span> <span class="o">+</span> <span class="n">l2</span>
+<span class="go">[2, 5, 3, 0]</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">Inverser l&#8217;ordre des éléments:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">l</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
+<li><p class="first"><strong>Inverser</strong> l&#8217;ordre des éléments - <tt class="docutils literal"><span class="pre">list.reverse()</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span>
+<span class="go">[0, 3, 5, 2]</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first"><strong>Trier</strong> les éléments dans l&#8217;ordre croissant:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">l</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<li><p class="first"><strong>Trier</strong> les éléments dans l&#8217;ordre croissant - <tt class="docutils literal"><span class="pre">list.sort()</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span>
+<span class="go">[-1, 0, 3, 5]</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">Compter le nombre de fois où <em>elt</em> apparaît dans la liste:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">Nb_elt_dans_l</span> <span class="o">=</span> <span class="n">l</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">elt</span><span class="p">)</span>
+<li><p class="first"><strong>Compter</strong> le nombre de fois où <em>elt</em> apparaît dans la liste - <tt class="docutils literal"><span class="pre">list.count(elt)</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="mi">3</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">Produire une liste qui contient <em>n</em> fois le même élément:</p>
+<li><p class="first">Produire une liste qui contient <em>n</em> fois le même élément - <tt class="docutils literal"><span class="pre">list</span> <span class="pre">*</span> <span class="pre">n</span></tt>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">5</span>
 <span class="go">[0, 0, 0, 0, 0]</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first"><strong>Convertir</strong> un objet «composite» en liste:</p>
+<li><p class="first"><strong>Convertir</strong> un objet «composite» en liste - <tt class="docutils literal"><span class="pre">list(obj_composite)</span></tt>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="s">&quot;abc&quot;</span><span class="p">)</span>
 <span class="go">[&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
@@ -276,7 +299,7 @@
   <ul>
 <li><a class="reference internal" href="#">Les listes</a><ul>
 <li><a class="reference internal" href="#operations-de-base">Opérations de base</a></li>
-<li><a class="reference internal" href="#parcourt-d-une-liste">Parcourt d&#8217;une liste</a></li>
+<li><a class="reference internal" href="#parcourt-d-une-liste-avec-une-boucle-for">Parcourt d&#8217;une liste avec une boucle <tt class="docutils literal"><span class="pre">for</span></tt></a></li>
 <li><a class="reference internal" href="#autres-operations-utiles">Autres opérations utiles</a></li>
 </ul>
 </li>
