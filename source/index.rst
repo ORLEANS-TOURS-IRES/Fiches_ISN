@@ -10,6 +10,6 @@ Bienvenue sur ce site dédié à ISN en Python
 .. toctree::
    :maxdepth: 1
 
-   test
+   listes
    FicheReseauxServeur01
    FicheReseauxClient01
