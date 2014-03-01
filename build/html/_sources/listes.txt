@@ -2,21 +2,93 @@
 Les listes
 ***********
 
-* Forme littérale: ``l = [5, "liste", -2.3, (1,3)]``. 
-        ``l`` fait alors référence à une liste qui contient 4 éléments - ``len(l)`` vaut 4 - de types divers, ici entier, chaîne, flottant, 2-tuple.
+Opérations de base
+==================
 
-* Récupérer un élément connaissant sa position ``pos``: ``l[pos]``.
-        dans cet exemple, ``pos`` est un entier de l'intervalle *[0,4[* - [0,len(l)[ - c'est à dire 0, 1, 2 ou 3. Par exemple ``l[2]`` vaut ``-2.3``.
+* Créer une liste::
 
-        La position peut être un entier négatif de l'intervalle *[-4,0[* - [-len(l),0[ - c'est à dire -1, -2, -3 ou -4. Par exemple ``l[-1]`` vaut ``(1,3)``.
+        l = [5, "liste", -2.3, (1,3)]
 
-* Récupérer une portion de liste (sous-liste d'éléments contigus): ``l[pos1:pos2]``.
-        On récupère la sous-liste formée des éléments de ``l`` dont la position est un entier de l'intervalle *[pos1,pos2[*. Par exemple ``l[1:3]`` vaut ``["liste", -2.3]``; ``l[-3:-1]`` vaut encore ``["liste", -2.3]``.
+* Connaître sa longeur::
 
-        Le fait de laisser une place vide pour ``pos1`` ou ``pos2`` peut s'interpréter comme «aller au bout». Par exemple ``l[:2]`` vaut ``[5,"list"]`` et ``l[2:]`` vaut ``[-2.3, (1,3)]``.
+        len(l)
 
-* Ajouter deux listes: ``l1 + l2``. 
-         Crée une nouvelle liste formée des éléments de ``l1`` puis de ceux de ``l2``. Par exemple, si ``l1 = [5, "liste"]`` et ``l2 = [-2.3, (1,3)]``, alors ``l1 + l2`` vaut ``[5, "liste", -2.3, (1,3)]``.
+* Récupérer un élément de position *pos*::
+
+        l[pos]
+
+* Modifier l'élément de position *pos*::
+
+        l[pos] = nouvel_elt
+
+* Supprimer l'élément de position *pos*::
+
+        del l[pos]
+
+* Récupérer une «portion» de liste::
+
+        l[pos1:pos2]
+
+* «Concaténer» deux listes::
+ 
+        l1 + l2
+
+* Savoir si *elt* appartient ou non à une liste::
+
+        elt in l
+
+* Ajouter *elt* à la fin d'une liste::
+
+        l.append(elt)
+
+* Insérer *elt* à la postion *pos*::
+
+        l.insert(pos, elt)
+
+* Récupérer et supprimer le dernier élément (resp. celui de position *pos*)::
+
+        l.pop()
+        l.pop(pos)
+
+* Inverser l'ordre des éléments::
+
+        l.reverse()
+
+* Ranger les éléments dans l'ordre croissant::
+
+        l.sort()
+
+* Compter le nombre de fois où *elt* apparaît dans la liste::
+
+        l.count(elt)
+
+
+Exemple::
+
+    >>> l = [5, "liste", -2.3, (1,3)]
+    >>> l # une liste peut contenir des éléments de type divers
+    [5, "liste", -2.3, (1,3)]
+    >>> len(l) # longueur de l ?
+    4
+    >>> l[0] # Numérotation à partir de 0.
+    5
+    >>> print("«{}» de type: {}".format(l[3], type(l[3])))
+    «(1, 3)» de type: <class 'tuple'>
+    >>> l[3] = 0
+    >>>l
+    [5, "liste", -2.3, 0]
+    >>> l[-2] # -1 représente aussi la dernière position
+    -2.3
+    >>> l1 = l[1:3] # positions entières de l'intervalle [1;3[
+    >>> l1
+    ["liste", -2.3]
+    >>> l2 = l[2:] # omission = jusqu'à l'extrémité concernée
+    >>> l2
+    [-2.3, 0]
+    >>> l3 = l1 + l2 # concaténation = mettre bout à bout
+    >>> l3
+    ["liste", -2.3, -2.3, 0]
+
 
 Méthodes applicables aux listes
 ===============================

@@ -50,34 +50,108 @@
             
   <div class="section" id="les-listes">
 <h1>Les listes<a class="headerlink" href="#les-listes" title="Lien permanent vers ce titre">¶</a></h1>
+<div class="section" id="operations-de-base">
+<h2>Opérations de base<a class="headerlink" href="#operations-de-base" title="Lien permanent vers ce titre">¶</a></h2>
 <ul>
-<li><dl class="first docutils">
-<dt>Forme littérale: <tt class="docutils literal"><span class="pre">l</span> <span class="pre">=</span> <span class="pre">[5,</span> <span class="pre">&quot;liste&quot;,</span> <span class="pre">-2.3,</span> <span class="pre">(1,3)]</span></tt>.</dt>
-<dd><p class="first last"><tt class="docutils literal"><span class="pre">l</span></tt> fait alors référence à une liste qui contient 4 éléments - <tt class="docutils literal"><span class="pre">len(l)</span></tt> vaut 4 - de types divers, ici entier, chaîne, flottant, 2-tuple.</p>
-</dd>
-</dl>
+<li><p class="first">Créer une liste:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="s">&quot;liste&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.3</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)]</span>
+</pre></div>
+</div>
 </li>
-<li><dl class="first docutils">
-<dt>Récupérer un élément connaissant sa position <tt class="docutils literal"><span class="pre">pos</span></tt>: <tt class="docutils literal"><span class="pre">l[pos]</span></tt>.</dt>
-<dd><p class="first">dans cet exemple, <tt class="docutils literal"><span class="pre">pos</span></tt> est un entier de l&#8217;intervalle <em>[0,4[</em> - [0,len(l)[ - c&#8217;est à dire 0, 1, 2 ou 3. Par exemple <tt class="docutils literal"><span class="pre">l[2]</span></tt> vaut <tt class="docutils literal"><span class="pre">-2.3</span></tt>.</p>
-<p class="last">La position peut être un entier négatif de l&#8217;intervalle <em>[-4,0[</em> - [-len(l),0[ - c&#8217;est à dire -1, -2, -3 ou -4. Par exemple <tt class="docutils literal"><span class="pre">l[-1]</span></tt> vaut <tt class="docutils literal"><span class="pre">(1,3)</span></tt>.</p>
-</dd>
-</dl>
+<li><p class="first">Connaître sa longeur:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="nb">len</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+</pre></div>
+</div>
 </li>
-<li><dl class="first docutils">
-<dt>Récupérer une portion de liste (sous-liste d&#8217;éléments contigus): <tt class="docutils literal"><span class="pre">l[pos1:pos2]</span></tt>.</dt>
-<dd><p class="first">On récupère la sous-liste formée des éléments de <tt class="docutils literal"><span class="pre">l</span></tt> dont la position est un entier de l&#8217;intervalle <em>[pos1,pos2[</em>. Par exemple <tt class="docutils literal"><span class="pre">l[1:3]</span></tt> vaut <tt class="docutils literal"><span class="pre">[&quot;liste&quot;,</span> <span class="pre">-2.3]</span></tt>; <tt class="docutils literal"><span class="pre">l[-3:-1]</span></tt> vaut encore <tt class="docutils literal"><span class="pre">[&quot;liste&quot;,</span> <span class="pre">-2.3]</span></tt>.</p>
-<p class="last">Le fait de laisser une place vide pour <tt class="docutils literal"><span class="pre">pos1</span></tt> ou <tt class="docutils literal"><span class="pre">pos2</span></tt> peut s&#8217;interpréter comme «aller au bout». Par exemple <tt class="docutils literal"><span class="pre">l[:2]</span></tt> vaut <tt class="docutils literal"><span class="pre">[5,&quot;list&quot;]</span></tt> et <tt class="docutils literal"><span class="pre">l[2:]</span></tt> vaut <tt class="docutils literal"><span class="pre">[-2.3,</span> <span class="pre">(1,3)]</span></tt>.</p>
-</dd>
-</dl>
+<li><p class="first">Récupérer un élément de position <em>pos</em>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">l</span><span class="p">[</span><span class="n">pos</span><span class="p">]</span>
+</pre></div>
+</div>
 </li>
-<li><dl class="first docutils">
-<dt>Ajouter deux listes: <tt class="docutils literal"><span class="pre">l1</span> <span class="pre">+</span> <span class="pre">l2</span></tt>.</dt>
-<dd><p class="first last">Crée une nouvelle liste formée des éléments de <tt class="docutils literal"><span class="pre">l1</span></tt> puis de ceux de <tt class="docutils literal"><span class="pre">l2</span></tt>. Par exemple, si <tt class="docutils literal"><span class="pre">l1</span> <span class="pre">=</span> <span class="pre">[5,</span> <span class="pre">&quot;liste&quot;]</span></tt> et <tt class="docutils literal"><span class="pre">l2</span> <span class="pre">=</span> <span class="pre">[-2.3,</span> <span class="pre">(1,3)]</span></tt>, alors <tt class="docutils literal"><span class="pre">l1</span> <span class="pre">+</span> <span class="pre">l2</span></tt> vaut <tt class="docutils literal"><span class="pre">[5,</span> <span class="pre">&quot;liste&quot;,</span> <span class="pre">-2.3,</span> <span class="pre">(1,3)]</span></tt>.</p>
-</dd>
-</dl>
+<li><p class="first">Modifier l&#8217;élément de position <em>pos</em>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">l</span><span class="p">[</span><span class="n">pos</span><span class="p">]</span> <span class="o">=</span> <span class="n">nouvel_elt</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Supprimer l&#8217;élément de position <em>pos</em>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">del</span> <span class="n">l</span><span class="p">[</span><span class="n">pos</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Récupérer une «portion» de liste:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">l</span><span class="p">[</span><span class="n">pos1</span><span class="p">:</span><span class="n">pos2</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">«Concaténer» deux listes:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">l1</span> <span class="o">+</span> <span class="n">l2</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Savoir si <em>elt</em> appartient ou non à une liste:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">elt</span> <span class="ow">in</span> <span class="n">l</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Ajouter <em>elt</em> à la fin d&#8217;une liste:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">l</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">elt</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Insérer <em>elt</em> à la postion <em>pos</em>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">l</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="n">elt</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Récupérer et supprimer le dernier élément (resp. celui de position <em>pos</em>):</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">l</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+<span class="n">l</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Inverser l&#8217;ordre des éléments:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">l</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Ranger les éléments dans l&#8217;ordre croissant:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">l</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Compter le nombre de fois où <em>elt</em> apparaît dans la liste:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">l</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">elt</span><span class="p">)</span>
+</pre></div>
+</div>
 </li>
 </ul>
+<p>Exemple:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="s">&quot;liste&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.3</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="c"># une liste peut contenir des éléments de type divers</span>
+<span class="go">[5, &quot;liste&quot;, -2.3, (1,3)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">l</span><span class="p">)</span> <span class="c"># longueur de l ?</span>
+<span class="go">4</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c"># Numérotation à partir de 0.</span>
+<span class="go">5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="s">&quot;«{}» de type: {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">l</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="nb">type</span><span class="p">(</span><span class="n">l</span><span class="p">[</span><span class="mi">3</span><span class="p">])))</span>
+<span class="go">«(1, 3)» de type: &lt;class &#39;tuple&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="go">&gt;&gt;&gt;l</span>
+<span class="go">[5, &quot;liste&quot;, -2.3, 0]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="c"># -1 représente aussi la dernière position</span>
+<span class="go">-2.3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l1</span> <span class="o">=</span> <span class="n">l</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span> <span class="c"># positions entières de l&#39;intervalle [1;3[</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l1</span>
+<span class="go">[&quot;liste&quot;, -2.3]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l2</span> <span class="o">=</span> <span class="n">l</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span> <span class="c"># omission = jusqu&#39;à l&#39;extrémité concernée</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l2</span>
+<span class="go">[-2.3, 0]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l3</span> <span class="o">=</span> <span class="n">l1</span> <span class="o">+</span> <span class="n">l2</span> <span class="c"># concaténation = mettre bout à bout</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l3</span>
+<span class="go">[&quot;liste&quot;, -2.3, -2.3, 0]</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="methodes-applicables-aux-listes">
 <h2>Méthodes applicables aux listes<a class="headerlink" href="#methodes-applicables-aux-listes" title="Lien permanent vers ce titre">¶</a></h2>
 <table border="1" class="docutils">
@@ -155,6 +229,7 @@ Note: <tt class="docutils literal"><span class="pre">l.insert(len(l),</span> <sp
   <h3><a href="index.html">Table des Matières</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Les listes</a><ul>
+<li><a class="reference internal" href="#operations-de-base">Opérations de base</a></li>
 <li><a class="reference internal" href="#methodes-applicables-aux-listes">Méthodes applicables aux listes</a></li>
 </ul>
 </li>
