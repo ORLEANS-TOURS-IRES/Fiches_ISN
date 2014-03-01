@@ -2,16 +2,16 @@
 Les dictionnaires
 *****************
 
-Un dictionnaire est un moyen de mémoriser des associations de la forme clé-valeur.
+Un **dictionnaire** est un moyen de mémoriser des *associations de la forme clé-valeur*.
 
 * Littéralement, un **dictionnaire** est de la forme::
  
         {clé1: val1, clé2: val2, ...}
 
-   * Les **clés** sont n'importe quelle valeur primaire (entiers, flottant, ..) ou n'importe quel objet non modifiable (chaîne, tuple, ...).
-   * Les **valeurs** correspondantes sont de type arbitraire.
+  * Les **clés** sont n'importe quelle valeur primaire (entiers, flottant, ..) ou n'importe quel objet *non modifiable* (chaîne, tuple, ...).
+  * Les **valeurs** correspondantes sont de type arbitraire.
 
-* La **longeur** d'un dictionnaire est le nombe de couple clé-valeur qu'il contient
+* La **longeur** d'un dictionnaire est le nombre de couple clé-valeur qu'il contient
 
 Opérations de base
 ==================
