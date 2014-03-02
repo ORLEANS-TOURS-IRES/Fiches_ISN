@@ -31,7 +31,7 @@ Les chaînes de caractères - type ``str`` pour *strings* - servent à représen
 Opérations de base
 ==================
 
-* Créer une chaîne littéralement - ``'...'`` ou ``"..."``::
+* **Créer** une chaîne littéralement - ``'...'`` ou ``"..."``::
 
         >>> ch = "bonjour \u2600\n tout l'monde!"
         >>> ch # contenu de ch1, notez les guillemets
@@ -43,13 +43,13 @@ Opérations de base
         >>> ch == autre
         True
 
-* Connaître le nombre de caractères qu'elle contient - ``len(chaine)``::
+* Connaître le **nombre de caractères** qu'elle contient - ``len(chaine)``::
 
         >>> longueur = len(ch)
         >>> longueur
         24
 
-* Savoir si une sous-chaîne ou un caractère apparaît dans la chaîne - ``ss_chaine in chaine``::
+* **Savoir si** une sous-chaîne ou un caractère apparaît dans la chaîne - ``ss_chaine in chaine``::
 
         >>> ch
         "bonjour ☀\n tout l'monde!"
@@ -62,14 +62,14 @@ Opérations de base
         >>> "jour" in ch
         True
 
-* Accéder à un caractère - ``chaine[pos]``::
+* **Accéder** à un caractère - ``chaine[pos]``::
 
         >>> ch1[0] # position positive du «soleil» ?
         'b'
         >>> ch1[-1] # position négative du «soleil» ?
         '!'
   
-* Extraire une sous-chaîne - ``chaine[pos1:pos2]`` ou ``chaine[pos1:pos2:pas]``::
+* **Extraire** une sous-chaîne - ``chaine[pos1:pos2]`` ou ``chaine[pos1:pos2:pas]``::
 
         >>> ch
         "bonjour ☀\n tout l'monde!"
@@ -82,4 +82,75 @@ Opérations de base
         >>> ch[:10:2] # extraire pos 0, 2, 4, 6, 8 (10 exclus)
         'bnor☀'
 
-* 
+* **Concaténer** deux chaînes ou plus - ``ch1 + ch2 + ...``::
+
+        >>> "ab" + 'cd'
+        'abcd'
+        >>> ch = "Spaghetti"
+        >>> ch = ch + " carbonara" + '.'
+        >>> ch
+        'spaghetti carbonara.'
+
+* **Découper** une chaîne relativement à un caractère de séparation - ``str.split([sep])``::
+        
+        >>> "un deux    trois\nquatre  ".split() # si sep est omis, le découpage se fait sur les espaces ou les sauts de lignes
+        ['un', 'deux', 'trois', 'quatre'] 
+        >>> ch = 'un,2,,3, quatre'
+        >>> ch.split(',') # Notez les petites différences dans le cas ou sep est précisé
+        ['un', '2', '', '3', ' quatre']
+
+Parcourt d'une chaîne
+=====================
+
+* **Direct** - ``car in chaine``::
+
+        >>> ch = "huit"
+        >>> for c in ch:
+        ...     print(c)
+        ...
+        h
+        u
+        i
+        t
+        >>> res = ''
+        >>> for c in ch:
+        ...     print("res='" + res + "' et c='" + c + "' donc res=c+res ???")
+        ...     res = c + res
+        ...
+        res='' et c='h' donc res=c+res ???
+        res='h' et c='u' donc res=c+res ???
+        res='uh' et c='i' donc res=c+res ???
+        res='iuh' et c='t' donc res=c+res ???
+        >>> res
+        'tuih'
+
+* **Indirect**: par les positions dans la chaîne - ``pos in range(len(chaine))``::
+
+        >>> ch = "du feu"
+        >>> str(5) # conversion d'un entier en chaîne
+        '5'
+        >>> # Note: range(nb) -> 0, 1, 2, 3, ..., nb - 1
+        >>> # or pos dans chaîne -> 0, 1, 2, ..., len(ch) - 1 !!!
+        >>> # donc range(len(ch)) -> positions possibles dans chaînes
+        >>> for i in range(len(ch)):
+        ...     print("ch[" + str(i) + "]=" + ch[i])
+        ...
+        ch[0]=d
+        ch[1]=u
+        ch[2]= 
+        ch[3]=f
+        ch[4]=e
+        ch[5]=u
+
+* **Par énumération** - ``pos, car in enumerate(chaine)``::
+
+        >>> ch = "du feu"
+        >>> for p, c in enumerate(ch):
+        ...     print("ch[" + str(p) + "]=" + c)
+        ...
+        ch[0]=d
+        ch[1]=u
+        ch[2]= 
+        ch[3]=f
+        ch[4]=e
+        ch[5]=u
