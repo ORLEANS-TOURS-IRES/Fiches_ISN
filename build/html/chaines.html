@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Les chaînes de caractères &mdash; documentation Fiches pour ISN 1.0</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="documentation Fiches pour ISN 1.0" href="index.html" />
+    <link rel="next" title="Les listes" href="listes.html" />
+    <link rel="prev" title="Bienvenue sur ce site dédié à ISN en Python" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="listes.html" title="Les listes"
+             accesskey="N">suivant</a></li>
+        <li class="right" >
+          <a href="index.html" title="Bienvenue sur ce site dédié à ISN en Python"
+             accesskey="P">précédent</a> |</li>
+        <li><a href="index.html">documentation Fiches pour ISN 1.0</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="les-chaines-de-caracteres">
+<h1>Les chaînes de caractères<a class="headerlink" href="#les-chaines-de-caracteres" title="Lien permanent vers ce titre">¶</a></h1>
+<p>Les chaînes de caractères - type <tt class="docutils literal"><span class="pre">str</span></tt> pour <em>strings</em> - servent à représenter les textes.</p>
+<ul>
+<li><p class="first">Une chaîne «basique» se reconnaît par l&#8217;utilisation de délimiteurs:</p>
+<blockquote>
+<div><ul class="simple">
+<li>guillemets simples: <tt class="docutils literal"><span class="pre">'permet</span> <span class="pre">les</span> <span class="pre">guillemets</span> <span class="pre">&quot;doubles&quot;'</span></tt> ou</li>
+<li>guillemets doubles: <tt class="docutils literal"><span class="pre">&quot;permet</span> <span class="pre">les</span> <span class="pre">guillemets</span> <span class="pre">'simple'&quot;</span></tt>.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">La <strong>longueur</strong> d&#8217;une chaînes est le nombre de caractères qu&#8217;elle contient.</p>
+</li>
+<li><p class="first"><strong>Caractères «spéciaux»</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Pour préciser un caractère non directement accessible au clavier, insèrer son «point de code» unicode via <tt class="docutils literal"><span class="pre">\u&lt;code&gt;</span></tt> où <tt class="docutils literal"><span class="pre">&lt;code&gt;</span></tt> doit être remplacé par la valeur adéquate (voir <a class="reference external" href="http://unicode-table.com">ce site</a>). Par exemple, <tt class="docutils literal"><span class="pre">\u262F</span></tt> devrait donné « <span class="raw-html">&#9775;</span> ».</li>
+<li>Saut de ligne: <tt class="docutils literal"><span class="pre">\n</span></tt>,</li>
+<li>Tabulation (touche Tab): <tt class="docutils literal"><span class="pre">\t</span></tt></li>
+<li>Empêcher l&#8217;interpration des guillemets simples ou doubles comme délimiteur: <tt class="docutils literal"><span class="pre">\'</span></tt> ou <tt class="docutils literal"><span class="pre">\&quot;</span></tt>. Ex: <tt class="docutils literal"><span class="pre">'l\'utilisation</span> <span class="pre">de</span> <span class="pre">&quot;:</span> <span class="pre">ok'</span></tt>.</li>
+<li>Insérer un backslash «\» ? : <tt class="docutils literal"><span class="pre">\\</span></tt></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Une chaîne n&#8217;est <strong>pas directement modifiable</strong>.</p>
+</li>
+<li><p class="first">Chaque caractère d&#8217;une chaîne est numéroté par un entier (positif ou négatif) appelé <strong>position</strong> ou index:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Le premier caractère a la position 0, le second la position 1, etc.</li>
+<li>Le dernier caractère a la position -1, l&#8217;avant dernier -2, etc.</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<div class="section" id="operations-de-base">
+<h2>Opérations de base<a class="headerlink" href="#operations-de-base" title="Lien permanent vers ce titre">¶</a></h2>
+<ul class="simple">
+<li>Créer</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table des Matières</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Les chaînes de caractères</a><ul>
+<li><a class="reference internal" href="#operations-de-base">Opérations de base</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Sujet précédent</h4>
+  <p class="topless"><a href="index.html"
+                        title="Chapitre précédent">Bienvenue sur ce site dédié à ISN en Python</a></p>
+  <h4>Sujet suivant</h4>
+  <p class="topless"><a href="listes.html"
+                        title="Chapitre suivant">Les listes</a></p>
+  <h3>Cette page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/chaines.txt"
+           rel="nofollow">Montrer la source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Recherche rapide</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Saisissez un mot clef ou un nom de module, classe ou fonction.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="listes.html" title="Les listes"
+             >suivant</a></li>
+        <li class="right" >
+          <a href="index.html" title="Bienvenue sur ce site dédié à ISN en Python"
+             >précédent</a> |</li>
+        <li><a href="index.html">documentation Fiches pour ISN 1.0</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Groupe IRES.
+      Mis à jour le Mar 02, 2014.
+      Créé avec <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.1.
+    </div>
+  </body>
+</html>
