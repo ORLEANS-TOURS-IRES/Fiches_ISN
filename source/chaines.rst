@@ -31,4 +31,55 @@ Les chaînes de caractères - type ``str`` pour *strings* - servent à représen
 Opérations de base
 ==================
 
-* Créer 
+* Créer une chaîne littéralement - ``'...'`` ou ``"..."``::
+
+        >>> ch = "bonjour \u2600\n tout l'monde!"
+        >>> ch # contenu de ch1, notez les guillemets
+        "bonjour ☀\n tout l'monde!"
+        >>> print(ch) # affichage à l'écran de ch1, différence ?
+        bonjour ☀
+         tout l'monde!
+        >>> autre = 'bonjour \u2600\n tout l\'monde!'
+        >>> ch == autre
+        True
+
+* Connaître le nombre de caractères qu'elle contient - ``len(chaine)``::
+
+        >>> longueur = len(ch)
+        >>> longueur
+        24
+
+* Savoir si une sous-chaîne ou un caractère apparaît dans la chaîne - ``ss_chaine in chaine``::
+
+        >>> ch
+        "bonjour ☀\n tout l'monde!"
+        >>> " " in ch # l'espace est un caractère comme un autre ...
+        True
+        >>> "z" in ch
+        False
+        >>> "Jour" in ch # attention à la «casse» (majuscule/minuscule)
+        False
+        >>> "jour" in ch
+        True
+
+* Accéder à un caractère - ``chaine[pos]``::
+
+        >>> ch1[0] # position positive du «soleil» ?
+        'b'
+        >>> ch1[-1] # position négative du «soleil» ?
+        '!'
+  
+* Extraire une sous-chaîne - ``chaine[pos1:pos2]`` ou ``chaine[pos1:pos2:pas]``::
+
+        >>> ch
+        "bonjour ☀\n tout l'monde!"
+        >>> ch[1:4] # Attention [pos1:pos2] = de pos1 inclus jusqu'à pos2 exclus !
+        'onj'
+        >>> ch[4:] # pos2 omis = jusqu'à la fin
+        "our ☀\n tout l'monde!"
+        >>> ch[:9] # pos1 omis = depuis le début
+        'bonjour ☀'
+        >>> ch[:10:2] # extraire pos 0, 2, 4, 6, 8 (10 exclus)
+        'bnor☀'
+
+* 
