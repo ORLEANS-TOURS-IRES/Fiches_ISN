@@ -10,6 +10,7 @@ Bienvenue sur ce site dédié à ISN en Python
 .. toctree::
    :maxdepth: 1
 
+   chaines
    listes
    dictionnaires
    FicheReseauxServeur01

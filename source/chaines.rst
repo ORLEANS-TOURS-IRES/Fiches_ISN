@@ -1,0 +1,30 @@
+*************************
+Les chaînes de caractères
+*************************
+
+Les chaînes de caractères - type ``str`` pour *strings* - servent à représenter les textes.
+
+* Une chaîne «basique» se reconnaît par l'utilisation de délimiteurs:
+
+    * guillemets simples: ``'permet les guillemets "doubles"'`` ou
+    * guillemets doubles: ``"permet les guillemets 'simple'``.
+
+* La **longueur** d'une chaînes est le nombre de caractères qu'elle contient.
+* **Caractères «spéciaux»**:
+
+   * Pour préciser un caractère non directement accessible au clavier, insèrer son «point de code» unicode via ``\u<code>`` où ``<code>`` doit être remplacé par la valeur adéquate (voir `ce site <http://unicode-table.com>`_). Par exemple, ``\u262F`` devrait donné « &#9775; ».
+   * Saut de ligne: ``\n``,
+   * Tabulation (touche Tab): ``\t``
+   * Empêcher l'interpration des guillemets simples ou doubles comme délimiteur: ``\'`` ou ``\"``. Ex: ``'l\'utilisation de ": ok``.
+   * Insérer un backslash «\» ? : ``\\``
+
+* Une chaîne n'est **pas directement modifiable**.
+* Chaque caractère d'une chaîne est numéroté par un entier (positif ou négatif) appelé **position** ou index:
+
+   * Le premier caractère a la position 0, le second la position 1, etc.
+   * Le dernier caractère a la position -1, l'avant dernier -2, etc.
+
+Opérations de base
+==================
+
+* Créer 
