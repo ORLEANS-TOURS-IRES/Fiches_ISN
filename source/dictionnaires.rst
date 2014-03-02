@@ -108,6 +108,26 @@ Parcourt d'un dictionnaire
 Autres opérations utiles
 ========================
 
+* **Création** via ``dict(...)``, en «compréhension» ou via ``zip(list1,list2)``::
+
+        >>> # genre fonction
+        >>> d = dict(prenom="bob", nom="l'eponge", age=4)
+        >>> d
+        {'nom': "l'eponge", 'age': 4, 'prenom': 'bob'}
+        >>> # à partir d'une liste de tuple
+        >>> l = [("prenom", "bob"), ("nom", "l'eponge"), ("age", 4)]
+        >>> dict(l)
+        {'nom': "l'eponge", 'age': 4, 'prenom': 'bob'}
+        >>> # en «compréhension»
+        >>> {x: x**2 for x in range(10) if x not in (0,1,5,8)} 
+        {2: 4, 3: 9, 4: 16, 6: 36, 7: 49, 9: 81}
+        >>> # en zippant deux listes de même taille 
+        >>> z = zip(("a", "b", "c"), (0, 1, 2))
+        >>> dict(z)
+        {'a': 0, 'c': 2, 'b': 1}
+        >>> dict(zip(list("abcdefghijklmnopqrstuvwxyz"), range(26)))
+        {'a': 0, 'c': 2, 'b': 1, 'e': 4, 'd': 3, 'g': 6, 'f': 5, 'i': 8, ...
+
 * **Lecture** «sécurisée» - ``dict.get(cle[, defaut])``:: 
 
         >>> d = {"café": ":)", 0: ":(", "I": [1, 0]}
