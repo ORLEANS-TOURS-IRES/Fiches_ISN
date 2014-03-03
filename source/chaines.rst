@@ -213,7 +213,7 @@ Autres opérations utiles
 
   Python3 représente chaque caractère d'une chaîne est par son identifiant unicode. Cela permet, virtuellement, de représenter toutes les langues du monde (ou presque). Pour connaître cet identifiant, utiliser ``ord(car)``. Inversement, pour trouver un caractère d'identifiant *id*, utiliser ``char(id)``.
 
-  Lorsqu'on veut, par exemple, envoyer un message comme ``'bonjour'`` sur un réseau, il est en pratique nécessaire d'encoder le message (par défaut en Utf-8) de manière à le représenter (en interne) comme une chaîne d'octets ou *bytes* (regroupement de 8 bits - 0 ou 1). Pour en `savoir plus ...<http://python.developpez.com/cours/apprendre-python3/?page=page_12#L12-A-8>`_. 
+  Lorsqu'on veut, par exemple, envoyer un message comme ``'bonjour'`` sur un réseau, il est en pratique nécessaire d'encoder le message (par défaut en Utf-8) de manière à le représenter (en interne) comme une chaîne d'octets ou *bytes* (regroupement de 8 bits - 0 ou 1). Pour en `savoir plus ... <http://python.developpez.com/cours/apprendre-python3/?page=page_12#L12-A-8>`_. 
 
   .. code-block:: python
 
