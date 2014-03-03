@@ -154,3 +154,85 @@ Parcourt d'une chaîne
         ch[3]=f
         ch[4]=e
         ch[5]=u
+
+Autres opérations utiles
+========================
+
+* Majuscule/minuscule - ``str.upper()``, ``.lower()``, ``.swapcase()`` et ``.capitalize()``::
+
+        >>> "Bonjour".upper()
+        'BONJOUR'
+        >>> "PaS PossiBLE".lower()
+        'pas possible'
+        >>> 'PaS PossiBLE'.swapcase()
+        'pAs pOSSIble'
+        >>> 'aurevoir'.capitalize()
+        'Aurevoir'
+
+* Formatage «basiques» - ``str.format()``::
+        
+        >>> # Les «{}» sont remplacés par les valeurs correspondantes
+        >>> ville = 'Bruxelle'
+        >>> '{} est la capitale de la {}.'.format(ville, 'Belgique')
+        'Bruxelle est la capitale de la Belgique.'
+        >>> piece, pos = "cavalier", (3, 5)
+        >>> "La position du {a} est ligne {b[0]} colonne {b[1]}.".format(a=piece, b=pos) 
+        >>> conv = "En binaire {a}={a:b} et en hexadécimal {a}={a:x}."
+        >>>> conv = conv.format(a=43)
+        >>> print(conv)
+        En binaire 43=101011 et en hexadécimal 43=2b.
+
+* Chaînes multilignes - ``'''...'''`` ou ``"""...."""``::
+
+        >>> discours = '''Bonjour chers amis,
+        ...
+        ...     Je tenais tout particulièrement à
+        ... vous remercier pour blah blah blah ...
+        ...   
+        ... Sincèrement ...'''
+        >>> discours
+        'Bonjour chers amis,\n\n   Je tenais tout particulièrement à\nvous remercier pour blah blah blah ...\n\nSincèrement ...'
+        >>> print(discours)
+        Bonjour chers amis,
+           
+            Je tenais tout particulièrement à
+        vous remercier pour blah blah blah ...
+
+        Sincèrement ...
+
+* Joindre les chaînes d'une «séquence» - ``str.join(seq)``::
+
+        >>> '; '.join(['a', 'b'])
+        'a; b'
+        >>> l = ["un", "deux", "trois"]
+        >>> sep = ' puis '
+        >>> sep.join(l)
+        'un puis deux puis trois'
+
+* Encoder pour communiquer - ``str.encode()`` et ``bytes.decode()``:
+
+  Python3 représente chaque caractère d'une chaîne est par son identifiant unicode. Cela permet, virtuellement, de représenter toutes les langues du monde (ou presque). Pour connaître cet identifiant, utiliser ``ord(car)``. Inversement, pour trouver un caractère d'identifiant *id*, utiliser ``char(id)``.
+
+  Lorsqu'on veut, par exemple, envoyer un message comme ``'bonjour'`` sur un réseau, il est en pratique nécessaire d'encoder le message (par défaut en Utf-8) de manière à le représenter (en interne) comme une chaîne d'octets ou *bytes* (regroupement de 8 bits - 0 ou 1). Pour en `savoir plus ...<http://python.developpez.com/cours/apprendre-python3/?page=page_12#L12-A-8>`_. 
+
+  .. code-block:: python
+
+        >>> mess = 'aïe' # chaîne de caractères
+        >>> # encodage en un bytes (chaîne d'octets) via Utf-8
+        >>> messUtf8 = mess.encode()
+        >>> type(messEnc) # chaîne d'octet
+        <class 'bytes'>
+        >>> messUtf8 # le préfixe «b» précise qu'il s'agit d'un bytes
+        b'a\xc3\xafe'
+        >>> for car in mess:
+        ...    print(ord(car), end=' ') # ord(caractère): identifiant unicode (en décimal)
+        ...
+        97 239 101
+        >>> for octet in messEnc:
+        ...    print(octet, end=' ') # chaque octet correspond à un entier de [0,256[
+        97 195 175 101
+        >>> # noter que le 'ï' est codé sur 2 octets en Utf-8
+        >>> # pour décoder un bytes c'est à dire retrouver la chaîne de caractères correspondante
+        >>> message = messUtf8.decode()
+        >>> message
+        'aïe'
