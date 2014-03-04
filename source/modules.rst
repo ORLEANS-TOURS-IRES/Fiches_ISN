@@ -67,7 +67,7 @@ Python est accompagné de nombreux modules, ils forment sa librairie standard. O
         Procéder de la sorte est **généralement déconseillé** car de nombreux «noms» sont alors introduis dans l'interpréteur Python ce qui peut être source de conflits (en cas de multiples imports par exemple).
         Vous pouvez toutefois utilisez cette facilité pour écrire de petits programmes de découvertes de tel ou tel module::
 
-                >>> La fonction dir(truc) sert à connaître les noms définie dans le contenxte de «truc»
+                >>> # La fonction dir(truc) sert à connaître les noms définie dans le contenxte de «truc»
                 >>> dir() # si «truc» est omis, c'est le contexte courant
                 ['__builtins__', '__doc__', '__name__', '__package__']
                 >>> a = 5
