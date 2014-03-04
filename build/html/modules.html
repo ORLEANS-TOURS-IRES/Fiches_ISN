@@ -1,0 +1,202 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Modules et paquets &mdash; documentation Fiches pour ISN 1.0</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="documentation Fiches pour ISN 1.0" href="index.html" />
+    <link rel="next" title="Un serveur TCP en Python" href="FicheReseauxServeur01.html" />
+    <link rel="prev" title="Les dictionnaires" href="dictionnaires.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="FicheReseauxServeur01.html" title="Un serveur TCP en Python"
+             accesskey="N">suivant</a></li>
+        <li class="right" >
+          <a href="dictionnaires.html" title="Les dictionnaires"
+             accesskey="P">précédent</a> |</li>
+        <li><a href="index.html">documentation Fiches pour ISN 1.0</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="modules-et-paquets">
+<h1>Modules et paquets<a class="headerlink" href="#modules-et-paquets" title="Lien permanent vers ce titre">¶</a></h1>
+<div class="section" id="module">
+<h2>Module<a class="headerlink" href="#module" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Un <strong>module</strong> est basiquement un fichier <tt class="docutils literal"><span class="pre">nom_module.py</span></tt> ordinaire. Les variables, fonctions, classes qui y sont  définies peuvent être <strong>importées</strong> afin d&#8217;être réutilisées.</p>
+<p>Python est accompagné de nombreux modules, ils forment sa librairie standard. On y trouve par exemple les modules <em>random</em>, <em>math</em>, <em>tkinter</em> et beaucoup d&#8217;autres.</p>
+<ul>
+<li><p class="first">Importer un module et l&#8217;utiliser - <tt class="docutils literal"><span class="pre">import</span> <span class="pre">&lt;nom_module&gt;</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">random</span> <span class="c"># random -&gt; aléatoire</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span> <span class="c"># «dé electronique»</span>
+<span class="go">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">de</span><span class="p">():</span> <span class="c"># trop long à écrire ?</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">de</span><span class="p">()</span>
+<span class="go">3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">de</span><span class="p">()</span>
+<span class="go">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="s">&#39;abcdefghijklmnop&#39;</span><span class="p">)</span> <span class="c"># caractère aléatoire de la chaîne</span>
+<span class="go">&#39;h&#39;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Utiliser un alias - <tt class="docutils literal"><span class="pre">import</span> <span class="pre">&lt;nom_module&gt;</span> <span class="pre">as</span> <span class="pre">&lt;alias&gt;</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">random</span> <span class="kn">as</span> <span class="nn">alea</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">alea</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span>
+<span class="go">[1, 4, 2, 3]</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Importer une ou plusieurs fonctions d&#8217;un module - <tt class="docutils literal"><span class="pre">from</span> <span class="pre">module</span> <span class="pre">import</span> <span class="pre">f1,</span> <span class="pre">f2,</span> <span class="pre">...</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span> <span class="k">as</span> <span class="n">racine</span><span class="p">,</span> <span class="n">exp</span><span class="p">,</span> <span class="n">log</span> <span class="k">as</span> <span class="n">ln</span><span class="p">,</span> <span class="n">e</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">racine</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span>
+<span class="go">2.23606797749979</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">round</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">2.24</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">[(</span><span class="n">x</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">racine</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span> <span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]]</span>
+<span class="go">[(0, 0.0), (1, 1.0), (2, 1.41), (3, 1.73), (4, 2.0), (5, 2.24)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">uniform</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ln</span><span class="p">(</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="o">==</span> <span class="n">x</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">exp</span><span class="p">(</span><span class="n">ln</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="o">==</span> <span class="n">x</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">e</span>
+<span class="go">2.718281828459045</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ln</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+<span class="go">1.0</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Importer tout ce qu&#8217;un module définis - <tt class="docutils literal"><span class="pre">from</span> <span class="pre">&lt;nom_module&gt;</span> <span class="pre">import</span> <span class="pre">*</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">tkinter</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fenetre</span> <span class="o">=</span> <span class="n">Tk</span><span class="p">()</span> <span class="c"># une fenêtre devrait apparaître</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bouton</span> <span class="o">=</span> <span class="n">Button</span><span class="p">(</span><span class="n">fenetre</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s">&quot;cliquez moi !&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">fenetre</span><span class="o">.</span><span class="n">destroy</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c"># le bouton n&#39;apparaît pas ??? normal, il faut encore le positionner</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bouton</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>Procéder de la sorte est <strong>généralement déconseillé</strong> car de nombreux «noms» sont alors introduis dans l&#8217;interpréteur Python ce qui peut être source de conflits (en cas de multiples imports par exemple).
+Vous pouvez toutefois utilisez cette facilité pour écrire de petits programmes de découvertes de tel ou tel module:</p>
+<div class="last highlight-python"><div class="highlight"><pre>&gt;&gt;&gt; La fonction dir(truc) sert à connaître les noms définie dans le contenxte de «truc»
+&gt;&gt;&gt; dir() # si «truc» est omis, c&#39;est le contexte courant
+[&#39;__builtins__&#39;, &#39;__doc__&#39;, &#39;__name__&#39;, &#39;__package__&#39;]
+&gt;&gt;&gt; a = 5
+&gt;&gt;&gt; dir() # le nom «a» existe à présent
+[&#39;__builtins__&#39;, &#39;__doc__&#39;, &#39;__name__&#39;, &#39;__package__&#39;, &#39;a&#39;]
+&gt;&gt;&gt; import tkinter
+&gt;&gt;&gt; dir() # seul le nom «tkinter» (ou plutôt l&#39;espace de nom) est importé
+[&#39;__builtins__&#39;, &#39;__doc__&#39;, &#39;__name__&#39;, &#39;__package__&#39;, &#39;a&#39;, &#39;tkinter&#39;]
+&gt;&gt;&gt; from tkinter import *
+&gt;&gt;&gt; dir() # et maintenant ? argh !
+[&#39;ACTIVE&#39;, &#39;ALL&#39;, &#39;ANCHOR&#39;, &#39;ARC&#39;, &#39;At&#39;, &#39;AtEnd&#39;, &#39;AtInsert&#39;, &#39;AtSelFirst&#39;, &#39;AtSelLast&#39;, &#39;BASELINE&#39;, &#39;BEVEL&#39;, &#39;BOTH&#39;, &#39;BOTTOM&#39;, &#39;BROWSE&#39;, &#39;BUTT&#39;, &#39;BaseWidget&#39;, &#39;BitmapImage&#39;, &#39;BooleanVar&#39;, &#39;Button&#39;, &#39;CASCADE&#39;, &#39;CENTER&#39;, &#39;CHAR&#39;, &#39;CHECKBUTTON&#39;, &#39;CHORD&#39;, &#39;COMMAND&#39;, &#39;CURRENT&#39; ...
+</pre></div>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="paquet-ou-package">
+<h2>Paquet ou <em>Package</em><a class="headerlink" href="#paquet-ou-package" title="Lien permanent vers ce titre">¶</a></h2>
+<p>À faire ...</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table des Matières</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Modules et paquets</a><ul>
+<li><a class="reference internal" href="#module">Module</a></li>
+<li><a class="reference internal" href="#paquet-ou-package">Paquet ou <em>Package</em></a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Sujet précédent</h4>
+  <p class="topless"><a href="dictionnaires.html"
+                        title="Chapitre précédent">Les dictionnaires</a></p>
+  <h4>Sujet suivant</h4>
+  <p class="topless"><a href="FicheReseauxServeur01.html"
+                        title="Chapitre suivant">Un serveur TCP en Python</a></p>
+  <h3>Cette page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/modules.txt"
+           rel="nofollow">Montrer la source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Recherche rapide</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Saisissez un mot clef ou un nom de module, classe ou fonction.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="FicheReseauxServeur01.html" title="Un serveur TCP en Python"
+             >suivant</a></li>
+        <li class="right" >
+          <a href="dictionnaires.html" title="Les dictionnaires"
+             >précédent</a> |</li>
+        <li><a href="index.html">documentation Fiches pour ISN 1.0</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Groupe IRES.
+      Mis à jour le Mar 04, 2014.
+      Créé avec <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.1.
+    </div>
+  </body>
+</html>

@@ -51,43 +51,252 @@
   <div class="section" id="les-chaines-de-caracteres">
 <h1>Les chaînes de caractères<a class="headerlink" href="#les-chaines-de-caracteres" title="Lien permanent vers ce titre">¶</a></h1>
 <p>Les chaînes de caractères - type <tt class="docutils literal"><span class="pre">str</span></tt> pour <em>strings</em> - servent à représenter les textes.</p>
-<ul>
-<li><p class="first">Une chaîne «basique» se reconnaît par l&#8217;utilisation de délimiteurs:</p>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
+<li>Une chaîne «basique» se reconnaît par l&#8217;utilisation de délimiteurs:<ul>
 <li>guillemets simples: <tt class="docutils literal"><span class="pre">'permet</span> <span class="pre">les</span> <span class="pre">guillemets</span> <span class="pre">&quot;doubles&quot;'</span></tt> ou</li>
 <li>guillemets doubles: <tt class="docutils literal"><span class="pre">&quot;permet</span> <span class="pre">les</span> <span class="pre">guillemets</span> <span class="pre">'simple'&quot;</span></tt>.</li>
 </ul>
-</div></blockquote>
 </li>
-<li><p class="first">La <strong>longueur</strong> d&#8217;une chaînes est le nombre de caractères qu&#8217;elle contient.</p>
-</li>
-<li><p class="first"><strong>Caractères «spéciaux»</strong>:</p>
-<blockquote>
-<div><ul class="simple">
+<li>La <strong>longueur</strong> d&#8217;une chaînes est le nombre de caractères qu&#8217;elle contient.</li>
+<li><strong>Caractères «spéciaux»</strong>:<ul>
 <li>Pour préciser un caractère non directement accessible au clavier, insèrer son «point de code» unicode via <tt class="docutils literal"><span class="pre">\u&lt;code&gt;</span></tt> où <tt class="docutils literal"><span class="pre">&lt;code&gt;</span></tt> doit être remplacé par la valeur adéquate (voir <a class="reference external" href="http://unicode-table.com">ce site</a>). Par exemple, <tt class="docutils literal"><span class="pre">\u262F</span></tt> devrait donné « <span class="raw-html">&#9775;</span> ».</li>
 <li>Saut de ligne: <tt class="docutils literal"><span class="pre">\n</span></tt>,</li>
 <li>Tabulation (touche Tab): <tt class="docutils literal"><span class="pre">\t</span></tt></li>
-<li>Empêcher l&#8217;interpration des guillemets simples ou doubles comme délimiteur: <tt class="docutils literal"><span class="pre">\'</span></tt> ou <tt class="docutils literal"><span class="pre">\&quot;</span></tt>. Ex: <tt class="docutils literal"><span class="pre">'l\'utilisation</span> <span class="pre">de</span> <span class="pre">&quot;:</span> <span class="pre">ok'</span></tt>.</li>
+<li>Empêcher l&#8217;interprétation des guillemets simples ou doubles comme délimiteur: <tt class="docutils literal"><span class="pre">\'</span></tt> ou <tt class="docutils literal"><span class="pre">\&quot;</span></tt>. Ex: <tt class="docutils literal"><span class="pre">'Pour</span> <span class="pre">écrire</span> <span class="pre">&quot;\'&quot;,</span> <span class="pre">il</span> <span class="pre">faut</span> <span class="pre">l'échapper</span> <span class="pre">avec</span> <span class="pre">\\'</span></tt>.</li>
 <li>Insérer un backslash «\» ? : <tt class="docutils literal"><span class="pre">\\</span></tt></li>
 </ul>
-</div></blockquote>
 </li>
-<li><p class="first">Une chaîne n&#8217;est <strong>pas directement modifiable</strong>.</p>
-</li>
-<li><p class="first">Chaque caractère d&#8217;une chaîne est numéroté par un entier (positif ou négatif) appelé <strong>position</strong> ou index:</p>
-<blockquote>
-<div><ul class="simple">
+<li>Une chaîne n&#8217;est <strong>pas directement modifiable</strong>.</li>
+<li>Chaque caractère d&#8217;une chaîne est numéroté par un entier (positif ou négatif) appelé <strong>position</strong> ou index:<ul>
 <li>Le premier caractère a la position 0, le second la position 1, etc.</li>
 <li>Le dernier caractère a la position -1, l&#8217;avant dernier -2, etc.</li>
 </ul>
-</div></blockquote>
 </li>
 </ul>
 <div class="section" id="operations-de-base">
 <h2>Opérations de base<a class="headerlink" href="#operations-de-base" title="Lien permanent vers ce titre">¶</a></h2>
-<ul class="simple">
-<li>Créer</li>
+<ul>
+<li><p class="first"><strong>Créer</strong> une chaîne littéralement - <tt class="docutils literal"><span class="pre">'...'</span></tt> ou <tt class="docutils literal"><span class="pre">&quot;...&quot;</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">ch</span> <span class="o">=</span> <span class="s">&quot;bonjour </span><span class="se">\u2600\n</span><span class="s"> tout l&#39;monde!&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ch</span> <span class="c"># contenu de ch1, notez les guillemets.</span>
+<span class="go">&quot;bonjour ☀\n tout l&#39;monde!&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">ch</span><span class="p">)</span> <span class="c"># affichage à l&#39;écran de ch1, différence ?</span>
+<span class="go">bonjour ☀</span>
+<span class="go"> tout l&#39;monde!</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">autre</span> <span class="o">=</span> <span class="s">&#39;bonjour </span><span class="se">\u2600\n</span><span class="s"> tout l</span><span class="se">\&#39;</span><span class="s">monde!&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ch</span> <span class="o">==</span> <span class="n">autre</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Connaître le <strong>nombre de caractères</strong> qu&#8217;elle contient - <tt class="docutils literal"><span class="pre">len(chaine)</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="nb">long</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ch</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">long</span>
+<span class="go">24</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first"><strong>Savoir si</strong> une sous-chaîne ou un caractère apparaît dans la chaîne - <tt class="docutils literal"><span class="pre">ss_chaine</span> <span class="pre">in</span> <span class="pre">chaine</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">ch</span>
+<span class="go">&quot;bonjour ☀\n tout l&#39;monde!&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s">&quot; &quot;</span> <span class="ow">in</span> <span class="n">ch</span> <span class="c"># l&#39;espace est un caractère comme un autre ...</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s">&quot;z&quot;</span> <span class="ow">in</span> <span class="n">ch</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s">&quot;Jour&quot;</span> <span class="ow">in</span> <span class="n">ch</span> <span class="c"># attention à la «casse» (majuscule/minuscule)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s">&quot;jour&quot;</span> <span class="ow">in</span> <span class="n">ch</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first"><strong>Accéder</strong> à un caractère - <tt class="docutils literal"><span class="pre">chaine[pos]</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">ch</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c"># position positive du «soleil» ?</span>
+<span class="go">&#39;b&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ch</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="c"># position négative du «soleil» ?</span>
+<span class="go">&#39;!&#39;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first"><strong>Extraire</strong> une sous-chaîne - <tt class="docutils literal"><span class="pre">chaine[pos1:pos2]</span></tt> ou <tt class="docutils literal"><span class="pre">chaine[pos1:pos2:pas]</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">ch</span>
+<span class="go">&quot;bonjour ☀\n tout l&#39;monde!&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ch</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span> <span class="c"># Attention [pos1:pos2] = de pos1 inclus jusqu&#39;à pos2 exclus !</span>
+<span class="go">&#39;onj&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ch</span><span class="p">[</span><span class="mi">4</span><span class="p">:]</span> <span class="c"># pos2 omis = jusqu&#39;à la fin</span>
+<span class="go">&quot;our ☀\n tout l&#39;monde!&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ch</span><span class="p">[:</span><span class="mi">9</span><span class="p">]</span> <span class="c"># pos1 omis = depuis le début</span>
+<span class="go">&#39;bonjour ☀&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ch</span><span class="p">[:</span><span class="mi">10</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span> <span class="c"># extraire pos 0, 2, 4, 6, 8 (10 exclus)</span>
+<span class="go">&#39;bnor☀&#39;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first"><strong>Concaténer</strong> deux chaînes ou plus - <tt class="docutils literal"><span class="pre">ch1</span> <span class="pre">+</span> <span class="pre">ch2</span> <span class="pre">+</span> <span class="pre">...</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="s">&quot;ab&quot;</span> <span class="o">+</span> <span class="s">&#39;cd&#39;</span>
+<span class="go">&#39;abcd&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ch</span> <span class="o">=</span> <span class="s">&quot;Spaghetti&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ch</span> <span class="o">=</span> <span class="n">ch</span> <span class="o">+</span> <span class="s">&quot; carbonara&quot;</span> <span class="o">+</span> <span class="s">&#39;.&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ch</span>
+<span class="go">&#39;spaghetti carbonara.&#39;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first"><strong>Découper</strong> une chaîne relativement à un caractère de séparation - <tt class="docutils literal"><span class="pre">str.split([sep])</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="s">&quot;un deux    trois</span><span class="se">\n</span><span class="s">quatre  &quot;</span><span class="o">.</span><span class="n">split</span><span class="p">()</span> <span class="c"># si sep est omis, le découpage se fait sur les espaces ou les sauts de lignes</span>
+<span class="go">[&#39;un&#39;, &#39;deux&#39;, &#39;trois&#39;, &#39;quatre&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ch</span> <span class="o">=</span> <span class="s">&#39;un,2,,3, quatre&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ch</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;,&#39;</span><span class="p">)</span> <span class="c"># Notez les petites différences dans le cas ou sep est précisé</span>
+<span class="go">[&#39;un&#39;, &#39;2&#39;, &#39;&#39;, &#39;3&#39;, &#39; quatre&#39;]</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="parcourt-d-une-chaine">
+<h2>Parcourt d&#8217;une chaîne<a class="headerlink" href="#parcourt-d-une-chaine" title="Lien permanent vers ce titre">¶</a></h2>
+<ul>
+<li><p class="first"><strong>Direct</strong> - <tt class="docutils literal"><span class="pre">car</span> <span class="pre">in</span> <span class="pre">chaine</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">ch</span> <span class="o">=</span> <span class="s">&quot;huit&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">ch</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">h</span>
+<span class="go">u</span>
+<span class="go">i</span>
+<span class="go">t</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">res</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">ch</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="s">&quot;res=&#39;&quot;</span> <span class="o">+</span> <span class="n">res</span> <span class="o">+</span> <span class="s">&quot;&#39; et c=&#39;&quot;</span> <span class="o">+</span> <span class="n">c</span> <span class="o">+</span> <span class="s">&quot;&#39; donc res=c+res ???&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">res</span> <span class="o">=</span> <span class="n">c</span> <span class="o">+</span> <span class="n">res</span>
+<span class="gp">...</span>
+<span class="go">res=&#39;&#39; et c=&#39;h&#39; donc res=c+res ???</span>
+<span class="go">res=&#39;h&#39; et c=&#39;u&#39; donc res=c+res ???</span>
+<span class="go">res=&#39;uh&#39; et c=&#39;i&#39; donc res=c+res ???</span>
+<span class="go">res=&#39;iuh&#39; et c=&#39;t&#39; donc res=c+res ???</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">res</span>
+<span class="go">&#39;tuih&#39;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first"><strong>Indirect</strong>: par les positions dans la chaîne - <tt class="docutils literal"><span class="pre">pos</span> <span class="pre">in</span> <span class="pre">range(len(chaine))</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">ch</span> <span class="o">=</span> <span class="s">&quot;du feu&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="c"># conversion d&#39;un entier en chaîne</span>
+<span class="go">&#39;5&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c"># Note: range(nb) -&gt; 0, 1, 2, 3, ..., nb - 1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c"># or pos dans chaîne -&gt; 0, 1, 2, ..., len(ch) - 1 !!!</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c"># donc range(len(ch)) -&gt; positions possibles dans chaînes</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ch</span><span class="p">)):</span>
+<span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="s">&quot;ch[&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;]=&quot;</span> <span class="o">+</span> <span class="n">ch</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+<span class="gp">...</span>
+<span class="go">ch[0]=d</span>
+<span class="go">ch[1]=u</span>
+<span class="go">ch[2]=</span>
+<span class="go">ch[3]=f</span>
+<span class="go">ch[4]=e</span>
+<span class="go">ch[5]=u</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first"><strong>Par énumération</strong> - <tt class="docutils literal"><span class="pre">pos,</span> <span class="pre">car</span> <span class="pre">in</span> <span class="pre">enumerate(chaine)</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">ch</span> <span class="o">=</span> <span class="s">&quot;du feu&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">p</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">ch</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="s">&quot;ch[&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;]=&quot;</span> <span class="o">+</span> <span class="n">c</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">ch[0]=d</span>
+<span class="go">ch[1]=u</span>
+<span class="go">ch[2]=</span>
+<span class="go">ch[3]=f</span>
+<span class="go">ch[4]=e</span>
+<span class="go">ch[5]=u</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="autres-operations-utiles">
+<h2>Autres opérations utiles<a class="headerlink" href="#autres-operations-utiles" title="Lien permanent vers ce titre">¶</a></h2>
+<ul>
+<li><p class="first">Majuscule/minuscule - <tt class="docutils literal"><span class="pre">str.upper()</span></tt>, <tt class="docutils literal"><span class="pre">.lower()</span></tt>, <tt class="docutils literal"><span class="pre">.swapcase()</span></tt> et <tt class="docutils literal"><span class="pre">.capitalize()</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="s">&quot;Bonjour&quot;</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+<span class="go">&#39;BONJOUR&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s">&quot;PaS PossiBLE&quot;</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+<span class="go">&#39;pas possible&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s">&#39;PaS PossiBLE&#39;</span><span class="o">.</span><span class="n">swapcase</span><span class="p">()</span>
+<span class="go">&#39;pAs pOSSIble&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s">&#39;aurevoir&#39;</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span>
+<span class="go">&#39;Aurevoir&#39;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first"><strong>Formatage</strong> «basiques» - <tt class="docutils literal"><span class="pre">str.format()</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="c"># Les «{}» sont remplacés par les valeurs correspondantes</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ville</span> <span class="o">=</span> <span class="s">&#39;Bruxelle&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s">&#39;{} est la capitale de la {}.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ville</span><span class="p">,</span> <span class="s">&#39;Belgique&#39;</span><span class="p">)</span>
+<span class="go">&#39;Bruxelle est la capitale de la Belgique.&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">piece</span><span class="p">,</span> <span class="n">pos</span> <span class="o">=</span> <span class="s">&quot;cavalier&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s">&quot;La position du {a} est ligne {b[0]} colonne {b[1]}.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="n">piece</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="n">pos</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">conv</span> <span class="o">=</span> <span class="s">&quot;En binaire {a}={a:b} et en hexadécimal {a}={a:x}.&quot;</span>
+<span class="go">&gt;&gt;&gt;&gt; conv = conv.format(a=43)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">conv</span><span class="p">)</span>
+<span class="go">En binaire 43=101011 et en hexadécimal 43=2b.</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Chaînes <strong>multilignes</strong> - <tt class="docutils literal"><span class="pre">'''...'''</span></tt> ou <tt class="docutils literal"><span class="pre">&quot;&quot;&quot;....&quot;&quot;&quot;</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">discours</span> <span class="o">=</span> <span class="s">&#39;&#39;&#39;Bonjour chers amis,</span>
+<span class="gp">...</span><span class="s"></span>
+<span class="gp">... </span><span class="s">    Je tenais tout particulièrement à</span>
+<span class="gp">... </span><span class="s">vous remercier pour blah blah blah ...</span>
+<span class="gp">...</span><span class="s"></span>
+<span class="gp">... </span><span class="s">Sincèrement ...&#39;&#39;&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">discours</span>
+<span class="go">&#39;Bonjour chers amis,\n\n   Je tenais tout particulièrement à\nvous remercier pour blah blah blah ...\n\nSincèrement ...&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">discours</span><span class="p">)</span>
+<span class="go">Bonjour chers amis,</span>
+
+<span class="go">    Je tenais tout particulièrement à</span>
+<span class="go">vous remercier pour blah blah blah ...</span>
+
+<span class="go">Sincèrement ...</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first"><strong>Joindre</strong> les chaînes d&#8217;une «séquence» - <tt class="docutils literal"><span class="pre">str.join(seq)</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="s">&#39;; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">])</span>
+<span class="go">&#39;a; b&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;un&quot;</span><span class="p">,</span> <span class="s">&quot;deux&quot;</span><span class="p">,</span> <span class="s">&quot;trois&quot;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sep</span> <span class="o">=</span> <span class="s">&#39; puis &#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+<span class="go">&#39;un puis deux puis trois&#39;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first"><strong>Encoder</strong> pour communiquer - <tt class="docutils literal"><span class="pre">str.encode()</span></tt> et <tt class="docutils literal"><span class="pre">bytes.decode()</span></tt>:</p>
+<p>Python3 représente chaque caractère d&#8217;une chaîne par son identifiant unicode. Cela permet, virtuellement, de représenter toutes les langues du monde (ou presque). Pour connaître cet identifiant, utiliser <tt class="docutils literal"><span class="pre">ord(car)</span></tt>. Inversement, pour trouver un caractère d&#8217;identifiant <em>id</em>, utiliser <tt class="docutils literal"><span class="pre">char(id)</span></tt>.</p>
+<p>Lorsqu&#8217;on veut, par exemple, envoyer un message comme <tt class="docutils literal"><span class="pre">'bonjour'</span></tt> sur un réseau, il est en pratique nécessaire d&#8217;encoder le message (par défaut en Utf-8) de manière à le représenter (en interne) comme une chaîne d&#8217;octets ou <em>bytes</em> (regroupement de 8 bits - 0 ou 1). Pour en <a class="reference external" href="http://python.developpez.com/cours/apprendre-python3/?page=page_12#L12-A-8">savoir plus ...</a>.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">mess</span> <span class="o">=</span> <span class="s">&#39;aïe&#39;</span> <span class="c"># chaîne de caractères</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c"># encodage en un bytes (chaîne d&#39;octets) via Utf-8</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">messUtf8</span> <span class="o">=</span> <span class="n">mess</span><span class="o">.</span><span class="n">encode</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">messEnc</span><span class="p">)</span> <span class="c"># chaîne d&#39;octet</span>
+<span class="go">&lt;class &#39;bytes&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">messUtf8</span> <span class="c"># le préfixe «b» précise qu&#39;il s&#39;agit d&#39;un bytes</span>
+<span class="go">b&#39;a\xc3\xafe&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">car</span> <span class="ow">in</span> <span class="n">mess</span><span class="p">:</span>
+<span class="gp">... </span>   <span class="k">print</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="n">car</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span><span class="s">&#39; &#39;</span><span class="p">)</span> <span class="c"># ord(caractère): identifiant unicode (en décimal)</span>
+<span class="gp">...</span>
+<span class="go">97 239 101</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">octet</span> <span class="ow">in</span> <span class="n">messEnc</span><span class="p">:</span>
+<span class="gp">... </span>   <span class="k">print</span><span class="p">(</span><span class="n">octet</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s">&#39; &#39;</span><span class="p">)</span> <span class="c"># chaque octet correspond à un entier de [0,256[</span>
+<span class="go">97 195 175 101</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c"># noter que le &#39;ï&#39; est codé sur 2 octets en Utf-8</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c"># pour décoder un bytes c&#39;est à dire retrouver la chaîne de caractères correspondante</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">message</span> <span class="o">=</span> <span class="n">messUtf8</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">message</span>
+<span class="go">&#39;aïe&#39;</span>
+</pre></div>
+</div>
+</li>
 </ul>
 </div>
 </div>
@@ -102,6 +311,8 @@
   <ul>
 <li><a class="reference internal" href="#">Les chaînes de caractères</a><ul>
 <li><a class="reference internal" href="#operations-de-base">Opérations de base</a></li>
+<li><a class="reference internal" href="#parcourt-d-une-chaine">Parcourt d&#8217;une chaîne</a></li>
+<li><a class="reference internal" href="#autres-operations-utiles">Autres opérations utiles</a></li>
 </ul>
 </li>
 </ul>
@@ -148,7 +359,7 @@
     </div>
     <div class="footer">
         &copy; Copyright 2014, Groupe IRES.
-      Mis à jour le Mar 02, 2014.
+      Mis à jour le Mar 04, 2014.
       Créé avec <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.1.
     </div>
   </body>

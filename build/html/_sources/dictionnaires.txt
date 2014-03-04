@@ -2,7 +2,7 @@
 Les dictionnaires
 *****************
 
-Un **dictionnaire** est un moyen de mémoriser des *associations de la forme clé-valeur*.
+Un **dictionnaire** - type ``dict`` - est un moyen de mémoriser des *associations de la forme clé →- valeur*.
 
 * Littéralement, un **dictionnaire** est de la forme ``{clé1: val1, clé2: val2, ...}``
 
