@@ -2,14 +2,14 @@
 Les listes
 **********
 
-Une liste est un moyen de regrouper des éléments d'information ou donnés.
+Une **liste** - type ``list`` - est un moyen de regrouper des éléments d'information ou donnés.
 
 * La **longueur** d'une liste est le nombre d'éléments qu'elle contient;
 * Les éléments d'une liste sont **ordonnés**;
 * Chaque élément d'une liste est *numéroté* par un entier (positif ou négatif) appelé **position** ou index;
 
-     * Le premier élément a la position 0, le second la position 1, etc.
-     * Le dernier élément a la position -1, l'avant dernier la position -2, etc.
+  * Le premier élément a la position 0, le second la position 1, etc.
+  * Le dernier élément a la position -1, l'avant dernier la position -2, etc.
 
 Opérations de base
 ==================
