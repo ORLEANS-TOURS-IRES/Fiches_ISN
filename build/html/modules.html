@@ -114,27 +114,117 @@
 <p class="first admonition-title">Warning</p>
 <p>Procéder de la sorte est <strong>généralement déconseillé</strong> car de nombreux «noms» sont alors introduis dans l&#8217;interpréteur Python ce qui peut être source de conflits (en cas de multiples imports par exemple).
 Vous pouvez toutefois utilisez cette facilité pour écrire de petits programmes de découvertes de tel ou tel module:</p>
-<div class="last highlight-python"><div class="highlight"><pre>&gt;&gt;&gt; La fonction dir(truc) sert à connaître les noms définie dans le contenxte de «truc»
-&gt;&gt;&gt; dir() # si «truc» est omis, c&#39;est le contexte courant
-[&#39;__builtins__&#39;, &#39;__doc__&#39;, &#39;__name__&#39;, &#39;__package__&#39;]
-&gt;&gt;&gt; a = 5
-&gt;&gt;&gt; dir() # le nom «a» existe à présent
-[&#39;__builtins__&#39;, &#39;__doc__&#39;, &#39;__name__&#39;, &#39;__package__&#39;, &#39;a&#39;]
-&gt;&gt;&gt; import tkinter
-&gt;&gt;&gt; dir() # seul le nom «tkinter» (ou plutôt l&#39;espace de nom) est importé
-[&#39;__builtins__&#39;, &#39;__doc__&#39;, &#39;__name__&#39;, &#39;__package__&#39;, &#39;a&#39;, &#39;tkinter&#39;]
-&gt;&gt;&gt; from tkinter import *
-&gt;&gt;&gt; dir() # et maintenant ? argh !
-[&#39;ACTIVE&#39;, &#39;ALL&#39;, &#39;ANCHOR&#39;, &#39;ARC&#39;, &#39;At&#39;, &#39;AtEnd&#39;, &#39;AtInsert&#39;, &#39;AtSelFirst&#39;, &#39;AtSelLast&#39;, &#39;BASELINE&#39;, &#39;BEVEL&#39;, &#39;BOTH&#39;, &#39;BOTTOM&#39;, &#39;BROWSE&#39;, &#39;BUTT&#39;, &#39;BaseWidget&#39;, &#39;BitmapImage&#39;, &#39;BooleanVar&#39;, &#39;Button&#39;, &#39;CASCADE&#39;, &#39;CENTER&#39;, &#39;CHAR&#39;, &#39;CHECKBUTTON&#39;, &#39;CHORD&#39;, &#39;COMMAND&#39;, &#39;CURRENT&#39; ...
+<div class="last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="c"># La fonction dir(truc) sert à connaître les noms définie dans le contenxte de «truc»</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">()</span> <span class="c"># si «truc» est omis, c&#39;est le contexte courant</span>
+<span class="go">[&#39;__builtins__&#39;, &#39;__doc__&#39;, &#39;__name__&#39;, &#39;__package__&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">()</span> <span class="c"># le nom «a» existe à présent</span>
+<span class="go">[&#39;__builtins__&#39;, &#39;__doc__&#39;, &#39;__name__&#39;, &#39;__package__&#39;, &#39;a&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">tkinter</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">()</span> <span class="c"># seul le nom «tkinter» (ou plutôt l&#39;espace de nom) est importé</span>
+<span class="go">[&#39;__builtins__&#39;, &#39;__doc__&#39;, &#39;__name__&#39;, &#39;__package__&#39;, &#39;a&#39;, &#39;tkinter&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">tkinter</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">()</span> <span class="c"># et maintenant ? argh !</span>
+<span class="go">[&#39;ACTIVE&#39;, &#39;ALL&#39;, &#39;ANCHOR&#39;, &#39;ARC&#39;, &#39;At&#39;, &#39;AtEnd&#39;, &#39;AtInsert&#39;, &#39;AtSelFirst&#39;, &#39;AtSelLast&#39;, &#39;BASELINE&#39;, &#39;BEVEL&#39;, &#39;BOTH&#39;, &#39;BOTTOM&#39;, &#39;BROWSE&#39;, &#39;BUTT&#39;, &#39;BaseWidget&#39;, &#39;BitmapImage&#39;, &#39;BooleanVar&#39;, &#39;Button&#39;, &#39;CASCADE&#39;, &#39;CENTER&#39;, &#39;CHAR&#39;, &#39;CHECKBUTTON&#39;, &#39;CHORD&#39;, &#39;COMMAND&#39;, &#39;CURRENT&#39; ...</span>
 </pre></div>
 </div>
 </div>
 </li>
 </ul>
 </div>
-<div class="section" id="paquet-ou-package">
-<h2>Paquet ou <em>Package</em><a class="headerlink" href="#paquet-ou-package" title="Lien permanent vers ce titre">¶</a></h2>
-<p>À faire ...</p>
+<div class="section" id="module-perso-exemple">
+<h2>Module perso: exemple<a class="headerlink" href="#module-perso-exemple" title="Lien permanent vers ce titre">¶</a></h2>
+<ul>
+<li><p class="first">Créer un fichier d&#8217;extension <tt class="docutils literal"><span class="pre">.py</span></tt>. Dans cet exemple, il s&#8217;appelle <tt class="docutils literal"><span class="pre">monModule.py</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># définition de monModule.py</span>
+<span class="n">CONST</span> <span class="o">=</span> <span class="mf">3.14</span>
+<span class="k">def</span> <span class="nf">truc</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;Salut cowboy.&quot;</span><span class="p">)</span>
+
+<span class="c"># la section après ce if sert à tester ce module</span>
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&quot;__main__&quot;</span><span class="p">:</span>
+     <span class="c"># code a exécuter si Python</span>
+     <span class="c"># est directement appelé</span>
+     <span class="c"># sur ce fichier</span>
+     <span class="k">print</span><span class="p">(</span><span class="n">CONST</span><span class="p">)</span>
+     <span class="n">truc</span><span class="p">()</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Démarrer l&#8217;interpréteur depuis le dossier qui contient le fichier <tt class="docutils literal"><span class="pre">monModule.py</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">monModule</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">CONST</span>
+<span class="go">3.14</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">truc</span><span class="p">()</span>
+<span class="go">Salut cowboy.</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Votre module sera chargé pourvu que Python puisse le trouver!. Pour savoir où Python cherche les modules:</p>
+<div class="last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sys</span><span class="o">.</span><span class="n">path</span> <span class="c"># affiche la liste des dossiers de recherche des modules</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="notion-de-paquet-ou-package">
+<h2>Notion de Paquet ou <em>Package</em><a class="headerlink" href="#notion-de-paquet-ou-package" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Un <strong>paquet</strong> sert à regrouper logiquement plusieurs modules. En pratique, c&#8217;est un dossier caractérisé par la présence d&#8217;un fichier <tt class="docutils literal"><span class="pre">__init__.py</span></tt> (qui peut être vide). Outre ce fichier «spécial», on y trouve les modules et éventuellement d&#8217;autres paquets...</p>
+<ul class="simple">
+<li>Un paquet est donc un dossier de la forme:</li>
+</ul>
+<div class="highlight-text"><div class="highlight"><pre>paquet/
+        __init__.py
+        module1.py
+        module2.py
+        sousPaquet/
+                __init__.py
+                autreModule.py
+                ...
+        ...
+</pre></div>
+</div>
+<ul>
+<li><p class="first"><strong>Importer un paquet</strong> (revient en fait à «charger» son <tt class="docutils literal"><span class="pre">__init__.py</span></tt>) - <tt class="docutils literal"><span class="pre">import</span> <span class="pre">&lt;paquet&gt;</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">paquet</span>
+<span class="c"># si son __init__.py définit la fonction «truc»</span>
+<span class="n">paquet</span><span class="o">.</span><span class="n">truc</span><span class="p">()</span> <span class="c"># ok</span>
+<span class="n">truc</span><span class="p">()</span> <span class="c"># pas ok !</span>
+<span class="kn">from</span> <span class="nn">paquet</span> <span class="kn">import</span> <span class="n">truc</span>
+<span class="n">truc</span><span class="p">()</span> <span class="c"># là ok</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Importer un module contenu dans un paquet - <tt class="docutils literal"><span class="pre">import</span> <span class="pre">&lt;paquet&gt;.&lt;module&gt;</span></tt> ou aussi <tt class="docutils literal"><span class="pre">from</span> <span class="pre">&lt;paquet&gt;</span> <span class="pre">import</span> <span class="pre">&lt;module&gt;</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre>import paquet.module1
+# si module1.py définit la fonction «bidulle»
+paquet.module1.bidulle() # ok.
+
+# vous pouvez utiliser un alias
+import paquet.module1 as pm1
+pm1.bidulle() # ok
+
+# ou encore
+from paquet import module1
+module1.bidulle() # ok
+
+#Enfin, pour importer «autreModule»
+ import paquet.sousPaquet.autreModule
+</pre></div>
+</div>
+</li>
+<li><p class="first">Importer un (ou plusieurs) «objets» définis dans un module d&#8217;un paquet - <tt class="docutils literal"><span class="pre">from</span> <span class="pre">&lt;paquet&gt;.&lt;module&gt;</span> <span class="pre">import</span> <span class="pre">obj1,</span> <span class="pre">obj2,</span> <span class="pre">...</span></tt>.</p>
+</li>
+<li><p class="first">Sens particulier de <tt class="docutils literal"><span class="pre">from</span> <span class="pre">&lt;paquet&gt;</span> <span class="pre">import</span> <span class="pre">*</span></tt>.</p>
+<p>On pourrait penser que ça charge tous les (sous)modules de &lt;paquet&gt; mais ce n&#8217;est en général pas le cas; La convention est la suivante:</p>
+<blockquote>
+<div><p>si le fichier <tt class="docutils literal"><span class="pre">__init__.py</span></tt> définit une liste nommée <tt class="docutils literal"><span class="pre">__all__</span></tt>, elle est utilisée comme la liste des noms de modules qui devraient être chargés si <tt class="docutils literal"><span class="pre">from</span> <span class="pre">&lt;paquet&gt;</span> <span class="pre">import</span> <span class="pre">*</span></tt> est utilisé.</p>
+</div></blockquote>
+</li>
+</ul>
 </div>
 </div>
 
@@ -148,7 +238,8 @@ Vous pouvez toutefois utilisez cette facilité pour écrire de petits programmes
   <ul>
 <li><a class="reference internal" href="#">Modules et paquets</a><ul>
 <li><a class="reference internal" href="#module">Module</a></li>
-<li><a class="reference internal" href="#paquet-ou-package">Paquet ou <em>Package</em></a></li>
+<li><a class="reference internal" href="#module-perso-exemple">Module perso: exemple</a></li>
+<li><a class="reference internal" href="#notion-de-paquet-ou-package">Notion de Paquet ou <em>Package</em></a></li>
 </ul>
 </li>
 </ul>

@@ -7,7 +7,7 @@ Module
 
 Un **module** est basiquement un fichier ``nom_module.py`` ordinaire. Les variables, fonctions, classes qui y sont  définies peuvent être **importées** afin d'être réutilisées.
 
-Python est accompagné de nombreux modules, ils forment sa librairie standard. On y trouve par exemple les modules *random*, *math*, *tkinter* et beaucoup d'autres.
+Python est accompagné de nombreux modules; ils forment sa `librairie standard <http://docs.python.org/3.3/library/index.html>`_. On y trouve par exemple les modules *random*, *math*, *tkinter* et beaucoup d'autres.
 
 * Importer un module et l'utiliser - ``import <nom_module>``::
 
@@ -54,7 +54,7 @@ Python est accompagné de nombreux modules, ils forment sa librairie standard. O
         1.0
 
 
-* Importer tout ce qu'un module définis - ``from <nom_module> import *``::
+* Importer tout ce qu'un module définit - ``from <nom_module> import *``::
 
         >>> from tkinter import *
         >>> fenetre = Tk() # une fenêtre devrait apparaître
@@ -65,9 +65,9 @@ Python est accompagné de nombreux modules, ils forment sa librairie standard. O
   .. warning::
         
         Procéder de la sorte est **généralement déconseillé** car de nombreux «noms» sont alors introduis dans l'interpréteur Python ce qui peut être source de conflits (en cas de multiples imports par exemple).
-        Vous pouvez toutefois utilisez cette facilité pour écrire de petits programmes de découvertes de tel ou tel module::
+        Vous pouvez toutefois utiliser cette facilité pour écrire de petits programmes de découvertes de tel ou tel module::
 
-                >>> # La fonction dir(truc) sert à connaître les noms définie dans le contenxte de «truc»
+                >>> # La fonction dir(truc) sert à connaître les noms définis dans le contexte de «truc»
                 >>> dir() # si «truc» est omis, c'est le contexte courant
                 ['__builtins__', '__doc__', '__name__', '__package__']
                 >>> a = 5
@@ -80,8 +80,86 @@ Python est accompagné de nombreux modules, ils forment sa librairie standard. O
                 >>> dir() # et maintenant ? argh !
                 ['ACTIVE', 'ALL', 'ANCHOR', 'ARC', 'At', 'AtEnd', 'AtInsert', 'AtSelFirst', 'AtSelLast', 'BASELINE', 'BEVEL', 'BOTH', 'BOTTOM', 'BROWSE', 'BUTT', 'BaseWidget', 'BitmapImage', 'BooleanVar', 'Button', 'CASCADE', 'CENTER', 'CHAR', 'CHECKBUTTON', 'CHORD', 'COMMAND', 'CURRENT' ... 
 
-
-Paquet ou *Package*
+Mon module: exemple
 ===================
 
-À faire ...
+* Créer un fichier d'extension ``.py``. Dans cet exemple, il s'appelle ``monModule.py``::
+        
+        # définitions de monModule.py
+        CONST = 3.14
+        def truc():
+            print("Salut cowboy.")
+
+        # la section après ce if sert à tester ce module
+        if __name__ == '__main__':
+             # __name__ vaut '__main__'
+             # seulement si Python est
+             # directement appelé sur ce fichier
+             print(CONST)
+             truc()
+
+* Démarrer l'interpréteur depuis le dossier qui contient le fichier ``monModule.py``::
+        
+        >>> from monModule import *
+        >>> CONST
+        3.14
+        >>> truc()
+        Salut cowboy.
+
+.. note:: Votre module sera chargé pourvu que Python puisse le trouver ! Pour savoir où Python cherche les modules::
+
+        >>> import sys
+        >>> sys.path # affiche la liste des dossiers de recherche des modules
+
+Notion de Paquet ou *Package*
+=============================
+
+Un **paquet** sert à regrouper logiquement plusieurs modules. En pratique, c'est un dossier caractérisé par la présence d'un fichier ``__init__.py`` (qui peut être vide). Outre ce fichier «spécial», on y trouve les modules et éventuellement d'autres paquets...
+
+* **Exemple** - un paquet est donc un dossier de la forme:
+
+.. code-block:: text
+
+        paquet/
+                __init__.py
+                module1.py
+                module2.py
+                sousPaquet/
+                        __init__.py
+                        autreModule.py
+                        ...
+                ...
+
+* **Importer un paquet** (revient en fait à «charger» son ``__init__.py``) - ``import <paquet>``::
+
+        import paquet
+        # si son __init__.py définit la fonction «truc»
+        paquet.truc() # ok
+        truc() # pas ok !
+        from paquet import truc
+        truc() # là ok
+
+* Importer un module contenu dans un paquet - ``import <paquet>.<module>`` ou aussi ``from <paquet> import <module>``::
+
+        import paquet.module1
+        # si module1.py définit la fonction «bidulle»
+        paquet.module1.bidulle() # ok.
+        
+        # vous pouvez utiliser un alias
+        import paquet.module1 as pm1
+        pm1.bidulle() # ok
+
+        # ou encore
+        from paquet import module1
+        module1.bidulle() # ok
+
+        #Enfin, pour importer «autreModule»
+         import paquet.sousPaquet.autreModule 
+
+* Importer un (ou plusieurs) «objets» définis dans un module d'un paquet - ``from <paquet>.<module> import obj1, obj2, ...``.
+
+* Sens particulier de ``from <paquet> import *``.
+
+  On pourrait penser que ça charge tous les (sous)modules de <paquet> mais ce n'est en général pas le cas; La convention est la suivante: 
+  
+        si le fichier ``__init__.py`` définit une liste nommée ``__all__``, elle est utilisée comme la liste des noms de modules qui devraient être chargés si ``from <paquet> import *`` est utilisé.
