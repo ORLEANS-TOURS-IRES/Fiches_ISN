@@ -84,8 +84,8 @@ Opérations de base
         ["liste", -2.3, 0]
 
 
-Parcourt d'une liste avec une boucle ``for``
-============================================
+Parcourt d'une liste
+====================
 
 * **Direct** - chaque élément est récupéré successivement::
 

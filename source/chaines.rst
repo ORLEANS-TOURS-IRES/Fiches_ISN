@@ -19,7 +19,7 @@ Les chaînes de caractères - type ``str`` pour *strings* - servent à représen
   * Pour préciser un caractère non directement accessible au clavier, insèrer son «point de code» unicode via ``\u<code>`` où ``<code>`` doit être remplacé par la valeur adéquate (voir `ce site <http://unicode-table.com>`_). Par exemple, ``\u262F`` devrait donné « :raw-html:`&#9775;` ».
   * Saut de ligne: ``\n``,
   * Tabulation (touche Tab): ``\t``
-  * Empêcher l'interpration des guillemets simples ou doubles comme délimiteur: ``\'`` ou ``\"``. Ex: ``'Pour écrire "\ '", il faut l'échapper avec \\'``.
+  * Empêcher l'interprétation des guillemets simples ou doubles comme délimiteur: ``\'`` ou ``\"``. Ex: ``'Pour écrire "\'", il faut l'échapper avec \\'``.
   * Insérer un backslash «\\» ? : ``\\``
 
 * Une chaîne n'est **pas directement modifiable**.
