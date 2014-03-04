@@ -106,7 +106,7 @@ Mon module: exemple
         >>> truc()
         Salut cowboy.
 
-.. note:: Votre module sera chargé pourvu que Python puisse le trouver ! Pour savoir où Python cherche les modules::
+  .. note:: Votre module sera chargé pourvu que Python puisse le trouver ! Pour savoir où Python cherche les modules::
 
         >>> import sys
         >>> sys.path # affiche la liste des dossiers de recherche des modules
@@ -118,7 +118,7 @@ Un **paquet** sert à regrouper logiquement plusieurs modules. En pratique, c'es
 
 * **Exemple** - un paquet est donc un dossier de la forme:
 
-.. code-block:: text
+  .. code-block:: text
 
         paquet/
                 __init__.py
@@ -153,8 +153,8 @@ Un **paquet** sert à regrouper logiquement plusieurs modules. En pratique, c'es
         from paquet import module1
         module1.bidulle() # ok
 
-        #Enfin, pour importer «autreModule»
-         import paquet.sousPaquet.autreModule 
+        # Enfin, pour importer «autreModule»
+        import paquet.sousPaquet.autreModule 
 
 * Importer un (ou plusieurs) «objets» définis dans un module d'un paquet - ``from <paquet>.<module> import obj1, obj2, ...``.
 
