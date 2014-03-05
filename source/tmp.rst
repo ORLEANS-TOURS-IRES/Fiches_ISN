@@ -4,4 +4,4 @@ dans menu
 
 du texte::
 
-        >>> print("Hello world!")
+        >>> print("Bonjour tout le monde !")
