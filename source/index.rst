@@ -6,10 +6,10 @@
 Fiches Python pour ISN
 ======================
 
+
 .. toctree::
    :maxdepth: 1
 
-   test
    chaines
    listes
    dictionnaires
