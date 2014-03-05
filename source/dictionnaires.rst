@@ -2,14 +2,14 @@
 Les dictionnaires
 *****************
 
-Un **dictionnaire** - type ``dict`` - est un moyen de mémoriser des *associations de la forme clé →- valeur*.
+Un **dictionnaire** - type ``dict`` - est un moyen de mémoriser des *associations de la forme clé→valeur*.
 
 * Littéralement, un **dictionnaire** est de la forme ``{clé1: val1, clé2: val2, ...}``
 
-  * Les **clés** sont n'importe quelle valeur «primaire» ou  *non modifiable* comme un entier, une chaîne, un tuple...
+  * Les **clés** sont n'importe quelle valeur «primaire» ou *non modifiable* comme un entier, une chaîne, un tuple...
   * Les **valeurs** correspondantes sont de type arbitraire.
 
-* La **longeur** d'un dictionnaire est le nombre de couple clé-valeur qu'il contient
+* La **longeur** d'un dictionnaire est le nombre de couple clé→valeur qu'il contient
 
 Opérations de base
 ==================
@@ -20,7 +20,7 @@ Opérations de base
         >>> d # Noter que l'ordre d'insertion n'est pas conservé
         {0: ':(', 'I': [1, 0], 'café': ':)'}
   
-* Connaître le nombre des couple clé-valeur contenu - ``len(dict)``::
+* Connaître le nombre des couple clé→valeur contenu - ``len(dict)``::
 
         >>> len(d)
         >>> 3
@@ -57,7 +57,7 @@ Opérations de base
             File "<stdin>", line 1, in <module>
         KeyError: 'Café'
 
-* **Modifier** ou **ajouter** un couple clé-valeur - ``dict[cle] = nouvelle_val``::
+* **Modifier** ou **ajouter** un couple clé→valeur - ``dict[cle] = nouvelle_val``::
 
         >>> d
         {0: ':(', 'I': [1, 0], 'café': ':)'}
@@ -69,7 +69,7 @@ Opérations de base
         >>> d # attention, les couples ne sont pas ordonnés!
         {0: ':(', 'I': [1, 0], 'J': [0, 1], 'café': 'clop :-O'}
 
-* **Supprimer** un couple clé-valeur - ``del d[cle]``::
+* **Supprimer** un couple clé→valeur - ``del d[cle]``::
 
         >>> d = {"Python": "de la balle !"}
         >>> del d["Python"]
