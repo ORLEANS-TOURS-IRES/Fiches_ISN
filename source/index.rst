@@ -3,13 +3,14 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Bienvenue sur ce site dédié à ISN en Python
-===========================================
+Fiches Python pour ISN
+======================
 
 
 .. toctree::
    :maxdepth: 1
 
+   test
    chaines
    listes
    dictionnaires
