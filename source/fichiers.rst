@@ -89,10 +89,34 @@ Opérations de base
    ``'t'``   mode texte (par défaut)
    ========= ===============================================================
 
-  ``wt`` est équivalent à ``w``. Pour voir un fichier comme une chaîne d'octets, utiliser ``rb``, ``wb`` , etc.
+  ``'wt'`` est équivalent à ``'w'``. Pour voir un fichier comme une chaîne d'octets, utiliser ``'rb'``, ``'wb'`` , etc.
 
-Chemin vers un fichier
-======================
+Persistance des données - ``pickle``
+====================================
+
+``pickle`` est un module qui facilite considérablement la sauvegarde/récupération de données Python par l'intermédiaire de fichiers. 
+
+**Attention** : ces fichiers doivent être ouvert en **mode binaire** ``'b'``.
+
+* **Sauvegarder** une ou des données dans un fichier - ``pickle.dump(donne, fichier)``::
+
+        >>> import pickle
+        >>> donnees = {"nom": 'Dupond', "Prénom": 'andré', "age": 32}
+        >>> fsauv = open('donnees.pickle', 'wb') # ouverture en mode binaire !!
+        >>> pickle.dump(donnees, fsauv)
+        >>> fsauv.close()
+
+* **Restaurer** une donnée sauvée via pickle - ``pickle.load(fichier)``::
+
+        >>> import pickle
+        >>> f = open('donnees.pickle', 'rb') # mode lecture binaire !!
+        >>> restaure = pickle.load(f)
+        >>> restaure
+        {'nom': 'Dupond', 'age': 32, 'Prénom': 'andré'}
+        >>> f.close()
+
+Notion de chemin 
+================
 
 Pour ouvrir un fichier qui ne se trouve pas dans le répertoire courant, il faut être capable d'indiquer où il se trouve dans l'arborescence du disque c'est à dire son **chemin**.
 
