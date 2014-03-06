@@ -1,3 +1,6 @@
+.. role:: raw-html(raw)
+   :format: html
+
 *********
 Fichiers
 *********
@@ -72,6 +75,21 @@ Opérations de base
                 copie.write(nl)
         >>> orig.close()
         >>> copie.close()
+
+* Options courantes d'ouverture d'un fichier - ``open(<nom_fichier>, option)``:
+
+   ========= ===============================================================
+   Option    Signification
+   ========= ===============================================================
+   ``'r'``   ouverture en lecture (par défaut)
+   ``'w'``   ouverture en écriture (un fichier existant est perdu)
+   ``'x'``   ouverture en écriture sécurisée (erreur si le fichier existe)
+   ``'a'``   ouverture en ajout à la fin du fichier s'il existe
+   ``'b'``   mode binaire - on lit ou écrit via une chaîne d'octes ``bytes``
+   ``'t'``   mode texte (par défaut)
+   ========= ===============================================================
+
+  ``wt`` est équivalent à ``w``. Pour voir un fichier comme une chaîne d'octets, utiliser ``rb``, ``wb`` , etc.
 
 Chemin vers un fichier
 ======================
