@@ -9,7 +9,7 @@ Un **dictionnaire** - type ``dict`` - est un moyen de mémoriser des *associatio
   * Les **clés** sont n'importe quelle valeur «primaire» ou *non modifiable* comme un entier, une chaîne, un tuple...
   * Les **valeurs** correspondantes sont de type arbitraire.
 
-* La **longeur** d'un dictionnaire est le nombre de couple clé→valeur qu'il contient
+* La **longeur** d'un dictionnaire est le nombre de couples clé→valeur qu'il contient
 
 Opérations de base
 ==================
@@ -20,7 +20,7 @@ Opérations de base
         >>> d # Noter que l'ordre d'insertion n'est pas conservé
         {0: ':(', 'I': [1, 0], 'café': ':)'}
   
-* Connaître le nombre des couple clé→valeur contenu - ``len(dict)``::
+* Connaître le nombre des couples clé→valeur contenu - ``len(dict)``::
 
         >>> len(d)
         >>> 3
