@@ -7,7 +7,7 @@ Pouvoir lire et/ou écrire dans un fichier est indispensable lorsqu'on souhaite,
 Opérations de base
 ==================
 
-* Créer un nouveau fichier et y écrire - ``fich = open(<nom_fichier>, 'w')`` et ``fich.write(chaine)``::
+* **Créer** un nouveau fichier et y **écrire** - ``fich = open(<nom_fichier>, 'w')`` et ``fich.write(chaine)``::
 
         >>> # Dans quel dossier suis-je ?
         >>> from os import getcwd
@@ -23,7 +23,7 @@ Opérations de base
         >>> # C'est fini ? fermer votre fichier! 
         >>> f.close()
 
-* Lire un fichier existant - ``fich = open(<nom_fichier>)`` et ``fich.read()``::
+* **Lire** un fichier existant - ``fich = open(<nom_fichier>)`` et ``fich.read()``::
 
         >>> f = open('test') # oups ...
         Traceback (most recent call last):
@@ -38,7 +38,7 @@ Opérations de base
         >>> # car vous avez déjà tout lu ... il est temps de fermer !
         >>> f.close()
 
-* Ajouter du texte à un fichier existant - ``fich = open(<nom_fichiers>, 'a')``::
+* **Ajouter** du texte à un fichier existant - ``fich = open(<nom_fichiers>, 'a')``::
 
         >>> f = open('test.txt', 'a') # 'a' pour append -> ajouter
         >>> f.write('\nligne2\nligne3\n\nblah blah') # rappel \n symbolise le caractère saut de ligne.
@@ -61,7 +61,7 @@ Opérations de base
         ['Je découvre la gestion des fichiers.Ça paraît assez simple ...\n', 'ligne2\n', 'ligne3\n', '\n', 'blah blah']
         >>> f.close()
 
-* Parcourir les lignes d'un fichier - ``for ligne in fich``::
+* **Parcourir** les lignes d'un fichier - ``for ligne in fich``::
 
         >>> copie = open('copie', 'w')
         >>> orig = open('test.txt')
@@ -75,7 +75,6 @@ Opérations de base
 
 Chemin vers un fichier
 ======================
-
 
 Pour ouvrir un fichier qui ne se trouve pas dans le répertoire courant, il faut être capable d'indiquer où il se trouve dans l'arborescence du disque c'est à dire son **chemin**.
 
@@ -92,10 +91,11 @@ Voici un exemple (volontairement très simple !) d'organisation d'un disque:
    fichier3.py
    ...
 
-* chemin «absolu» vers fichier1.txt: ``/dossier1/fichier1.txt``
-* chemin «absolu» vers fichier3.ppm: ``/dossier1/ss_dossier/fichier2.ppm``
-* chemin «relatif» - **depuis dossier1** - vers *fichier1.txt*: ``fichier1.txt`` 
-* chemin «relatif» - **depuis dossier1** - vers *fichier3.py*: ``../fichier3.py`` (``..`` ~ dossier parent) 
-* chemin «relatif» - **depuis ss_dossier** - vers *fichier3.py*: ``../../fichier3.py``
-
+* **Chemin absolu** - depuis la «racine» du disque notée ``/``:
+  * de *fichier1.txt* : ``/dossier1/fichier1.txt``
+  * de *fichier2.ppm* : ``/dossier1/ss_dossier/fichier2.ppm``
+* **chemin relatif** - à partir d'un dossier particulier (souvent le dossier courant):    
+  * de *fichier1.txt* à partir de **dossier1** : ``fichier1.txt`` 
+  * de *fichier3.py* à partir de **dossier1** : ``../fichier3.py`` (``..`` ~ dossier parent) 
+  * de *fichier3.py* à partir de **ss_dossier** : ``../../fichier3.py``
 
