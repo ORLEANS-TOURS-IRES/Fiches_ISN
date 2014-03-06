@@ -93,8 +93,8 @@ Voici un exemple (volontairement très simple !) d'organisation d'un disque:
 
 * **Chemin absolu** - depuis la «racine» du disque notée ``/``:
 
- * de *fichier1.txt* : ``/dossier1/fichier1.txt``
- * de *fichier2.ppm* : ``/dossier1/ss_dossier/fichier2.ppm``
+  * de *fichier1.txt* : ``/dossier1/fichier1.txt``
+  * de *fichier2.ppm* : ``/dossier1/ss_dossier/fichier2.ppm``
 
 * **chemin relatif** - à partir d'un dossier particulier (souvent le dossier courant):    
 
