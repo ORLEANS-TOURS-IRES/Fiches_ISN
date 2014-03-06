@@ -1,6 +1,6 @@
-*****************
-Les dictionnaires
-*****************
+************************
+Dictionnaires - ``dict``
+************************
 
 Un **dictionnaire** - type ``dict`` - est un moyen de mémoriser des *associations de la forme clé→valeur*.
 
