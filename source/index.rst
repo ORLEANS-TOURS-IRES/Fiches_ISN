@@ -8,6 +8,7 @@ Fiches Python pour ISN
    chaines
    listes
    dictionnaires
+   fichiers
    modules
    FicheReseauxServeur01
    FicheReseauxClient01

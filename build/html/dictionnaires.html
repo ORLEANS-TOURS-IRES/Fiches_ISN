@@ -26,7 +26,7 @@
     <script type="text/javascript" src="_static/translations.js"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="top" title="documentation Fiches pour ISN 1.0" href="index.html" />
-    <link rel="next" title="Modules et paquets" href="modules.html" />
+    <link rel="next" title="Fichiers" href="fichiers.html" />
     <link rel="prev" title="Les listes" href="listes.html" /> 
   </head>
   <body>
@@ -34,7 +34,7 @@
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="modules.html" title="Modules et paquets"
+          <a href="fichiers.html" title="Fichiers"
              accesskey="N">suivant</a></li>
         <li class="right" >
           <a href="listes.html" title="Les listes"
@@ -50,14 +50,14 @@
             
   <div class="section" id="les-dictionnaires">
 <h1>Les dictionnaires<a class="headerlink" href="#les-dictionnaires" title="Lien permanent vers ce titre">¶</a></h1>
-<p>Un <strong>dictionnaire</strong> - type <tt class="docutils literal"><span class="pre">dict</span></tt> - est un moyen de mémoriser des <em>associations de la forme clé →- valeur</em>.</p>
+<p>Un <strong>dictionnaire</strong> - type <tt class="docutils literal"><span class="pre">dict</span></tt> - est un moyen de mémoriser des <em>associations de la forme clé→valeur</em>.</p>
 <ul class="simple">
 <li>Littéralement, un <strong>dictionnaire</strong> est de la forme <tt class="docutils literal"><span class="pre">{clé1:</span> <span class="pre">val1,</span> <span class="pre">clé2:</span> <span class="pre">val2,</span> <span class="pre">...}</span></tt><ul>
-<li>Les <strong>clés</strong> sont n&#8217;importe quelle valeur «primaire» ou  <em>non modifiable</em> comme un entier, une chaîne, un tuple...</li>
+<li>Les <strong>clés</strong> sont n&#8217;importe quelle valeur «primaire» ou <em>non modifiable</em> comme un entier, une chaîne, un tuple...</li>
 <li>Les <strong>valeurs</strong> correspondantes sont de type arbitraire.</li>
 </ul>
 </li>
-<li>La <strong>longeur</strong> d&#8217;un dictionnaire est le nombre de couple clé-valeur qu&#8217;il contient</li>
+<li>La <strong>longeur</strong> d&#8217;un dictionnaire est le nombre de couples clé→valeur qu&#8217;il contient</li>
 </ul>
 <div class="section" id="operations-de-base">
 <h2>Opérations de base<a class="headerlink" href="#operations-de-base" title="Lien permanent vers ce titre">¶</a></h2>
@@ -69,7 +69,7 @@
 </pre></div>
 </div>
 </li>
-<li><p class="first">Connaître le nombre des couple clé-valeur contenu - <tt class="docutils literal"><span class="pre">len(dict)</span></tt>:</p>
+<li><p class="first">Connaître le nombre des couples clé→valeur contenu - <tt class="docutils literal"><span class="pre">len(dict)</span></tt>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="mi">3</span>
 </pre></div>
@@ -110,7 +110,7 @@
 </pre></div>
 </div>
 </li>
-<li><p class="first"><strong>Modifier</strong> ou <strong>ajouter</strong> un couple clé-valeur - <tt class="docutils literal"><span class="pre">dict[cle]</span> <span class="pre">=</span> <span class="pre">nouvelle_val</span></tt>:</p>
+<li><p class="first"><strong>Modifier</strong> ou <strong>ajouter</strong> un couple clé→valeur - <tt class="docutils literal"><span class="pre">dict[cle]</span> <span class="pre">=</span> <span class="pre">nouvelle_val</span></tt>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span>
 <span class="go">{0: &#39;:(&#39;, &#39;I&#39;: [1, 0], &#39;café&#39;: &#39;:)&#39;}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cle</span> <span class="o">=</span> <span class="s">&quot;café&quot;</span>
@@ -123,7 +123,7 @@
 </pre></div>
 </div>
 </li>
-<li><p class="first"><strong>Supprimer</strong> un couple clé-valeur - <tt class="docutils literal"><span class="pre">del</span> <span class="pre">d[cle]</span></tt>:</p>
+<li><p class="first"><strong>Supprimer</strong> un couple clé→valeur - <tt class="docutils literal"><span class="pre">del</span> <span class="pre">d[cle]</span></tt>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s">&quot;Python&quot;</span><span class="p">:</span> <span class="s">&quot;de la balle !&quot;</span><span class="p">}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">del</span> <span class="n">d</span><span class="p">[</span><span class="s">&quot;Python&quot;</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">d</span>
@@ -284,8 +284,8 @@
   <p class="topless"><a href="listes.html"
                         title="Chapitre précédent">Les listes</a></p>
   <h4>Sujet suivant</h4>
-  <p class="topless"><a href="modules.html"
-                        title="Chapitre suivant">Modules et paquets</a></p>
+  <p class="topless"><a href="fichiers.html"
+                        title="Chapitre suivant">Fichiers</a></p>
   <h3>Cette page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/dictionnaires.txt"
@@ -312,7 +312,7 @@
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="modules.html" title="Modules et paquets"
+          <a href="fichiers.html" title="Fichiers"
              >suivant</a></li>
         <li class="right" >
           <a href="listes.html" title="Les listes"
@@ -322,7 +322,7 @@
     </div>
     <div class="footer">
         &copy; Copyright 2014, Groupe IRES.
-      Mis à jour le Mar 04, 2014.
+      Mis à jour le Mar 06, 2014.
       Créé avec <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.1.
     </div>
   </body>

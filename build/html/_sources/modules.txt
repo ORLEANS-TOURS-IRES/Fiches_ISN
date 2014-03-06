@@ -7,7 +7,7 @@ Module
 
 Un **module** est basiquement un fichier ``nom_module.py`` ordinaire. Les variables, fonctions, classes qui y sont  définies peuvent être **importées** afin d'être réutilisées.
 
-Python est accompagné de nombreux modules, ils forment sa librairie standard. On y trouve par exemple les modules *random*, *math*, *tkinter* et beaucoup d'autres.
+Python est accompagné de nombreux modules; ils forment sa `librairie standard <http://docs.python.org/3.3/library/index.html>`_. On y trouve par exemple les modules *random*, *math*, *tkinter* et beaucoup d'autres.
 
 * Importer un module et l'utiliser - ``import <nom_module>``::
 
@@ -54,7 +54,7 @@ Python est accompagné de nombreux modules, ils forment sa librairie standard. O
         1.0
 
 
-* Importer tout ce qu'un module définis - ``from <nom_module> import *``::
+* Importer tout ce qu'un module définit - ``from <nom_module> import *``::
 
         >>> from tkinter import *
         >>> fenetre = Tk() # une fenêtre devrait apparaître
@@ -65,9 +65,9 @@ Python est accompagné de nombreux modules, ils forment sa librairie standard. O
   .. warning::
         
         Procéder de la sorte est **généralement déconseillé** car de nombreux «noms» sont alors introduis dans l'interpréteur Python ce qui peut être source de conflits (en cas de multiples imports par exemple).
-        Vous pouvez toutefois utilisez cette facilité pour écrire de petits programmes de découvertes de tel ou tel module::
+        Vous pouvez toutefois utiliser cette facilité pour écrire de petits programmes de découvertes de tel ou tel module::
 
-                >>> # La fonction dir(truc) sert à connaître les noms définie dans le contenxte de «truc»
+                >>> # La fonction dir(truc) sert à connaître les noms définis dans le contexte de «truc»
                 >>> dir() # si «truc» est omis, c'est le contexte courant
                 ['__builtins__', '__doc__', '__name__', '__package__']
                 >>> a = 5
@@ -80,22 +80,21 @@ Python est accompagné de nombreux modules, ils forment sa librairie standard. O
                 >>> dir() # et maintenant ? argh !
                 ['ACTIVE', 'ALL', 'ANCHOR', 'ARC', 'At', 'AtEnd', 'AtInsert', 'AtSelFirst', 'AtSelLast', 'BASELINE', 'BEVEL', 'BOTH', 'BOTTOM', 'BROWSE', 'BUTT', 'BaseWidget', 'BitmapImage', 'BooleanVar', 'Button', 'CASCADE', 'CENTER', 'CHAR', 'CHECKBUTTON', 'CHORD', 'COMMAND', 'CURRENT' ... 
 
-
-Module perso: exemple
-=====================
+Mon module: exemple
+===================
 
 * Créer un fichier d'extension ``.py``. Dans cet exemple, il s'appelle ``monModule.py``::
         
-        # définition de monModule.py
+        # définitions de monModule.py
         CONST = 3.14
         def truc():
             print("Salut cowboy.")
 
         # la section après ce if sert à tester ce module
-        if __name__ == "__main__":
-             # code a exécuter si Python
-             # est directement appelé
-             # sur ce fichier
+        if __name__ == '__main__':
+             # __name__ vaut '__main__'
+             # seulement si Python est
+             # directement appelé sur ce fichier
              print(CONST)
              truc()
 
@@ -107,7 +106,7 @@ Module perso: exemple
         >>> truc()
         Salut cowboy.
 
-.. note:: Votre module sera chargé pourvu que Python puisse le trouver!. Pour savoir où Python cherche les modules::
+  .. note:: Votre module sera chargé pourvu que Python puisse le trouver ! Pour savoir où Python cherche les modules::
 
         >>> import sys
         >>> sys.path # affiche la liste des dossiers de recherche des modules
@@ -117,9 +116,9 @@ Notion de Paquet ou *Package*
 
 Un **paquet** sert à regrouper logiquement plusieurs modules. En pratique, c'est un dossier caractérisé par la présence d'un fichier ``__init__.py`` (qui peut être vide). Outre ce fichier «spécial», on y trouve les modules et éventuellement d'autres paquets...
 
-* Un paquet est donc un dossier de la forme:
+* **Exemple** - un paquet est donc un dossier de la forme:
 
-.. code-block:: text
+  .. code-block:: text
 
         paquet/
                 __init__.py
@@ -154,8 +153,8 @@ Un **paquet** sert à regrouper logiquement plusieurs modules. En pratique, c'es
         from paquet import module1
         module1.bidulle() # ok
 
-        #Enfin, pour importer «autreModule»
-         import paquet.sousPaquet.autreModule 
+        # Enfin, pour importer «autreModule»
+        import paquet.sousPaquet.autreModule 
 
 * Importer un (ou plusieurs) «objets» définis dans un module d'un paquet - ``from <paquet>.<module> import obj1, obj2, ...``.
 

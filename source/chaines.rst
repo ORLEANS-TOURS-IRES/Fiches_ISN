@@ -2,9 +2,9 @@
    :format: html
 
 
-*************************
-Les chaînes de caractères
-*************************
+*******************************
+Chaînes de caractères - ``str``
+*******************************
 
 Les chaînes de caractères - type ``str`` pour *strings* - servent à représenter les textes.
 

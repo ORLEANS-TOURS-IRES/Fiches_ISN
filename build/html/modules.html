@@ -53,7 +53,7 @@
 <div class="section" id="module">
 <h2>Module<a class="headerlink" href="#module" title="Lien permanent vers ce titre">¶</a></h2>
 <p>Un <strong>module</strong> est basiquement un fichier <tt class="docutils literal"><span class="pre">nom_module.py</span></tt> ordinaire. Les variables, fonctions, classes qui y sont  définies peuvent être <strong>importées</strong> afin d&#8217;être réutilisées.</p>
-<p>Python est accompagné de nombreux modules, ils forment sa librairie standard. On y trouve par exemple les modules <em>random</em>, <em>math</em>, <em>tkinter</em> et beaucoup d&#8217;autres.</p>
+<p>Python est accompagné de nombreux modules; ils forment sa <a class="reference external" href="http://docs.python.org/3.3/library/index.html">librairie standard</a>. On y trouve par exemple les modules <em>random</em>, <em>math</em>, <em>tkinter</em> et beaucoup d&#8217;autres.</p>
 <ul>
 <li><p class="first">Importer un module et l&#8217;utiliser - <tt class="docutils literal"><span class="pre">import</span> <span class="pre">&lt;nom_module&gt;</span></tt>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">random</span> <span class="c"># random -&gt; aléatoire</span>
@@ -102,7 +102,7 @@
 </pre></div>
 </div>
 </li>
-<li><p class="first">Importer tout ce qu&#8217;un module définis - <tt class="docutils literal"><span class="pre">from</span> <span class="pre">&lt;nom_module&gt;</span> <span class="pre">import</span> <span class="pre">*</span></tt>:</p>
+<li><p class="first">Importer tout ce qu&#8217;un module définit - <tt class="docutils literal"><span class="pre">from</span> <span class="pre">&lt;nom_module&gt;</span> <span class="pre">import</span> <span class="pre">*</span></tt>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">tkinter</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">fenetre</span> <span class="o">=</span> <span class="n">Tk</span><span class="p">()</span> <span class="c"># une fenêtre devrait apparaître</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">bouton</span> <span class="o">=</span> <span class="n">Button</span><span class="p">(</span><span class="n">fenetre</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s">&quot;cliquez moi !&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">fenetre</span><span class="o">.</span><span class="n">destroy</span><span class="p">)</span>
@@ -113,8 +113,8 @@
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p>Procéder de la sorte est <strong>généralement déconseillé</strong> car de nombreux «noms» sont alors introduis dans l&#8217;interpréteur Python ce qui peut être source de conflits (en cas de multiples imports par exemple).
-Vous pouvez toutefois utilisez cette facilité pour écrire de petits programmes de découvertes de tel ou tel module:</p>
-<div class="last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="c"># La fonction dir(truc) sert à connaître les noms définie dans le contenxte de «truc»</span>
+Vous pouvez toutefois utiliser cette facilité pour écrire de petits programmes de découvertes de tel ou tel module:</p>
+<div class="last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="c"># La fonction dir(truc) sert à connaître les noms définis dans le contexte de «truc»</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">()</span> <span class="c"># si «truc» est omis, c&#39;est le contexte courant</span>
 <span class="go">[&#39;__builtins__&#39;, &#39;__doc__&#39;, &#39;__name__&#39;, &#39;__package__&#39;]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="mi">5</span>
@@ -132,20 +132,20 @@ Vous pouvez toutefois utilisez cette facilité pour écrire de petits programmes
 </li>
 </ul>
 </div>
-<div class="section" id="module-perso-exemple">
-<h2>Module perso: exemple<a class="headerlink" href="#module-perso-exemple" title="Lien permanent vers ce titre">¶</a></h2>
+<div class="section" id="mon-module-exemple">
+<h2>Mon module: exemple<a class="headerlink" href="#mon-module-exemple" title="Lien permanent vers ce titre">¶</a></h2>
 <ul>
 <li><p class="first">Créer un fichier d&#8217;extension <tt class="docutils literal"><span class="pre">.py</span></tt>. Dans cet exemple, il s&#8217;appelle <tt class="docutils literal"><span class="pre">monModule.py</span></tt>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># définition de monModule.py</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># définitions de monModule.py</span>
 <span class="n">CONST</span> <span class="o">=</span> <span class="mf">3.14</span>
 <span class="k">def</span> <span class="nf">truc</span><span class="p">():</span>
     <span class="k">print</span><span class="p">(</span><span class="s">&quot;Salut cowboy.&quot;</span><span class="p">)</span>
 
 <span class="c"># la section après ce if sert à tester ce module</span>
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&quot;__main__&quot;</span><span class="p">:</span>
-     <span class="c"># code a exécuter si Python</span>
-     <span class="c"># est directement appelé</span>
-     <span class="c"># sur ce fichier</span>
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+     <span class="c"># __name__ vaut &#39;__main__&#39;</span>
+     <span class="c"># seulement si Python est</span>
+     <span class="c"># directement appelé sur ce fichier</span>
      <span class="k">print</span><span class="p">(</span><span class="n">CONST</span><span class="p">)</span>
      <span class="n">truc</span><span class="p">()</span>
 </pre></div>
@@ -159,23 +159,22 @@ Vous pouvez toutefois utilisez cette facilité pour écrire de petits programmes
 <span class="go">Salut cowboy.</span>
 </pre></div>
 </div>
-</li>
-</ul>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>Votre module sera chargé pourvu que Python puisse le trouver!. Pour savoir où Python cherche les modules:</p>
+<p>Votre module sera chargé pourvu que Python puisse le trouver ! Pour savoir où Python cherche les modules:</p>
 <div class="last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sys</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sys</span><span class="o">.</span><span class="n">path</span> <span class="c"># affiche la liste des dossiers de recherche des modules</span>
 </pre></div>
 </div>
 </div>
+</li>
+</ul>
 </div>
 <div class="section" id="notion-de-paquet-ou-package">
 <h2>Notion de Paquet ou <em>Package</em><a class="headerlink" href="#notion-de-paquet-ou-package" title="Lien permanent vers ce titre">¶</a></h2>
 <p>Un <strong>paquet</strong> sert à regrouper logiquement plusieurs modules. En pratique, c&#8217;est un dossier caractérisé par la présence d&#8217;un fichier <tt class="docutils literal"><span class="pre">__init__.py</span></tt> (qui peut être vide). Outre ce fichier «spécial», on y trouve les modules et éventuellement d&#8217;autres paquets...</p>
-<ul class="simple">
-<li>Un paquet est donc un dossier de la forme:</li>
-</ul>
+<ul>
+<li><p class="first"><strong>Exemple</strong> - un paquet est donc un dossier de la forme:</p>
 <div class="highlight-text"><div class="highlight"><pre>paquet/
         __init__.py
         module1.py
@@ -187,7 +186,7 @@ Vous pouvez toutefois utilisez cette facilité pour écrire de petits programmes
         ...
 </pre></div>
 </div>
-<ul>
+</li>
 <li><p class="first"><strong>Importer un paquet</strong> (revient en fait à «charger» son <tt class="docutils literal"><span class="pre">__init__.py</span></tt>) - <tt class="docutils literal"><span class="pre">import</span> <span class="pre">&lt;paquet&gt;</span></tt>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">paquet</span>
 <span class="c"># si son __init__.py définit la fonction «truc»</span>
@@ -199,20 +198,20 @@ Vous pouvez toutefois utilisez cette facilité pour écrire de petits programmes
 </div>
 </li>
 <li><p class="first">Importer un module contenu dans un paquet - <tt class="docutils literal"><span class="pre">import</span> <span class="pre">&lt;paquet&gt;.&lt;module&gt;</span></tt> ou aussi <tt class="docutils literal"><span class="pre">from</span> <span class="pre">&lt;paquet&gt;</span> <span class="pre">import</span> <span class="pre">&lt;module&gt;</span></tt>:</p>
-<div class="highlight-python"><div class="highlight"><pre>import paquet.module1
-# si module1.py définit la fonction «bidulle»
-paquet.module1.bidulle() # ok.
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">paquet.module1</span>
+<span class="c"># si module1.py définit la fonction «bidulle»</span>
+<span class="n">paquet</span><span class="o">.</span><span class="n">module1</span><span class="o">.</span><span class="n">bidulle</span><span class="p">()</span> <span class="c"># ok.</span>
 
-# vous pouvez utiliser un alias
-import paquet.module1 as pm1
-pm1.bidulle() # ok
+<span class="c"># vous pouvez utiliser un alias</span>
+<span class="kn">import</span> <span class="nn">paquet.module1</span> <span class="kn">as</span> <span class="nn">pm1</span>
+<span class="n">pm1</span><span class="o">.</span><span class="n">bidulle</span><span class="p">()</span> <span class="c"># ok</span>
 
-# ou encore
-from paquet import module1
-module1.bidulle() # ok
+<span class="c"># ou encore</span>
+<span class="kn">from</span> <span class="nn">paquet</span> <span class="kn">import</span> <span class="n">module1</span>
+<span class="n">module1</span><span class="o">.</span><span class="n">bidulle</span><span class="p">()</span> <span class="c"># ok</span>
 
-#Enfin, pour importer «autreModule»
- import paquet.sousPaquet.autreModule
+<span class="c"># Enfin, pour importer «autreModule»</span>
+<span class="kn">import</span> <span class="nn">paquet.sousPaquet.autreModule</span>
 </pre></div>
 </div>
 </li>
@@ -238,7 +237,7 @@ module1.bidulle() # ok
   <ul>
 <li><a class="reference internal" href="#">Modules et paquets</a><ul>
 <li><a class="reference internal" href="#module">Module</a></li>
-<li><a class="reference internal" href="#module-perso-exemple">Module perso: exemple</a></li>
+<li><a class="reference internal" href="#mon-module-exemple">Mon module: exemple</a></li>
 <li><a class="reference internal" href="#notion-de-paquet-ou-package">Notion de Paquet ou <em>Package</em></a></li>
 </ul>
 </li>
@@ -286,7 +285,7 @@ module1.bidulle() # ok
     </div>
     <div class="footer">
         &copy; Copyright 2014, Groupe IRES.
-      Mis à jour le Mar 04, 2014.
+      Mis à jour le Mar 05, 2014.
       Créé avec <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.1.
     </div>
   </body>

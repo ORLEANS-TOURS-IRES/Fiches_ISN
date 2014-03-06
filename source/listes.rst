@@ -1,6 +1,6 @@
-**********
-Les listes
-**********
+*****************
+Listes - ``list``
+*****************
 
 Une **liste** - type ``list`` - est un moyen de regrouper des éléments d'information ou donnés.
 
