@@ -69,10 +69,11 @@ Opérations de base
         >>> copie = open('copie', 'w')
         >>> orig = open('test.txt')
         >>> i = 0
-        >>> for l in orig:
-                i += 1
-                nl = str(i) + ": " + l 
-                copie.write(nl)
+        >>> for lgn in orig:
+        ...     i += 1
+        ...     lgn = str(i) + ": " + lgn 
+        ...     copie.write(lgn)
+        ...
         >>> orig.close()
         >>> copie.close()
 
