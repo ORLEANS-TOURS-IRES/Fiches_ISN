@@ -16,7 +16,7 @@ Opérations de base
         >>> from os import getcwd
         >>> getcwd()
         '/home/etienne/Python/Fichiers'
-        >>> # votre fichier sera crée dans ce répertoire.
+        >>> # votre fichier sera créé dans ce répertoire.
         >>> f = open('test.txt', 'w') # 'w' pour write -> écrire.
         >>> # f est un ojet qui représente le fichier créé.
         >>> f.write('Je découvre la gestion des fichiers.')
