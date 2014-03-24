@@ -10,5 +10,6 @@ Fiches Python pour ISN
    dictionnaires
    fichiers
    modules
+   class
    FicheReseauxServeur01
    FicheReseauxClient01
