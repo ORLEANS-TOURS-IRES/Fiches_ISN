@@ -39,14 +39,14 @@ Pour tirer un nombre au hasard entre 10 et 12.5.
 	>>> randint(0, 20)
 	20
 
- Les deux bornes sont incluses dans les cas possibles.
+Les deux bornes sont incluses dans les cas possibles.
  
- 4. Générer une probabilité p
- 
- 32 % de chance de gagner à ce jeu...
- 
- .. code-block:: python
+4. Générer une probabilité p
 
+32 % de chance de gagner à ce jeu...
+ 
+.. code-block:: python
+	
 	if random() + 0.32 >= 1 :
 		print("gagné")
 	else:
