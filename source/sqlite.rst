@@ -1,28 +1,37 @@
 ***************************
-Les bases de donnees sqlite
+Les bases de données sqlite
 ***************************
 
 Les bases de données peuvent être un moyen efficace de mémoriser des données, surtout si elles se structurent naturellement sous forme de table.
+
 La base de données se présentera physiquement sous la forme d'un fichier de type sq3 sur le disque dur.
+
 Il sera possible de compléter, de modifier et bien sûr de lire le contenu de la base de données.
-Une base de donnée peut contenir plusieurs tables. Chaque table est composé de multiple lignes ayant la même structure.
+
+Une base de donnée peut contenir plusieurs tables. 
+
+Chaque table est composée de multiple lignes ayant la même structure.
 
 Prérequis :
-- les chaînes de caractères
-- les listes
+
+* les chaînes de caractères
+
+* les listes
 
 
 Importation du module sqlite
 ============================
+
 .. code-block:: python
-import sqlite3     
+	import sqlite3	 
 
 Création d'une base de donnée
 =============================
 
 1. Connexion à la base de données
-.. code-block:: python
 
+.. code-block:: python
+	
 	connexion = sqlite3.connect("bd-celebrites.sq3")
 
 Cette instruction crée la base si elle n'existe pas encore (le fichier est créé dans le répértoire courant).
@@ -34,17 +43,18 @@ Cette instruction crée la base si elle n'existe pas encore (le fichier est cré
 	
 	curseur = connexion.cursor()
 
-Le curseur servira ensuite à manipuler la base de donnée.
-Dans toute la suite, on exécute des commandes SQL (donnée sous forme de chaînes de caractères).
+Le curseur servira ensuite à manipuler la base de données.
+
+Dans toute la suite, on exécute des commandes SQL (données sous forme de chaînes de caractères).
 
 3. Création d'une table dans la base
 
 .. code-block:: python
-
+	
 	curseur.execute("CREATE TABLE IF NOT EXISTS celebrites (nom TEXT, prenom TEXT, annee INTEGER)")
 
 La commande crée la table "celebrite" si elle n'existe pas encore. 
-On définit sa structure au moment de sa création : chaque ligne de la table est constitué d'un nom, d'un prénom et d'une année.
+On définit sa structure au moment de sa création : chaque ligne de la table est constituée d'un nom, d'un prénom et d'une année.
 
 4. Ajout de données à la table
 
@@ -71,8 +81,8 @@ On définit sa structure au moment de sa création : chaque ligne de la table es
 	connexion.close()
 
 
-Lecture de la base de donnée
-============================
+Lecture de la base de données
+=============================
 
 .. code-block:: python
 	
@@ -132,7 +142,7 @@ Exemple complet
 
 .. code-block:: python
 
-	import sqlite3     
+	import sqlite3	 
 	connexion = sqlite3.connect("bd-celebrites.sq3")
 	curseur = connexion.cursor()
 
