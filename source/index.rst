@@ -13,3 +13,5 @@ Fiches Python pour ISN
    class
    FicheReseauxServeur01
    FicheReseauxClient01
+   random
+   sqlite
