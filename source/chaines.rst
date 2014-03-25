@@ -176,9 +176,10 @@ Autres opérations utiles
         >>> '{} est la capitale de la {}.'.format(ville, 'Belgique')
         'Bruxelle est la capitale de la Belgique.'
         >>> piece, pos = "cavalier", (3, 5)
-        >>> "La position du {a} est ligne {b[0]} colonne {b[1]}.".format(a=piece, b=pos) 
+        >>> "La position du {a} est ligne {b[0]} colonne {b[1]}.".format(a=piece, b=pos)
+        'La position du cavalier est ligne 3 colonne 5.'
         >>> conv = "En binaire {a}={a:b} et en hexadécimal {a}={a:x}."
-        >>>> conv = conv.format(a=43)
+        >>> conv = conv.format(a=43)
         >>> print(conv)
         En binaire 43=101011 et en hexadécimal 43=2b.
 
