@@ -3,8 +3,10 @@ Les nombres aléatoires
 **********************
 
 Prérequis:
-- les types de nombres et de variables
-- les listes
+
+* les types de nombres et de variables
+
+* les listes
 
 Le module qui gère l'aléatoire en python est le module random.
 
@@ -36,7 +38,7 @@ Pour tirer un nombre au hasard entre 10 et 12.5.
 
 	>>> randint(0, 20)
 	20
-	
+
  Les deux bornes sont incluses dans les cas possibles.
  
  4. Générer une probabilité p
@@ -60,7 +62,7 @@ Les listes aléatoires
 	liste = []
 	for i in range(1000):
 		liste.append( randint(0, 100) )
-		
+
 2. Mélanger une liste
 
 .. code-block:: python
@@ -73,16 +75,16 @@ Les listes aléatoires
 
 	N = choice(liste)
 
-3. Extraire au hasard k élément d'une liste
+3. Extraire au hasard k éléments d'une liste
 
 Extrait aléatoirement trois éléments de la liste :
 
 .. code-block:: python
 
 	jeu = sample(liste, 3)
-	
+
 Warning::
-	La liste n'est pas modifiée (les 3 éléments choisis sont encore présent dans la liste).
+	La liste n'est pas modifiée (les 3 éléments choisis sont encore présents dans la liste).
 
 Exemple complet
 ===============
