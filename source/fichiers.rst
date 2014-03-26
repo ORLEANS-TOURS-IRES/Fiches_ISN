@@ -10,7 +10,7 @@ Pouvoir lire et/ou écrire dans un fichier est indispensable lorsqu'on souhaite,
 Lire/écrire du texte dans un fichier
 ====================================
 
-* **Créer** un nouveau fichier et y **écrire** - ``fich = open(<nom_fichier>, 'w')`` et ``fich.write(chaine)``::
+* **Créer** un nouveau fichier et y **écrire** - :code:`fich = open(<nom_fichier>, 'w')` et `fich.write(chaine)`::
 
         >>> # Dans quel dossier suis-je ?
         >>> from os import getcwd
@@ -135,16 +135,17 @@ Voici un exemple (volontairement très simple !) d'organisation d'un disque:
    ...
 
 Les noms complets des fichiers dépendent d'un dossier de référence:
-* **Chemin absolu** - depuis la «racine» du disque notée ``/``:
 
-  * de *fichier1.txt* : ``/dossier1/fichier1.txt``
-  * de *fichier2.ppm* : ``/dossier1/ss_dossier/fichier2.ppm``
+  * **Chemin absolu** - depuis la «racine» du disque notée ``/``:
 
-* **chemin relatif** - à partir d'un dossier particulier (souvent le dossier courant):    
+    * de *fichier1.txt* : ``/dossier1/fichier1.txt``
+    * de *fichier2.ppm* : ``/dossier1/ss_dossier/fichier2.ppm``
 
-  * de *fichier1.txt* à partir de **dossier1** : ``fichier1.txt`` 
-  * de *fichier3.py* à partir de **dossier1** : ``../fichier3.py`` (``..`` ~ dossier parent) 
-  * de *fichier3.py* à partir de **ss_dossier** : ``../../fichier3.py``
+  * **chemin relatif** - à partir d'un dossier particulier (souvent le dossier courant):    
+
+    * de *fichier1.txt* à partir de **dossier1** : ``fichier1.txt`` 
+    * de *fichier3.py* à partir de **dossier1** : ``../fichier3.py`` (``..`` ~ dossier parent) 
+    * de *fichier3.py* à partir de **ss_dossier** : ``../../fichier3.py``
 
 
 .. note:: Un programme possède toujours un dossier de référence appelé **répertoire courant**. C'est normalement le dossier qui contient le fichier du programme. Pour s'en assurer:

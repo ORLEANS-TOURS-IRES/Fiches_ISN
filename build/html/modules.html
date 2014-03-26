@@ -26,18 +26,18 @@
     <script type="text/javascript" src="_static/translations.js"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="top" title="documentation Fiches pour ISN 1.0" href="index.html" />
-    <link rel="next" title="Un serveur TCP en Python" href="FicheReseauxServeur01.html" />
-    <link rel="prev" title="Les dictionnaires" href="dictionnaires.html" /> 
+    <link rel="next" title="Définir ses propres «objets»" href="class.html" />
+    <link rel="prev" title="Fichiers" href="fichiers.html" /> 
   </head>
   <body>
     <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="FicheReseauxServeur01.html" title="Un serveur TCP en Python"
+          <a href="class.html" title="Définir ses propres «objets»"
              accesskey="N">suivant</a></li>
         <li class="right" >
-          <a href="dictionnaires.html" title="Les dictionnaires"
+          <a href="fichiers.html" title="Fichiers"
              accesskey="P">précédent</a> |</li>
         <li><a href="index.html">documentation Fiches pour ISN 1.0</a> &raquo;</li> 
       </ul>
@@ -55,7 +55,7 @@
 <p>Un <strong>module</strong> est basiquement un fichier <tt class="docutils literal"><span class="pre">nom_module.py</span></tt> ordinaire. Les variables, fonctions, classes qui y sont  définies peuvent être <strong>importées</strong> afin d&#8217;être réutilisées.</p>
 <p>Python est accompagné de nombreux modules; ils forment sa <a class="reference external" href="http://docs.python.org/3.3/library/index.html">librairie standard</a>. On y trouve par exemple les modules <em>random</em>, <em>math</em>, <em>tkinter</em> et beaucoup d&#8217;autres.</p>
 <ul>
-<li><p class="first">Importer un module et l&#8217;utiliser - <tt class="docutils literal"><span class="pre">import</span> <span class="pre">&lt;nom_module&gt;</span></tt>:</p>
+<li><p class="first"><strong>Importer un module</strong> et l&#8217;utiliser - <tt class="docutils literal"><span class="pre">import</span> <span class="pre">&lt;nom_module&gt;</span></tt>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">random</span> <span class="c"># random -&gt; aléatoire</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span> <span class="c"># «dé electronique»</span>
 <span class="go">2</span>
@@ -71,7 +71,7 @@
 </pre></div>
 </div>
 </li>
-<li><p class="first">Utiliser un alias - <tt class="docutils literal"><span class="pre">import</span> <span class="pre">&lt;nom_module&gt;</span> <span class="pre">as</span> <span class="pre">&lt;alias&gt;</span></tt>:</p>
+<li><p class="first">Utiliser un <strong>alias</strong> - <tt class="docutils literal"><span class="pre">import</span> <span class="pre">&lt;nom_module&gt;</span> <span class="pre">as</span> <span class="pre">&lt;alias&gt;</span></tt>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">random</span> <span class="kn">as</span> <span class="nn">alea</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">alea</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
@@ -102,7 +102,7 @@
 </pre></div>
 </div>
 </li>
-<li><p class="first">Importer tout ce qu&#8217;un module définit - <tt class="docutils literal"><span class="pre">from</span> <span class="pre">&lt;nom_module&gt;</span> <span class="pre">import</span> <span class="pre">*</span></tt>:</p>
+<li><p class="first">Importer <strong>tout</strong> ce qu&#8217;un module définit - <tt class="docutils literal"><span class="pre">from</span> <span class="pre">&lt;nom_module&gt;</span> <span class="pre">import</span> <span class="pre">*</span></tt>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">tkinter</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">fenetre</span> <span class="o">=</span> <span class="n">Tk</span><span class="p">()</span> <span class="c"># une fenêtre devrait apparaître</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">bouton</span> <span class="o">=</span> <span class="n">Button</span><span class="p">(</span><span class="n">fenetre</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s">&quot;cliquez moi !&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">fenetre</span><span class="o">.</span><span class="n">destroy</span><span class="p">)</span>
@@ -140,18 +140,10 @@ Vous pouvez toutefois utiliser cette facilité pour écrire de petits programmes
 <span class="n">CONST</span> <span class="o">=</span> <span class="mf">3.14</span>
 <span class="k">def</span> <span class="nf">truc</span><span class="p">():</span>
     <span class="k">print</span><span class="p">(</span><span class="s">&quot;Salut cowboy.&quot;</span><span class="p">)</span>
-
-<span class="c"># la section après ce if sert à tester ce module</span>
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
-     <span class="c"># __name__ vaut &#39;__main__&#39;</span>
-     <span class="c"># seulement si Python est</span>
-     <span class="c"># directement appelé sur ce fichier</span>
-     <span class="k">print</span><span class="p">(</span><span class="n">CONST</span><span class="p">)</span>
-     <span class="n">truc</span><span class="p">()</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">Démarrer l&#8217;interpréteur depuis le dossier qui contient le fichier <tt class="docutils literal"><span class="pre">monModule.py</span></tt>:</p>
+<li><p class="first">Démarrer l&#8217;interpréteur <em>depuis le dossier qui contient le fichier</em> <tt class="docutils literal"><span class="pre">monModule.py</span></tt>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">monModule</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">CONST</span>
 <span class="go">3.14</span>
@@ -168,13 +160,26 @@ Vous pouvez toutefois utiliser cette facilité pour écrire de petits programmes
 </div>
 </div>
 </li>
+<li><p class="first"><strong>Tester</strong> son module - <tt class="docutils literal"><span class="pre">if</span> <span class="pre">__name__</span> <span class="pre">==</span> <span class="pre">'__main__':</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># ajouter les lignes suivantes à votre module puis exécuter le normalement</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+     <span class="c"># __name__ vaut &#39;__main__&#39;</span>
+     <span class="c"># seulement si Python est</span>
+     <span class="c"># directement appelé sur ce fichier</span>
+     <span class="c"># code pour tester le module:</span>
+     <span class="k">print</span><span class="p">(</span><span class="n">CONST</span><span class="p">)</span>
+     <span class="n">truc</span><span class="p">()</span>
+</pre></div>
+</div>
+</li>
 </ul>
 </div>
-<div class="section" id="notion-de-paquet-ou-package">
-<h2>Notion de Paquet ou <em>Package</em><a class="headerlink" href="#notion-de-paquet-ou-package" title="Lien permanent vers ce titre">¶</a></h2>
-<p>Un <strong>paquet</strong> sert à regrouper logiquement plusieurs modules. En pratique, c&#8217;est un dossier caractérisé par la présence d&#8217;un fichier <tt class="docutils literal"><span class="pre">__init__.py</span></tt> (qui peut être vide). Outre ce fichier «spécial», on y trouve les modules et éventuellement d&#8217;autres paquets...</p>
+<div class="section" id="notion-de-paquet-avance">
+<h2>Notion de Paquet (avancé)<a class="headerlink" href="#notion-de-paquet-avance" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Un <strong>paquet</strong> - <em>package</em> - sert à regrouper logiquement plusieurs modules. En pratique, c&#8217;est un dossier caractérisé par la présence d&#8217;un fichier <tt class="docutils literal"><span class="pre">__init__.py</span></tt> (qui peut être vide). Outre ce fichier «spécial», on y trouve les modules et éventuellement d&#8217;autres paquets...</p>
 <ul>
-<li><p class="first"><strong>Exemple</strong> - un paquet est donc un dossier de la forme:</p>
+<li><p class="first">Un paquet est donc un <strong>dossier de la forme</strong>:</p>
 <div class="highlight-text"><div class="highlight"><pre>paquet/
         __init__.py
         module1.py
@@ -238,17 +243,17 @@ Vous pouvez toutefois utiliser cette facilité pour écrire de petits programmes
 <li><a class="reference internal" href="#">Modules et paquets</a><ul>
 <li><a class="reference internal" href="#module">Module</a></li>
 <li><a class="reference internal" href="#mon-module-exemple">Mon module: exemple</a></li>
-<li><a class="reference internal" href="#notion-de-paquet-ou-package">Notion de Paquet ou <em>Package</em></a></li>
+<li><a class="reference internal" href="#notion-de-paquet-avance">Notion de Paquet (avancé)</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>Sujet précédent</h4>
-  <p class="topless"><a href="dictionnaires.html"
-                        title="Chapitre précédent">Les dictionnaires</a></p>
+  <p class="topless"><a href="fichiers.html"
+                        title="Chapitre précédent">Fichiers</a></p>
   <h4>Sujet suivant</h4>
-  <p class="topless"><a href="FicheReseauxServeur01.html"
-                        title="Chapitre suivant">Un serveur TCP en Python</a></p>
+  <p class="topless"><a href="class.html"
+                        title="Chapitre suivant">Définir ses propres «objets»</a></p>
   <h3>Cette page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/modules.txt"
@@ -275,17 +280,17 @@ Vous pouvez toutefois utiliser cette facilité pour écrire de petits programmes
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="FicheReseauxServeur01.html" title="Un serveur TCP en Python"
+          <a href="class.html" title="Définir ses propres «objets»"
              >suivant</a></li>
         <li class="right" >
-          <a href="dictionnaires.html" title="Les dictionnaires"
+          <a href="fichiers.html" title="Fichiers"
              >précédent</a> |</li>
         <li><a href="index.html">documentation Fiches pour ISN 1.0</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2014, Groupe IRES.
-      Mis à jour le Mar 05, 2014.
+      Mis à jour le Mar 26, 2014.
       Créé avec <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.1.
     </div>
   </body>

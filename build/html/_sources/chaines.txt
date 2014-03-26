@@ -8,39 +8,33 @@ Chaînes de caractères - ``str``
 
 Les chaînes de caractères - type ``str`` pour *strings* - servent à représenter les textes.
 
-* Une chaîne «basique» se reconnaît par l'utilisation de délimiteurs:
+* Une chaîne se reconnaît par l'utilisation de **délimiteurs**:
 
   * guillemets simples: ``'permet les guillemets "doubles"'`` ou
-  * guillemets doubles: ``"permet les guillemets 'simple'"``.
+  * guillemets doubles: ``"permet les guillemets 'simples'"``.
 
-* La **longueur** d'une chaînes est le nombre de caractères qu'elle contient.
-* **Caractères «spéciaux»**:
-
-  * Pour préciser un caractère non directement accessible au clavier, insèrer son «point de code» unicode via ``\u<code>`` où ``<code>`` doit être remplacé par la valeur adéquate (voir `ce site <http://unicode-table.com>`_). Par exemple, ``\u262F`` devrait donné « :raw-html:`&#9775;` ».
-  * Saut de ligne: ``\n``,
-  * Tabulation (touche Tab): ``\t``
-  * Empêcher l'interprétation des guillemets simples ou doubles comme délimiteur: ``\'`` ou ``\"``. Ex: ``'Pour écrire "\'", il faut l'échapper avec \\'``.
-  * Insérer un backslash «\\» ? : ``\\``
-
-* Une chaîne n'est **pas directement modifiable**.
 * Chaque caractère d'une chaîne est numéroté par un entier (positif ou négatif) appelé **position** ou index:
 
   * Le premier caractère a la position 0, le second la position 1, etc.
   * Le dernier caractère a la position -1, l'avant dernier -2, etc.
 
+* La **longueur** d'une chaîne est le nombre de caractères qu'elle contient.
+* **Caractères «spéciaux»**: Saut de ligne - ``\n`` ; tabulation (touche Tab) - ``\t`` ; insérer un backslash ``\\``; ou un délimiteur - ``\'`` ou ``\"``.
+* **Insérer un caractère non accessible au clavier**: on insère son «point de code» unicode via ``\u<code>`` où ``<code>`` doit être remplacé par la valeur adéquate (voir `ce site <http://unicode-table.com>`_). Par exemple, ``\u265E`` devrait donner un cavalier : :raw-html:`&#9822;`.
+  
 Opérations de base
 ==================
 
 * **Créer** une chaîne littéralement - ``'...'`` ou ``"..."``::
 
-        >>> ch = "bonjour \u2600\n tout l'monde!"
-        >>> ch # contenu de ch1, notez les guillemets.
-        "bonjour ☀\n tout l'monde!"
+        >>> ch = "bonjour \u262F \n tout l'monde!"
+        >>> ch # contenu de ch, notez les guillemets.
+        "bonjour ☯  \n tout l'monde!"
         >>> print(ch) # affichage à l'écran de ch1, différence ?
-        bonjour ☀
+        bonjour ☯  
          tout l'monde!
-        >>> autre = 'bonjour \u2600\n tout l\'monde!'
-        >>> ch == autre
+        >>> autreDelim = 'bonjour \u262F \n tout l\'monde!'
+        >>> ch == autreDelim
         True
 
 * Connaître le **nombre de caractères** qu'elle contient - ``len(chaine)``::
@@ -52,7 +46,7 @@ Opérations de base
 * **Savoir si** une sous-chaîne ou un caractère apparaît dans la chaîne - ``ss_chaine in chaine``::
 
         >>> ch
-        "bonjour ☀\n tout l'monde!"
+        "bonjour ☯ \n tout l'monde!"
         >>> " " in ch # l'espace est un caractère comme un autre ...
         True
         >>> "z" in ch
@@ -64,23 +58,27 @@ Opérations de base
 
 * **Accéder** à un caractère - ``chaine[pos]``::
 
-        >>> ch[0] # position positive du «soleil» ?
+        >>> ch
+        "bonjour ☯ \n tout l'monde!"
+        >>> ch[0] 
         'b'
-        >>> ch[-1] # position négative du «soleil» ?
+        >>> # Quelle est la position positive du symbole ☯  ?
+        >>> ch[-1] 
         '!'
+        >>> # Quelle est sa position négative ?
   
 * **Extraire** une sous-chaîne - ``chaine[pos1:pos2]`` ou ``chaine[pos1:pos2:pas]``::
 
         >>> ch
-        "bonjour ☀\n tout l'monde!"
+        "bonjour ☯ \n tout l'monde!"
         >>> ch[1:4] # Attention [pos1:pos2] = de pos1 inclus jusqu'à pos2 exclus !
         'onj'
         >>> ch[4:] # pos2 omis = jusqu'à la fin
-        "our ☀\n tout l'monde!"
-        >>> ch[:9] # pos1 omis = depuis le début
-        'bonjour ☀'
+        "our ☯ \n tout l'monde!"
+        >>> ch[:10] # pos1 omis = depuis le début
+        'bonjour ☯ '
         >>> ch[:10:2] # extraire pos 0, 2, 4, 6, 8 (10 exclus)
-        'bnor☀'
+        'bnor☯'
 
 * **Concaténer** deux chaînes ou plus - ``ch1 + ch2 + ...``::
 
@@ -102,7 +100,7 @@ Opérations de base
 Parcourt d'une chaîne
 =====================
 
-* **Direct** - ``car in chaine``::
+* **Direct** - ``for car in chaine:``::
 
         >>> ch = "huit"
         >>> for c in ch:
@@ -124,7 +122,20 @@ Parcourt d'une chaîne
         >>> res
         'tuih'
 
-* **Indirect**: par les positions dans la chaîne - ``pos in range(len(chaine))``::
+* **Par énumération** - ``for pos, car in enumerate(chaine):``::
+
+        >>> ch = "du feu"
+        >>> for p, c in enumerate(ch):
+        ...     print("ch[" + str(p) + "]=" + c)
+        ...
+        ch[0]=d
+        ch[1]=u
+        ch[2]= 
+        ch[3]=f
+        ch[4]=e
+        ch[5]=u
+
+* **Indirect**: par les positions dans la chaîne - ``for pos in range(len(chaine)):``::
 
         >>> ch = "du feu"
         >>> str(5) # conversion d'un entier en chaîne
@@ -142,18 +153,6 @@ Parcourt d'une chaîne
         ch[4]=e
         ch[5]=u
 
-* **Par énumération** - ``pos, car in enumerate(chaine)``::
-
-        >>> ch = "du feu"
-        >>> for p, c in enumerate(ch):
-        ...     print("ch[" + str(p) + "]=" + c)
-        ...
-        ch[0]=d
-        ch[1]=u
-        ch[2]= 
-        ch[3]=f
-        ch[4]=e
-        ch[5]=u
 
 Autres opérations utiles
 ========================
@@ -166,19 +165,20 @@ Autres opérations utiles
         'pas possible'
         >>> 'PaS PossiBLE'.swapcase()
         'pAs pOSSIble'
-        >>> 'aurevoir'.capitalize()
+        >>> 'auReVoir'.capitalize()
         'Aurevoir'
 
-* **Formatage** «basiques» - ``str.format()``::
+* **Formatage** - ``str.format()``::
         
         >>> # Les «{}» sont remplacés par les valeurs correspondantes
         >>> ville = 'Bruxelle'
         >>> '{} est la capitale de la {}.'.format(ville, 'Belgique')
         'Bruxelle est la capitale de la Belgique.'
         >>> piece, pos = "cavalier", (3, 5)
-        >>> "La position du {a} est ligne {b[0]} colonne {b[1]}.".format(a=piece, b=pos) 
+        >>> "La position du {a} est ligne {b[0]} colonne {b[1]}.".format(a=piece, b=pos)
+        'La position du cavalier est ligne 3 colonne 5.'
         >>> conv = "En binaire {a}={a:b} et en hexadécimal {a}={a:x}."
-        >>>> conv = conv.format(a=43)
+        >>> conv = conv.format(a=43)
         >>> print(conv)
         En binaire 43=101011 et en hexadécimal 43=2b.
 
@@ -211,28 +211,28 @@ Autres opérations utiles
 
 * **Encoder** pour communiquer - ``str.encode()`` et ``bytes.decode()``:
 
-  Python3 représente chaque caractère d'une chaîne par son identifiant unicode. Cela permet, virtuellement, de représenter toutes les langues du monde (ou presque). Pour connaître cet identifiant, utiliser ``ord(car)``. Inversement, pour trouver un caractère d'identifiant *id*, utiliser ``char(id)``.
+  Python3 représente chaque caractère d'une chaîne par son identifiant unicode. Cela permet, virtuellement, de représenter toutes les langues du monde (ou presque). Pour connaître cet identifiant, utiliser ``ord(car)``. Inversement, pour trouver un caractère d'identifiant *id*, utiliser ``chr(id)``.
 
   Lorsqu'on veut, par exemple, envoyer un message comme ``'bonjour'`` sur un réseau, il est en pratique nécessaire d'encoder le message (par défaut en Utf-8) de manière à le représenter (en interne) comme une chaîne d'octets ou *bytes* (regroupement de 8 bits - 0 ou 1). Pour en `savoir plus ... <http://python.developpez.com/cours/apprendre-python3/?page=page_12#L12-A-8>`_. 
 
   .. code-block:: python
 
-        >>> mess = 'aïe' # chaîne de caractères
+        >>> ch = 'aïe' # chaîne de caractères
         >>> # encodage en un bytes (chaîne d'octets) via Utf-8
-        >>> messUtf8 = mess.encode()
-        >>> type(messEnc) # chaîne d'octet
+        >>> chEnc = mess.encode('utf-8')
+        >>> type(chEnc) # chaîne d'octet
         <class 'bytes'>
-        >>> messUtf8 # le préfixe «b» précise qu'il s'agit d'un bytes
+        >>> chEnc # le préfixe «b» précise qu'il s'agit d'un bytes
         b'a\xc3\xafe'
-        >>> for car in mess:
+        >>> for car in ch: # parcourt de la chaîne de caractères
         ...    print(ord(car), end=' ') # ord(caractère): identifiant unicode (en décimal)
         ...
         97 239 101
-        >>> for octet in messEnc:
+        >>> for octet in chEnc: # parcourt de la chaîne d'octets
         ...    print(octet, end=' ') # chaque octet correspond à un entier de [0,256[
         97 195 175 101
-        >>> # noter que le 'ï' est codé sur 2 octets en Utf-8
+        >>> # notez que le 'ï' est codé sur 2 octets en Utf-8 !
         >>> # pour décoder un bytes c'est à dire retrouver la chaîne de caractères correspondante
-        >>> message = messUtf8.decode()
+        >>> message = chEnc.decode('utf-8')
         >>> message
         'aïe'

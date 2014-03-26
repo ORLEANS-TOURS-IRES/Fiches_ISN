@@ -9,7 +9,7 @@ Un **module** est basiquement un fichier ``nom_module.py`` ordinaire. Les variab
 
 Python est accompagné de nombreux modules; ils forment sa `librairie standard <http://docs.python.org/3.3/library/index.html>`_. On y trouve par exemple les modules *random*, *math*, *tkinter* et beaucoup d'autres.
 
-* Importer un module et l'utiliser - ``import <nom_module>``::
+* **Importer un module** et l'utiliser - ``import <nom_module>``::
 
         >>> import random # random -> aléatoire
         >>> random.randint(1,6) # «dé electronique»
@@ -24,7 +24,7 @@ Python est accompagné de nombreux modules; ils forment sa `librairie standard <
         >>> random.choice('abcdefghijklmnop') # caractère aléatoire de la chaîne
         'h'
 
-* Utiliser un alias - ``import <nom_module> as <alias>``::
+* Utiliser un **alias** - ``import <nom_module> as <alias>``::
 
         >>> import random as alea
         >>> l = [1, 2, 3, 4]
@@ -54,7 +54,7 @@ Python est accompagné de nombreux modules; ils forment sa `librairie standard <
         1.0
 
 
-* Importer tout ce qu'un module définit - ``from <nom_module> import *``::
+* Importer **tout** ce qu'un module définit - ``from <nom_module> import *``::
 
         >>> from tkinter import *
         >>> fenetre = Tk() # une fenêtre devrait apparaître
@@ -90,15 +90,7 @@ Mon module: exemple
         def truc():
             print("Salut cowboy.")
 
-        # la section après ce if sert à tester ce module
-        if __name__ == '__main__':
-             # __name__ vaut '__main__'
-             # seulement si Python est
-             # directement appelé sur ce fichier
-             print(CONST)
-             truc()
-
-* Démarrer l'interpréteur depuis le dossier qui contient le fichier ``monModule.py``::
+* Démarrer l'interpréteur *depuis le dossier qui contient le fichier* ``monModule.py``::
         
         >>> from monModule import *
         >>> CONST
@@ -111,12 +103,24 @@ Mon module: exemple
         >>> import sys
         >>> sys.path # affiche la liste des dossiers de recherche des modules
 
-Notion de Paquet ou *Package*
-=============================
+* **Tester** son module - ``if __name__ == '__main__':``::
 
-Un **paquet** sert à regrouper logiquement plusieurs modules. En pratique, c'est un dossier caractérisé par la présence d'un fichier ``__init__.py`` (qui peut être vide). Outre ce fichier «spécial», on y trouve les modules et éventuellement d'autres paquets...
+        # ajouter les lignes suivantes à votre module puis exécuter le normalement
 
-* **Exemple** - un paquet est donc un dossier de la forme:
+        if __name__ == '__main__':
+             # __name__ vaut '__main__'
+             # seulement si Python est
+             # directement appelé sur ce fichier
+             # code pour tester le module:
+             print(CONST)
+             truc()
+
+Notion de Paquet (avancé) 
+=========================
+
+Un **paquet** - *package* - sert à regrouper logiquement plusieurs modules. En pratique, c'est un dossier caractérisé par la présence d'un fichier ``__init__.py`` (qui peut être vide). Outre ce fichier «spécial», on y trouve les modules et éventuellement d'autres paquets...
+
+* Un paquet est donc un **dossier de la forme**:
 
   .. code-block:: text
 

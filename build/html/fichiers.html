@@ -27,7 +27,7 @@
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="top" title="documentation Fiches pour ISN 1.0" href="index.html" />
     <link rel="next" title="Modules et paquets" href="modules.html" />
-    <link rel="prev" title="Les dictionnaires" href="dictionnaires.html" /> 
+    <link rel="prev" title="Dictionnaires - dict" href="dictionnaires.html" /> 
   </head>
   <body>
     <div class="related">
@@ -37,7 +37,7 @@
           <a href="modules.html" title="Modules et paquets"
              accesskey="N">suivant</a></li>
         <li class="right" >
-          <a href="dictionnaires.html" title="Les dictionnaires"
+          <a href="dictionnaires.html" title="Dictionnaires - dict"
              accesskey="P">précédent</a> |</li>
         <li><a href="index.html">documentation Fiches pour ISN 1.0</a> &raquo;</li> 
       </ul>
@@ -50,16 +50,16 @@
             
   <div class="section" id="fichiers">
 <h1>Fichiers<a class="headerlink" href="#fichiers" title="Lien permanent vers ce titre">¶</a></h1>
-<p>Pouvoir lire et/ou écrire dans un fichier est indispensable lorsqu&#8217;on souhaite, par exemple, récupérer des informations entre deux exécutions d&#8217;un même programme.</p>
-<div class="section" id="operations-de-base">
-<h2>Opérations de base<a class="headerlink" href="#operations-de-base" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Pouvoir lire et/ou écrire dans un fichier est indispensable lorsqu&#8217;on souhaite, par exemple, récupérer/sauvegarder des informations entre deux exécutions d&#8217;un même programme. On parle alors de <strong>persistance</strong> de l&#8217;information.</p>
+<div class="section" id="lire-ecrire-du-texte-dans-un-fichier">
+<h2>Lire/écrire du texte dans un fichier<a class="headerlink" href="#lire-ecrire-du-texte-dans-un-fichier" title="Lien permanent vers ce titre">¶</a></h2>
 <ul>
-<li><p class="first">Créer un nouveau fichier et y écrire - <tt class="docutils literal"><span class="pre">fich</span> <span class="pre">=</span> <span class="pre">open(&lt;nom_fichier&gt;,</span> <span class="pre">'w')</span></tt> et <tt class="docutils literal"><span class="pre">fich.write(chaine)</span></tt>:</p>
+<li><p class="first"><strong>Créer</strong> un nouveau fichier et y <strong>écrire</strong> - <tt class="code docutils literal"><span class="pre">fich</span> <span class="pre">=</span> <span class="pre">open(&lt;nom_fichier&gt;,</span> <span class="pre">'w')</span></tt> et <cite>fich.write(chaine)</cite>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="c"># Dans quel dossier suis-je ?</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">getcwd</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">getcwd</span><span class="p">()</span>
 <span class="go">&#39;/home/etienne/Python/Fichiers&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c"># votre fichier sera crée dans ce répertoire.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c"># votre fichier sera créé dans ce répertoire.</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;test.txt&#39;</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">)</span> <span class="c"># &#39;w&#39; pour write -&gt; écrire.</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c"># f est un ojet qui représente le fichier créé.</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;Je découvre la gestion des fichiers.&#39;</span><span class="p">)</span>
@@ -71,7 +71,7 @@
 </pre></div>
 </div>
 </li>
-<li><p class="first">Lire un fichier existant - <tt class="docutils literal"><span class="pre">fich</span> <span class="pre">=</span> <span class="pre">open(&lt;nom_fichier&gt;)</span></tt> et <tt class="docutils literal"><span class="pre">fich.read()</span></tt>:</p>
+<li><p class="first"><strong>Lire</strong> un fichier existant - <tt class="docutils literal"><span class="pre">fich</span> <span class="pre">=</span> <span class="pre">open(&lt;nom_fichier&gt;)</span></tt> et <tt class="docutils literal"><span class="pre">fich.read()</span></tt>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;test&#39;</span><span class="p">)</span> <span class="c"># oups ...</span>
 <span class="gt">Traceback (most recent call last):</span>
         <span class="n">File</span> <span class="s">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
@@ -87,7 +87,7 @@
 </pre></div>
 </div>
 </li>
-<li><p class="first">Ajouter du texte à un fichier existant - <tt class="docutils literal"><span class="pre">fich</span> <span class="pre">=</span> <span class="pre">open(&lt;nom_fichiers&gt;,</span> <span class="pre">'a')</span></tt>:</p>
+<li><p class="first"><strong>Ajouter</strong> du texte à un fichier existant - <tt class="docutils literal"><span class="pre">fich</span> <span class="pre">=</span> <span class="pre">open(&lt;nom_fichiers&gt;,</span> <span class="pre">'a')</span></tt>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;test.txt&#39;</span><span class="p">,</span> <span class="s">&#39;a&#39;</span><span class="p">)</span> <span class="c"># &#39;a&#39; pour append -&gt; ajouter</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\n</span><span class="s">ligne2</span><span class="se">\n</span><span class="s">ligne3</span><span class="se">\n\n</span><span class="s">blah blah&#39;</span><span class="p">)</span> <span class="c"># rappel \n symbolise le caractère saut de ligne.</span>
 <span class="go">25</span>
@@ -112,23 +112,89 @@
 </pre></div>
 </div>
 </li>
-<li><p class="first">Parcourir les lignes d&#8217;un fichier - <tt class="docutils literal"><span class="pre">for</span> <span class="pre">ligne</span> <span class="pre">in</span> <span class="pre">fich</span></tt>:</p>
+<li><p class="first"><strong>Parcourir</strong> les lignes d&#8217;un fichier - <tt class="docutils literal"><span class="pre">for</span> <span class="pre">ligne</span> <span class="pre">in</span> <span class="pre">fich</span></tt>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">copie</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;copie&#39;</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">orig</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;test.txt&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">orig</span><span class="p">:</span>
-<span class="go">        i += 1</span>
-<span class="go">        nl = str(i) + &quot;: &quot; + l</span>
-<span class="go">        copie.write(nl)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">lgn</span> <span class="ow">in</span> <span class="n">orig</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="gp">... </span>    <span class="n">lgn</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;: &quot;</span> <span class="o">+</span> <span class="n">lgn</span>
+<span class="gp">... </span>    <span class="n">copie</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">lgn</span><span class="p">)</span>
+<span class="gp">...</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">orig</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">copie</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
 </li>
+<li><p class="first">Options courantes d&#8217;ouverture d&#8217;un fichier - <tt class="docutils literal"><span class="pre">open(&lt;nom_fichier&gt;,</span> <span class="pre">option)</span></tt>:</p>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="88%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Option</th>
+<th class="head">Signification</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">'r'</span></tt></td>
+<td>ouverture en lecture (par défaut)</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">'w'</span></tt></td>
+<td>ouverture en écriture (un fichier existant est perdu)</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">'x'</span></tt></td>
+<td>ouverture en écriture sécurisée (erreur si le fichier existe)</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">'a'</span></tt></td>
+<td>ouverture en ajout à la fin du fichier s&#8217;il existe</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">'b'</span></tt></td>
+<td>mode binaire - on lit ou écrit via une chaîne d&#8217;octes <tt class="docutils literal"><span class="pre">bytes</span></tt></td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">'t'</span></tt></td>
+<td>mode texte (par défaut)</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><tt class="docutils literal"><span class="pre">'wt'</span></tt> est équivalent à <tt class="docutils literal"><span class="pre">'w'</span></tt>. Pour voir un fichier comme une chaîne d&#8217;octets, utiliser <tt class="docutils literal"><span class="pre">'rb'</span></tt>, <tt class="docutils literal"><span class="pre">'wb'</span></tt> , etc.</p>
+</li>
 </ul>
 </div>
-<div class="section" id="chemin-vers-un-fichier">
-<h2>Chemin vers un fichier<a class="headerlink" href="#chemin-vers-un-fichier" title="Lien permanent vers ce titre">¶</a></h2>
+<div class="section" id="sauvegarder-restaurer-des-objets">
+<h2>Sauvegarder/restaurer des «objets»<a class="headerlink" href="#sauvegarder-restaurer-des-objets" title="Lien permanent vers ce titre">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">pickle</span></tt> est un module qui facilite considérablement la sauvegarde/récupération de données Python par l&#8217;intermédiaire de fichiers.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Les fichiers doivent être ouverts en <strong>mode binaire</strong> - <tt class="docutils literal"><span class="pre">'b'</span></tt>.</p>
+</div>
+<ul>
+<li><p class="first"><strong>Sauvegarder</strong> une ou des données dans un fichier - <tt class="docutils literal"><span class="pre">pickle.dump(donne,</span> <span class="pre">fichier)</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pickle</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">donnees</span> <span class="o">=</span> <span class="p">{</span><span class="s">&quot;nom&quot;</span><span class="p">:</span> <span class="s">&#39;Dupond&#39;</span><span class="p">,</span> <span class="s">&quot;Prénom&quot;</span><span class="p">:</span> <span class="s">&#39;andré&#39;</span><span class="p">,</span> <span class="s">&quot;age&quot;</span><span class="p">:</span> <span class="mi">32</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fsauv</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;donnees.pickle&#39;</span><span class="p">,</span> <span class="s">&#39;wb&#39;</span><span class="p">)</span> <span class="c"># ouverture en mode binaire !!</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">donnees</span><span class="p">,</span> <span class="n">fsauv</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fsauv</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first"><strong>Restaurer</strong> une donnée sauvée via pickle - <tt class="docutils literal"><span class="pre">pickle.load(fichier)</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pickle</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;donnees.pickle&#39;</span><span class="p">,</span> <span class="s">&#39;rb&#39;</span><span class="p">)</span> <span class="c"># mode lecture binaire !!</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">restaure</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">restaure</span>
+<span class="go">{&#39;nom&#39;: &#39;Dupond&#39;, &#39;age&#39;: 32, &#39;Prénom&#39;: &#39;andré&#39;}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="notion-de-chemin">
+<h2>Notion de chemin<a class="headerlink" href="#notion-de-chemin" title="Lien permanent vers ce titre">¶</a></h2>
 <p>Pour ouvrir un fichier qui ne se trouve pas dans le répertoire courant, il faut être capable d&#8217;indiquer où il se trouve dans l&#8217;arborescence du disque c&#8217;est à dire son <strong>chemin</strong>.</p>
 <p>Voici un exemple (volontairement très simple !) d&#8217;organisation d&#8217;un disque:</p>
 <div class="highlight-text"><div class="highlight"><pre>dossier1/
@@ -141,13 +207,32 @@ fichier3.py
 ...
 </pre></div>
 </div>
-<ul class="simple">
-<li>chemin «absolu» vers fichier1.txt: <tt class="docutils literal"><span class="pre">/dossier1/fichier1.txt</span></tt></li>
-<li>chemin «absolu» vers fichier3.ppm: <tt class="docutils literal"><span class="pre">/dossier1/ss_dossier/fichier2.ppm</span></tt></li>
-<li>chemin «relatif» - <strong>depuis dossier1</strong> - vers <em>fichier1.txt</em>: <tt class="docutils literal"><span class="pre">fichier1.txt</span></tt></li>
-<li>chemin «relatif» - <strong>depuis dossier1</strong> - vers <em>fichier3.py</em>: <tt class="docutils literal"><span class="pre">../fichier3.py</span></tt> (<tt class="docutils literal"><span class="pre">..</span></tt> ~ dossier parent)</li>
-<li>chemin «relatif» - <strong>depuis ss_dossier</strong> - vers <em>fichier3.py</em>: <tt class="docutils literal"><span class="pre">../../fichier3.py</span></tt></li>
+<p>Les noms complets des fichiers dépendent d&#8217;un dossier de référence:</p>
+<blockquote>
+<div><ul class="simple">
+<li><strong>Chemin absolu</strong> - depuis la «racine» du disque notée <tt class="docutils literal"><span class="pre">/</span></tt>:<ul>
+<li>de <em>fichier1.txt</em> : <tt class="docutils literal"><span class="pre">/dossier1/fichier1.txt</span></tt></li>
+<li>de <em>fichier2.ppm</em> : <tt class="docutils literal"><span class="pre">/dossier1/ss_dossier/fichier2.ppm</span></tt></li>
 </ul>
+</li>
+<li><strong>chemin relatif</strong> - à partir d&#8217;un dossier particulier (souvent le dossier courant):<ul>
+<li>de <em>fichier1.txt</em> à partir de <strong>dossier1</strong> : <tt class="docutils literal"><span class="pre">fichier1.txt</span></tt></li>
+<li>de <em>fichier3.py</em> à partir de <strong>dossier1</strong> : <tt class="docutils literal"><span class="pre">../fichier3.py</span></tt> (<tt class="docutils literal"><span class="pre">..</span></tt> ~ dossier parent)</li>
+<li>de <em>fichier3.py</em> à partir de <strong>ss_dossier</strong> : <tt class="docutils literal"><span class="pre">../../fichier3.py</span></tt></li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Un programme possède toujours un dossier de référence appelé <strong>répertoire courant</strong>. C&#8217;est normalement le dossier qui contient le fichier du programme. Pour s&#8217;en assurer:</p>
+<div class="last highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">os</span>
+<span class="c"># ...</span>
+<span class="n">rep_courant</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span> <span class="c"># cwd pour current working directory</span>
+<span class="k">print</span><span class="p">(</span><span class="n">rep_courant</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 
@@ -160,15 +245,16 @@ fichier3.py
   <h3><a href="index.html">Table des Matières</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Fichiers</a><ul>
-<li><a class="reference internal" href="#operations-de-base">Opérations de base</a></li>
-<li><a class="reference internal" href="#chemin-vers-un-fichier">Chemin vers un fichier</a></li>
+<li><a class="reference internal" href="#lire-ecrire-du-texte-dans-un-fichier">Lire/écrire du texte dans un fichier</a></li>
+<li><a class="reference internal" href="#sauvegarder-restaurer-des-objets">Sauvegarder/restaurer des «objets»</a></li>
+<li><a class="reference internal" href="#notion-de-chemin">Notion de chemin</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>Sujet précédent</h4>
   <p class="topless"><a href="dictionnaires.html"
-                        title="Chapitre précédent">Les dictionnaires</a></p>
+                        title="Chapitre précédent">Dictionnaires - <tt class="docutils literal"><span class="pre">dict</span></tt></a></p>
   <h4>Sujet suivant</h4>
   <p class="topless"><a href="modules.html"
                         title="Chapitre suivant">Modules et paquets</a></p>
@@ -201,14 +287,14 @@ fichier3.py
           <a href="modules.html" title="Modules et paquets"
              >suivant</a></li>
         <li class="right" >
-          <a href="dictionnaires.html" title="Les dictionnaires"
+          <a href="dictionnaires.html" title="Dictionnaires - dict"
              >précédent</a> |</li>
         <li><a href="index.html">documentation Fiches pour ISN 1.0</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2014, Groupe IRES.
-      Mis à jour le Mar 06, 2014.
+      Mis à jour le Mar 26, 2014.
       Créé avec <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.1.
     </div>
   </body>
