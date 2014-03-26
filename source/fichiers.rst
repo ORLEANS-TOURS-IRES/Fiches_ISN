@@ -92,8 +92,8 @@ Lire/écrire du texte dans un fichier
 
   ``'wt'`` est équivalent à ``'w'``. Pour voir un fichier comme une chaîne d'octets, utiliser ``'rb'``, ``'wb'`` , etc.
 
-Sauvegarder/restaurer des «objets» python
-=========================================
+Sauvegarder/restaurer des «objets»
+==================================
 
 ``pickle`` est un module qui facilite considérablement la sauvegarde/récupération de données Python par l'intermédiaire de fichiers. 
 
@@ -135,7 +135,6 @@ Voici un exemple (volontairement très simple !) d'organisation d'un disque:
    ...
 
 Les noms complets des fichiers dépendent d'un dossier de référence:
-
 * **Chemin absolu** - depuis la «racine» du disque notée ``/``:
 
   * de *fichier1.txt* : ``/dossier1/fichier1.txt``
@@ -148,7 +147,9 @@ Les noms complets des fichiers dépendent d'un dossier de référence:
   * de *fichier3.py* à partir de **ss_dossier** : ``../../fichier3.py``
 
 
-.. note:: Un programme possède toujours un dossier de référence appelé **répertoire courant**. C'est normalement le dossier qui contient le fichier du programme. Pour s'en assurer::
+.. note:: Un programme possède toujours un dossier de référence appelé **répertoire courant**. C'est normalement le dossier qui contient le fichier du programme. Pour s'en assurer:
+
+   .. code-block:: python
 
         import os
         # ...
