@@ -1,0 +1,215 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Définir ses propres «objets» &mdash; documentation Fiches pour ISN 1.0</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="documentation Fiches pour ISN 1.0" href="index.html" />
+    <link rel="next" title="Un serveur TCP en Python" href="FicheReseauxServeur01.html" />
+    <link rel="prev" title="Modules et paquets" href="modules.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="FicheReseauxServeur01.html" title="Un serveur TCP en Python"
+             accesskey="N">suivant</a></li>
+        <li class="right" >
+          <a href="modules.html" title="Modules et paquets"
+             accesskey="P">précédent</a> |</li>
+        <li><a href="index.html">documentation Fiches pour ISN 1.0</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="definir-ses-propres-objets">
+<h1>Définir ses propres «objets»<a class="headerlink" href="#definir-ses-propres-objets" title="Lien permanent vers ce titre">¶</a></h1>
+<p>Un <strong>objet</strong> est une entité informatique qui possède :</p>
+<ul>
+<li><p class="first">des <strong>attributs</strong>: noms qui font référence à d&#8217;autres objets.</p>
+<p>si l&#8217;objet <tt class="docutils literal"><span class="pre">o</span></tt> possède l&#8217;attribut <tt class="docutils literal"><span class="pre">x</span></tt>, l&#8217;écriture <tt class="docutils literal"><span class="pre">o.x</span></tt> permet d&#8217;accéder à cet attribut et l&#8217;écriture <tt class="docutils literal"><span class="pre">o.x</span> <span class="pre">=</span> <span class="pre">...</span></tt> permet de modifier cet attribut (ou de le créer s&#8217;il n&#8217;existait pas).</p>
+</li>
+<li><p class="first">des <strong>méthodes</strong>: fonctions internes qui détermine son «comportement»;</p>
+<p>si l&#8217;objet <tt class="docutils literal"><span class="pre">o</span></tt> possède une méthode <tt class="docutils literal"><span class="pre">f</span></tt>, l&#8217;écriture <tt class="docutils literal"><span class="pre">o.f(...)</span></tt> sert à déclencher le comportement correspondant.</p>
+</li>
+</ul>
+<p>Chaque objet informatique est caractérisé par:</p>
+<ul class="simple">
+<li>une <strong>identité</strong>: son adresse mémoire - <tt class="docutils literal"><span class="pre">id(obj)</span></tt>;</li>
+<li>un <strong>type</strong>: la <em>classe</em> à laquelle il appartient - <tt class="docutils literal"><span class="pre">type(obj)</span></tt>;</li>
+<li>une <strong>valeur</strong>: qui peut être modifiable ou non.</li>
+</ul>
+<p>Comme objets vous connaissez déjà les <em>int</em>, <em>float</em>, <em>str</em>, <em>list</em>, <em>dict</em> ... mais aussi les fonctions, modules ...;  Exemple:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">o</span> <span class="o">=</span> <span class="o">-</span><span class="mi">5</span> <span class="c"># o est une référence vers un objet de type int</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c"># tout objet de type (classe) int possède un attribut «denominator»</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">denominator</span>
+<span class="go">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c"># il possède aussi divers méthodes internes dont  __bool__ qui</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c"># donne la valeur de condition (dans un if par exemple) d&#39;un tel objet</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">o</span><span class="o">.</span><span class="n">__bool__</span><span class="p">()</span>
+<span class="go">True  # tout entier non nul est considéré comme vrai</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">(</span><span class="n">o</span><span class="p">)</span> <span class="c"># affiche la liste des attributs et méthodes de l&#39;objet ...</span>
+<span class="go">[&#39;__abs__&#39;, &#39;__add__&#39;, &#39;__and__&#39;, &#39;__bool__&#39;, &#39;__ceil__&#39;, &#39;__class__&#39;, &#39;__delattr__&#39;, &#39;__divmod__&#39;, ...]</span>
+</pre></div>
+</div>
+<div class="section" id="definir-un-type-d-objets-class">
+<h2>Définir un type d&#8217;objets - <tt class="docutils literal"><span class="pre">class</span></tt><a class="headerlink" href="#definir-un-type-d-objets-class" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Pour construire un objet, on commence par définir quels seront ces attributs et méthodes au sein d&#8217;une classe:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">NomClasse</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot; documentation de</span>
+<span class="sd">        cette classe ...</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c"># déclaration des attributs et méthodes de cette classe</span>
+</pre></div>
+</div>
+<p>Cela fait, pour construire un objet de type <tt class="docutils literal"><span class="pre">NomClasse</span></tt>, on appelle la classe un peu comme une fonction:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="c"># définition d&#39;une classe Test minimale</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Test</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="s">&quot;blah blah&quot;</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c"># Création d&#39;un objet par l&#39;intermédiaire de cette classe</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">o1</span> <span class="o">=</span> <span class="n">Test</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">o1</span>
+<span class="go">&lt;__main__.Test object at 0x23f1690&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">o2</span> <span class="o">=</span> <span class="n">Test</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">o2</span>
+<span class="go">&lt;__main__.Test object at 0x23f1690&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">o1</span><span class="p">)</span>
+<span class="go">&lt;class &#39;__main__.Test&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">o1</span> <span class="o">==</span> <span class="n">o2</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<p>Une classe est en quelque sorte un «moule à objet». Chaque objet créé à partir d&#8217;elle possède une <strong>identité</strong> (son adresse en mémoire vive) et un <strong>type</strong>, la classe elle-même.</p>
+<p>L&#8217;opération qui consiste à créer un objet à partir de sa classe est appelé <strong>instantiation</strong>.</p>
+</div>
+<div class="section" id="definir-des-attributs-init">
+<h2>Définir des attributs - <tt class="docutils literal"><span class="pre">__init__()</span></tt><a class="headerlink" href="#definir-des-attributs-init" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Même si les objets que nous avons créés sont distincts puisqu&#8217;ils ont des adresses mémoires différentes, ils sont identiques du point de vue de leur «valeu»« (vide pour l&#8217;instant).</p>
+<p>Pour les différencier, nous allons leur donner des attributs que nous initialiserons avec des valeurs différentes. Pour cela, on définit une méthode spéciale __init()__ qui sera appelée automatiquement au moment de l&#8217;instantiation:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Individu</span><span class="p">():</span>
+        <span class="s">&quot; ici la documentation ... &quot;</span>
+
+        <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nom</span><span class="p">,</span> <span class="n">prenom</span><span class="p">,</span> <span class="n">age</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">nom</span> <span class="o">=</span> <span class="n">nom</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">prenom</span> <span class="o">=</span> <span class="n">prenom</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">age</span><span class="p">)</span>
+
+<span class="c"># Créons quelques «Individus»</span>
+<span class="n">un_individu</span> <span class="o">=</span> <span class="n">Individu</span><span class="p">(</span><span class="s">&#39;durand&#39;</span><span class="p">,</span> <span class="s">&#39;john&#39;</span><span class="p">,</span> <span class="mi">21</span><span class="p">)</span>
+<span class="n">autre_individu</span> <span class="o">=</span> <span class="n">Individu</span><span class="p">(</span><span class="s">&#39;dupon&#39;</span><span class="p">,</span> <span class="s">&#39;alexandre&#39;</span><span class="p">,</span> <span class="mf">23.6</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;{i.nom} {i.prenom} a {i.age} ans&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="n">un_individu</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;{i.nom} {i.prenom} a {i.age} ans&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="n">autre_individu</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Voilà ce qui se passe :</p>
+<p>Lors de l&#8217;instantiation <tt class="docutils literal"><span class="pre">Individu('durand',</span> <span class="pre">'john',</span> <span class="pre">21)</span></tt>:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Python crée un objet (vide pour l&#8217;instant) de type <tt class="docutils literal"><span class="pre">Individu</span></tt></li>
+<li>puis il appelle <tt class="docutils literal"><span class="pre">__init__</span></tt> en lui fournissant:</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li><strong>cet objet</strong> comme premier argument; donc, dans le code, <tt class="docutils literal"><span class="pre">self</span></tt> représente l&#8217;objet fraîchement créé !</li>
+<li>les arguments fournis lors de l&#8217;instantiation pour les paramètres <tt class="docutils literal"><span class="pre">nom</span></tt>, <tt class="docutils literal"><span class="pre">prenom</span></tt>, <tt class="docutils literal"><span class="pre">age</span></tt>.</li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li><tt class="docutils literal"><span class="pre">self.nom</span> <span class="pre">=</span> <span class="pre">...</span></tt> signifie créer l&#8217;attribut <tt class="docutils literal"><span class="pre">nom</span></tt> pour cet objet (désigné par <tt class="docutils literal"><span class="pre">self</span></tt>) et lui donner la valeur indiqué</li>
+<li>Les autres lignes définissent de la même façon les attributs <tt class="docutils literal"><span class="pre">prenom</span></tt> et <tt class="docutils literal"><span class="pre">age</span></tt> pour cet objet.</li>
+</ol>
+</div></blockquote>
+<p>... à faire ...</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table des Matières</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Définir ses propres «objets»</a><ul>
+<li><a class="reference internal" href="#definir-un-type-d-objets-class">Définir un type d&#8217;objets - <tt class="docutils literal"><span class="pre">class</span></tt></a></li>
+<li><a class="reference internal" href="#definir-des-attributs-init">Définir des attributs - <tt class="docutils literal"><span class="pre">__init__()</span></tt></a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Sujet précédent</h4>
+  <p class="topless"><a href="modules.html"
+                        title="Chapitre précédent">Modules et paquets</a></p>
+  <h4>Sujet suivant</h4>
+  <p class="topless"><a href="FicheReseauxServeur01.html"
+                        title="Chapitre suivant">Un serveur TCP en Python</a></p>
+  <h3>Cette page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/class.txt"
+           rel="nofollow">Montrer la source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Recherche rapide</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Saisissez un mot clef ou un nom de module, classe ou fonction.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="FicheReseauxServeur01.html" title="Un serveur TCP en Python"
+             >suivant</a></li>
+        <li class="right" >
+          <a href="modules.html" title="Modules et paquets"
+             >précédent</a> |</li>
+        <li><a href="index.html">documentation Fiches pour ISN 1.0</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Groupe IRES.
+      Mis à jour le Mar 26, 2014.
+      Créé avec <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.1.
+    </div>
+  </body>
+</html>

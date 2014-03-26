@@ -1,0 +1,291 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Réseau &mdash; documentation Fiches pour ISN 1.0</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="documentation Fiches pour ISN 1.0" href="index.html" />
+    <link rel="next" title="Les nombres aléatoires" href="random.html" />
+    <link rel="prev" title="Définir ses propres «objets»" href="class.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="random.html" title="Les nombres aléatoires"
+             accesskey="N">suivant</a></li>
+        <li class="right" >
+          <a href="class.html" title="Définir ses propres «objets»"
+             accesskey="P">précédent</a> |</li>
+        <li><a href="index.html">documentation Fiches pour ISN 1.0</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="reseau">
+<h1>Réseau<a class="headerlink" href="#reseau" title="Lien permanent vers ce titre">¶</a></h1>
+<p>Pour faire dialoguer deux programmes sur le réseau, on utilise un canal de communication appelé <strong>socket</strong>. Le module <em>socket</em> sert à cela.</p>
+<ul class="simple">
+<li>Pour joindre un programme <em>prog1</em> qui tourne sur une machine <em>A</em>, on a besoin:
+* de l&#8217;<strong>adresse IP</strong> de la machine <em>A</em> qui est de la forme <tt class="docutils literal"><span class="pre">xxx.xxx.xxx.xxx</span></tt> (ex: 192.168.1.1)
+* d&#8217;un numéro pour identifier <em>prog1</em> qu&#8217;on appelle <strong>port</strong>. Pour un programme «normal», utiliser un port supérieur à 1000 (les autres sont réservés).</li>
+</ul>
+<p>Le programme qui prend l&#8217;initiative de la communication est appelé <strong>client</strong>, celui qui attend qu&#8217;on le joigne est appelé <strong>serveur</strong>.</p>
+<p>Dans tous les cas, le programme commence par <strong>importer le module socket</strong> - <tt class="docutils literal"><span class="pre">import</span> <span class="pre">socket</span> <span class="pre">as</span> <span class="pre">so</span></tt>.</p>
+<div class="section" id="creation-du-serveur">
+<h2>Création du serveur<a class="headerlink" href="#creation-du-serveur" title="Lien permanent vers ce titre">¶</a></h2>
+<div class="section" id="structure-du-programme">
+<h3>Structure du programme<a class="headerlink" href="#structure-du-programme" title="Lien permanent vers ce titre">¶</a></h3>
+<ol class="arabic">
+<li><p class="first">Création d’une variable serveur pour gérer la communication TCP/IP</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">serveur</span> <span class="o">=</span> <span class="n">so</span><span class="o">.</span><span class="n">socket</span><span class="p">()</span> <span class="c"># création du «canal de communication»</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Choix du port d&#8217;écoute (supérieur à 1000), ici 6789</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">ip</span> <span class="o">=</span> <span class="s">&#39;&#39;</span> <span class="c"># chaîne vide pour adresse locale; sinon mettre l&#39;ip</span>
+<span class="n">port</span> <span class="o">=</span> <span class="mi">6789</span>
+<span class="n">adresseServeur</span> <span class="o">=</span> <span class="n">ip</span><span class="p">,</span> <span class="n">port</span> <span class="c"># l&#39;adresse complète de ce programme</span>
+<span class="n">serveur</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">addresseServeur</span><span class="p">)</span> <span class="c"># qu&#39;on associe au canal de communication</span>
+<span class="n">serveur</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c"># déclenche l&#39;écoute sur ce canal.</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Attente bloquante d’une connexion d’un nouveau client. Suite à cette instruction, la variable <em>client</em> permettra de gérer la communication avec le nouveau client, et la variable <em>adresseClient</em> contient son adresse IP.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">client</span><span class="p">,</span> <span class="n">adresseClient</span> <span class="o">=</span> <span class="n">serveur</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
+<span class="c"># bloquant = le code situé après la ligne précédente</span>
+<span class="c"># ne sera exécuté que lorsqu&#39;un client se sera connecté</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Envoi d’une chaine d&#8217;octets (<em>bytes</em>) vers le client</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">mess</span> <span class="o">=</span> <span class="s">&#39;Salut !&#39;</span> <span class="c"># chaîne de caractères -&gt; str</span>
+<span class="n">messEnc</span> <span class="o">=</span> <span class="n">mess</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s">&#39;utf-8&#39;</span><span class="p">)</span> <span class="c"># encodage: chaîne d&#39;octets -&gt; bytes</span>
+<span class="n">client</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">messEnc</span><span class="p">)</span> <span class="c"># envoie du message</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Réception bloquante d’une chaine et stockage dans la variable <em>donnees</em> (1024 caractères maximum)</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">recuEnc</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span> <span class="c"># on reçoit une chaîne d&#39;octets</span>
+<span class="n">recu</span> <span class="o">=</span> <span class="n">recuEnc</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">&#39;utf-8&#39;</span><span class="p">)</span> <span class="c"># il faut la «décoder»</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Déconnexion et arrêt du serveur</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">client</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="n">serveur</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="exemple-complet">
+<h3>Exemple complet<a class="headerlink" href="#exemple-complet" title="Lien permanent vers ce titre">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">socket</span> <span class="kn">as</span> <span class="nn">so</span>
+
+<span class="c"># Identification réseau</span>
+<span class="n">IP</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+<span class="n">PORT</span> <span class="o">=</span> <span class="mi">6789</span>
+<span class="n">ADRESSE</span> <span class="o">=</span> <span class="n">IP</span><span class="p">,</span> <span class="n">PORT</span>
+
+<span class="c"># Ouverture du canal de communication</span>
+<span class="n">serveur</span> <span class="o">=</span> <span class="n">so</span><span class="o">.</span><span class="n">socket</span><span class="p">()</span>
+<span class="n">serveur</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">ADRESSE</span><span class="p">)</span>
+<span class="n">serveur</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c"># Attente d&#39;une connexion entrante</span>
+<span class="n">client</span><span class="p">,</span> <span class="n">adresseClient</span> <span class="o">=</span> <span class="n">serveur</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&#39;Connexion de&#39;</span><span class="p">,</span> <span class="n">adresseClient</span><span class="p">)</span>
+
+<span class="c"># Boucle de dialogue (de type «perroquet»)</span>
+<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="n">recuEnc</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">recuEnc</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&#39;Erreur de réception.&#39;</span><span class="p">)</span>
+        <span class="k">break</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">recu</span> <span class="o">=</span> <span class="n">recuEnc</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">&#39;utf-8&#39;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&#39;Réception de:&#39;</span><span class="p">,</span> <span class="n">recu</span><span class="p">)</span>
+        <span class="n">reponse</span> <span class="o">=</span> <span class="n">recu</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&#39;Envoi de :&#39;</span><span class="p">,</span> <span class="n">reponse</span><span class="p">)</span>
+        <span class="n">reponseEnc</span> <span class="o">=</span> <span class="n">reponse</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s">&#39;utf-8&#39;</span><span class="p">)</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">reponseEnc</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">reponseEnc</span><span class="p">):</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">&#39;Erreur envoi.&#39;</span><span class="p">)</span>
+            <span class="k">break</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">&#39;Envoi ok.&#39;</span><span class="p">)</span>
+
+<span class="c"># on ferme la connexion proprement</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&#39;Fermeture de la connexion avec le client.&#39;</span><span class="p">)</span>
+<span class="n">client</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&#39;Arret du serveur.&#39;</span><span class="p">)</span>
+<span class="n">serveur</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="un-client-tcp-en-python">
+<h2>Un client TCP en Python<a class="headerlink" href="#un-client-tcp-en-python" title="Lien permanent vers ce titre">¶</a></h2>
+<div class="section" id="id1">
+<h3>Structure du programme<a class="headerlink" href="#id1" title="Lien permanent vers ce titre">¶</a></h3>
+<ol class="arabic">
+<li><p class="first">Création d’une variable <em>client</em> pour gérer la communication TCP/IP</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">client</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Connexion au serveur TCP d’adresse 172.16.180.10 et de port 6789</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">client</span><span class="o">.</span><span class="n">connect</span><span class="p">((</span><span class="mf">172.16</span><span class="o">.</span><span class="mf">180.10</span><span class="p">,</span> <span class="mi">6789</span><span class="p">))</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Envoi d’une chaine de caractères vers le serveur</p>
+<div class="highlight-python"><div class="highlight"><pre>client.send(‘Hello’)
+</pre></div>
+</div>
+</li>
+<li><p class="first">Réception bloquante d’une chaine et stockage dans la variable <em>donnees</em> (1024 caractères maximum)</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">donnees</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Déconnexion</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">client</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="id2">
+<h3>Exemple complet<a class="headerlink" href="#id2" title="Lien permanent vers ce titre">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">socket</span>
+
+<span class="n">HOST</span> <span class="o">=</span> <span class="s">&#39;172.16.180.10&#39;</span>
+<span class="n">PORT</span> <span class="o">=</span> <span class="mi">6789</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span>
+<span class="n">client</span><span class="o">.</span><span class="n">connect</span><span class="p">((</span><span class="n">HOST</span><span class="p">,</span> <span class="n">PORT</span><span class="p">))</span>
+<span class="k">print</span> <span class="s">&#39;Connexion vers &#39;</span> <span class="o">+</span> <span class="n">HOST</span> <span class="o">+</span> <span class="s">&#39;:&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">PORT</span><span class="p">)</span> <span class="o">+</span> <span class="s">&#39; reussie.&#39;</span>
+
+<span class="n">message</span> <span class="o">=</span> <span class="s">&#39;Hello, world&#39;</span>
+<span class="k">print</span> <span class="s">&#39;Envoi de :&#39;</span> <span class="o">+</span> <span class="n">message</span>
+<span class="n">n</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">message</span><span class="p">)):</span>
+        <span class="k">print</span> <span class="s">&#39;Erreur envoi.&#39;</span>
+<span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span> <span class="s">&#39;Envoi ok.&#39;</span>
+
+<span class="k">print</span> <span class="s">&#39;Reception...&#39;</span>
+<span class="n">donnees</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
+<span class="k">print</span> <span class="s">&#39;Recu :&#39;</span><span class="p">,</span> <span class="n">donnees</span>
+
+<span class="k">print</span> <span class="s">&#39;Deconnexion.&#39;</span>
+<span class="n">client</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="ressources">
+<h3>Ressources<a class="headerlink" href="#ressources" title="Lien permanent vers ce titre">¶</a></h3>
+<p>Tutoriel sur la programmation sockets Python : <a class="reference external" href="http://docs.python.org/2/howto/sockets.html">http://docs.python.org/2/howto/sockets.html</a></p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table des Matières</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Réseau</a><ul>
+<li><a class="reference internal" href="#creation-du-serveur">Création du serveur</a><ul>
+<li><a class="reference internal" href="#structure-du-programme">Structure du programme</a></li>
+<li><a class="reference internal" href="#exemple-complet">Exemple complet</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#un-client-tcp-en-python">Un client TCP en Python</a><ul>
+<li><a class="reference internal" href="#id1">Structure du programme</a></li>
+<li><a class="reference internal" href="#id2">Exemple complet</a></li>
+<li><a class="reference internal" href="#ressources">Ressources</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Sujet précédent</h4>
+  <p class="topless"><a href="class.html"
+                        title="Chapitre précédent">Définir ses propres «objets»</a></p>
+  <h4>Sujet suivant</h4>
+  <p class="topless"><a href="random.html"
+                        title="Chapitre suivant">Les nombres aléatoires</a></p>
+  <h3>Cette page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/reseau.txt"
+           rel="nofollow">Montrer la source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Recherche rapide</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Saisissez un mot clef ou un nom de module, classe ou fonction.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="random.html" title="Les nombres aléatoires"
+             >suivant</a></li>
+        <li class="right" >
+          <a href="class.html" title="Définir ses propres «objets»"
+             >précédent</a> |</li>
+        <li><a href="index.html">documentation Fiches pour ISN 1.0</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Groupe IRES.
+      Mis à jour le Mar 26, 2014.
+      Créé avec <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.1.
+    </div>
+  </body>
+</html>

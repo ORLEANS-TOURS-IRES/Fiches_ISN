@@ -11,7 +11,6 @@ Fiches Python pour ISN
    fichiers
    modules
    class
-   FicheReseauxServeur01
-   FicheReseauxClient01
+   reseau
    random
    sqlite

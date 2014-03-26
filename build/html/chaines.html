@@ -65,6 +65,7 @@
 <li>La <strong>longueur</strong> d&#8217;une chaîne est le nombre de caractères qu&#8217;elle contient.</li>
 <li><strong>Caractères «spéciaux»</strong>: Saut de ligne - <tt class="docutils literal"><span class="pre">\n</span></tt> ; tabulation (touche Tab) - <tt class="docutils literal"><span class="pre">\t</span></tt> ; insérer un backslash <tt class="docutils literal"><span class="pre">\\</span></tt>; ou un délimiteur - <tt class="docutils literal"><span class="pre">\'</span></tt> ou <tt class="docutils literal"><span class="pre">\&quot;</span></tt>.</li>
 <li><strong>Insérer un caractère non accessible au clavier</strong>: on insère son «point de code» unicode via <tt class="docutils literal"><span class="pre">\u&lt;code&gt;</span></tt> où <tt class="docutils literal"><span class="pre">&lt;code&gt;</span></tt> doit être remplacé par la valeur adéquate (voir <a class="reference external" href="http://unicode-table.com">ce site</a>). Par exemple, <tt class="docutils literal"><span class="pre">\u265E</span></tt> devrait donner un cavalier : <span class="raw-html">&#9822;</span>.</li>
+<li>Obtenir la documentation en ligne : <tt class="docutils literal"><span class="pre">help(str)</span></tt> (taper «q» pour finir)</li>
 </ul>
 <div class="section" id="operations-de-base">
 <h2>Opérations de base<a class="headerlink" href="#operations-de-base" title="Lien permanent vers ce titre">¶</a></h2>
@@ -209,6 +210,15 @@
 </pre></div>
 </div>
 </li>
+<li><p class="first"><strong>à l&#8217;envers</strong> - <tt class="docutils literal"><span class="pre">for</span> <span class="pre">car</span> <span class="pre">in</span> <span class="pre">reversed(chaine):</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">ch</span> <span class="o">=</span> <span class="s">&quot;bonjour&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">ch</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">ruojnob</span>
+</pre></div>
+</div>
+</li>
 </ul>
 </div>
 <div class="section" id="autres-operations-utiles">
@@ -292,6 +302,18 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="n">message</span> <span class="o">=</span> <span class="n">chEnc</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">&#39;utf-8&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">message</span>
 <span class="go">&#39;aïe&#39;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Récupérer la liste des lignes - <tt class="docutils literal"><span class="pre">str.splitlines()</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">texte</span> <span class="o">=</span> <span class="s">&quot;un</span><span class="se">\n</span><span class="s">deux</span><span class="se">\n</span><span class="s">trois&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">texte</span><span class="p">)</span>
+<span class="go">un</span>
+<span class="go">deux</span>
+<span class="go">trois</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lignes</span> <span class="o">=</span> <span class="n">texte</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lignes</span>
+<span class="go">[&#39;un&#39;, &#39;deux&#39;, &#39;trois&#39;]</span>
 </pre></div>
 </div>
 </li>

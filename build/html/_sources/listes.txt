@@ -2,14 +2,14 @@
 Listes - ``list``
 *****************
 
-Une **liste** - type ``list`` - est un moyen de regrouper des éléments d'information ou donnés.
+Une **liste** - type ``list`` - est un moyen de regrouper des éléments d'information ou donnés:
 
-* La **longueur** d'une liste est le nombre d'éléments qu'elle contient;
-* Les éléments d'une liste sont **ordonnés**;
-* Chaque élément d'une liste est *numéroté* par un entier (positif ou négatif) appelé **position** ou index;
+  * Les éléments d'une liste sont **ordonnés**;
+  * Chaque élément d'une liste est *numéroté* par un entier (positif ou négatif) appelé **position** ou index;
 
-  * Le premier élément a la position 0, le second la position 1, etc.
-  * Le dernier élément a la position -1, l'avant dernier la position -2, etc.
+    * Le premier élément a la position 0, le second la position 1, etc.
+    * Le dernier élément a la position -1, l'avant dernier la position -2, etc.
+  * La **longueur** d'une liste est le nombre d'éléments qu'elle contient;
 
 Opérations de base
 ==================
@@ -25,7 +25,7 @@ Opérations de base
         >>> len(l)
         4
 
-* Savoir si *elt* appartient ou non à une liste - ``elt in list``::
+* Savoir si *elt* **appartient ou non** à une liste - ``elt in list``::
 
         >>> l
         [5, "liste", -2.3, (1,3)]
@@ -87,7 +87,7 @@ Opérations de base
 Parcourt d'une liste
 ====================
 
-* **Direct** - chaque élément est récupéré successivement::
+* **Direct** - chaque élément est récupéré successivement - ``for elt in list:``::
 
         >>> l = [3, "truc", -2.5]
         >>> for elt in l:
@@ -97,6 +97,19 @@ Parcourt d'une liste
         truc
         -2.5
   
+* **Par énumaration** - ``for pos, elt in list:``::
+
+        >>> l = [3, "truc", -2.5]
+        >>> # Rappels:
+        >>> #   str(truc): convertit «truc» en chaîne de caractères
+        >>> #   concaténation: "l[" + "3" + "]=" + "erreur" donne "l[3]=erreur"
+        >>> for p, v in enumerate(l):
+        ...    print("l[" + str(p) + "]=«" + str(v) + "»")
+        ...
+        l[0]=«3»
+        l[1]=«truc»
+        l[2]=«-2.5»
+
 * **Indirect** - en utilisant les positions des éléments dans la liste::
 
         >>> # Rappels:
@@ -114,38 +127,24 @@ Parcourt d'une liste
 
   .. note:: Même si cette façon de parcourir une liste semble plus compliquée, la connaissance dans la boucle de la position de l'élément peut être déterminante dans certain problème.
 
-  Autre façon de faire la même chose à l'aide de la fonction intégrée ``enumerate()``::
-        
-        >>> l = [3, "truc", -2.5]
-        >>> # Rappels:
-        >>> #   str(truc): convertit «truc» en chaîne de caractères
-        >>> #   concaténation: "l[" + "3" + "]=" + "erreur" donne "l[3]=erreur"
-        >>> for pos, elt in enumerate(l):
-        ...    print("l[" + str(pos) + "]=«" + str(elt) + "»")
-        ...
-        l[0]=«3»
-        l[1]=«truc»
-        l[2]=«-2.5»
+* **Inverser le sens de parcourt** ``for elt in reversed(list):``::
 
-* Inverser le sens de parcourt - la fonction ``reversed()``::
-
-        >>> for i in reversed(range(len(l))):
-        ...    print(l[i])
-        ...
-        -2.5
-        truc
-        3
         >>> for elt in reversed(l):
         ...    print(elt)
         ...
         -2.5
         truc
         3
+        >>> # range(n1,n2,pas) -> n1, n1+pas, n1+2*pas, ... sans dépasser n2
+        >>> for i in range(5,0,-1):
+        ...    print(i, end=" ")
+        ...
+        5 4 3 2 1
 
 Autres opérations utiles
 ========================
 
-* Extraire une sous-liste d'éléments consécutifs - ``list[pos1:pos2]``::
+* **Extraire une sous-liste** d'éléments consécutifs - ``list[pos1:pos2]``::
 
         >>> l = [3, 0, -2, 5]
         >>> # l[pos1:pos2] : positions récupérées = entiers de [pos1, pos2[ (pos2 exclus)

@@ -1,0 +1,231 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Les nombres aléatoires &mdash; documentation Fiches pour ISN 1.0</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="documentation Fiches pour ISN 1.0" href="index.html" />
+    <link rel="next" title="Les bases de données sqlite" href="sqlite.html" />
+    <link rel="prev" title="Un client TCP en Python" href="FicheReseauxClient01.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="sqlite.html" title="Les bases de données sqlite"
+             accesskey="N">suivant</a></li>
+        <li class="right" >
+          <a href="FicheReseauxClient01.html" title="Un client TCP en Python"
+             accesskey="P">précédent</a> |</li>
+        <li><a href="index.html">documentation Fiches pour ISN 1.0</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="les-nombres-aleatoires">
+<h1>Les nombres aléatoires<a class="headerlink" href="#les-nombres-aleatoires" title="Lien permanent vers ce titre">¶</a></h1>
+<p>Prérequis:</p>
+<ul class="simple">
+<li>les types de nombres et de variables</li>
+<li>les listes</li>
+</ul>
+<p>Le module qui gère l&#8217;aléatoire en python est le module random.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+<div class="section" id="les-nombres-au-hasard">
+<h2>Les nombres au hasard<a class="headerlink" href="#les-nombres-au-hasard" title="Lien permanent vers ce titre">¶</a></h2>
+<ol class="arabic simple">
+<li>Nombre flottant (réel) entre 0 et 1</li>
+</ol>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">random</span><span class="p">()</span>
+<span class="go">0.49852220170348827</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>Nombre flottant entre deux bornes</li>
+</ol>
+<p>Pour tirer un nombre au hasard entre 10 et 12.5.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">y</span> <span class="o">=</span> <span class="n">uniform</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mf">12.5</span><span class="p">)</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>Nombre entier entre deux bornes</li>
+</ol>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="go">20</span>
+</pre></div>
+</div>
+<p>Les deux bornes sont incluses dans les cas possibles.</p>
+<ol class="arabic simple" start="4">
+<li>Générer une probabilité p</li>
+</ol>
+<p>32 % de chance de gagner à ce jeu...</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">if</span> <span class="n">random</span><span class="p">()</span> <span class="o">+</span> <span class="mf">0.32</span> <span class="o">&gt;=</span> <span class="mi">1</span> <span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&quot;gagné&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&quot;perdu&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="les-listes-aleatoires">
+<h2>Les listes aléatoires<a class="headerlink" href="#les-listes-aleatoires" title="Lien permanent vers ce titre">¶</a></h2>
+<ol class="arabic simple">
+<li>Créer une liste aléatoire de 1000 nombres entiers entre 0 et 100</li>
+</ol>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">liste</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span>
+        <span class="n">liste</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="p">)</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>Mélanger une liste</li>
+</ol>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">shuffle</span><span class="p">(</span><span class="n">liste</span><span class="p">)</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>Choisir au hasard un élément d&#8217;une liste</li>
+</ol>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">N</span> <span class="o">=</span> <span class="n">choice</span><span class="p">(</span><span class="n">liste</span><span class="p">)</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>Extraire au hasard k éléments d&#8217;une liste</li>
+</ol>
+<p>Extrait aléatoirement trois éléments de la liste :</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">jeu</span> <span class="o">=</span> <span class="n">sample</span><span class="p">(</span><span class="n">liste</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt>Warning::</dt>
+<dd>La liste n&#8217;est pas modifiée (les 3 éléments choisis sont encore présents dans la liste).</dd>
+</dl>
+</div>
+<div class="section" id="exemple-complet">
+<h2>Exemple complet<a class="headerlink" href="#exemple-complet" title="Lien permanent vers ce titre">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c"># un jeu de carte</span>
+<span class="n">couleur</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;pique&quot;</span><span class="p">,</span> <span class="s">&quot;coeur&quot;</span><span class="p">,</span> <span class="s">&quot;carreau&quot;</span><span class="p">,</span> <span class="s">&quot;trèfle&quot;</span><span class="p">]</span>
+<span class="n">hauteur</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;As&quot;</span><span class="p">,</span> <span class="s">&quot;Roi&quot;</span><span class="p">,</span> <span class="s">&quot;Dame&quot;</span><span class="p">,</span> <span class="s">&quot;Valet&quot;</span><span class="p">,</span> <span class="s">&quot;Dix&quot;</span><span class="p">,</span> <span class="s">&quot;Neuf&quot;</span><span class="p">,</span> <span class="s">&quot;Huit&quot;</span><span class="p">,</span> <span class="s">&quot;Sept&quot;</span><span class="p">]</span>
+
+<span class="n">jeu</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">couleur</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="n">hauteur</span><span class="p">:</span>
+                <span class="n">jeu</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">h</span><span class="o">+</span><span class="s">&quot; de &quot;</span><span class="o">+</span><span class="n">c</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Le jeu neuf :&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">jeu</span><span class="p">)</span>
+
+<span class="c"># mélanger</span>
+<span class="n">shuffle</span><span class="p">(</span><span class="n">jeu</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Le jeu mélangé&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">jeu</span><span class="p">)</span>
+
+<span class="c"># Choisir au hasard le nombre de carte à donner</span>
+<span class="n">N</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Je donne &quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">N</span><span class="p">)</span><span class="o">+</span><span class="s">&quot; cartes&quot;</span><span class="p">)</span>
+
+<span class="c"># Donner N cartes</span>
+<span class="n">donne</span> <span class="o">=</span> <span class="n">sample</span><span class="p">(</span><span class="n">jeu</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Les voilà :&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">donne</span><span class="p">)</span>
+
+<span class="c"># Attention les cartes données sont encore dans le jeu</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Le jeu est-il complet ?&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">jeu</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table des Matières</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Les nombres aléatoires</a><ul>
+<li><a class="reference internal" href="#les-nombres-au-hasard">Les nombres au hasard</a></li>
+<li><a class="reference internal" href="#les-listes-aleatoires">Les listes aléatoires</a></li>
+<li><a class="reference internal" href="#exemple-complet">Exemple complet</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Sujet précédent</h4>
+  <p class="topless"><a href="FicheReseauxClient01.html"
+                        title="Chapitre précédent">Un client TCP en Python</a></p>
+  <h4>Sujet suivant</h4>
+  <p class="topless"><a href="sqlite.html"
+                        title="Chapitre suivant">Les bases de données sqlite</a></p>
+  <h3>Cette page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/random.txt"
+           rel="nofollow">Montrer la source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Recherche rapide</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Saisissez un mot clef ou un nom de module, classe ou fonction.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="sqlite.html" title="Les bases de données sqlite"
+             >suivant</a></li>
+        <li class="right" >
+          <a href="FicheReseauxClient01.html" title="Un client TCP en Python"
+             >précédent</a> |</li>
+        <li><a href="index.html">documentation Fiches pour ISN 1.0</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Groupe IRES.
+      Mis à jour le Mar 26, 2014.
+      Créé avec <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.1.
+    </div>
+  </body>
+</html>

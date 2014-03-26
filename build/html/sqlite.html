@@ -1,0 +1,258 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Les bases de données sqlite &mdash; documentation Fiches pour ISN 1.0</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="documentation Fiches pour ISN 1.0" href="index.html" />
+    <link rel="prev" title="Les nombres aléatoires" href="random.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="random.html" title="Les nombres aléatoires"
+             accesskey="P">précédent</a></li>
+        <li><a href="index.html">documentation Fiches pour ISN 1.0</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="les-bases-de-donnees-sqlite">
+<h1>Les bases de données sqlite<a class="headerlink" href="#les-bases-de-donnees-sqlite" title="Lien permanent vers ce titre">¶</a></h1>
+<p>Les bases de données peuvent être un moyen efficace de mémoriser des données, surtout si elles se structurent naturellement sous forme de table.</p>
+<p>La base de données se présentera physiquement sous la forme d&#8217;un fichier de type sq3 sur le disque dur.</p>
+<p>Il sera possible de compléter, de modifier et bien sûr de lire le contenu de la base de données.</p>
+<p>Une base de donnée peut contenir plusieurs tables.</p>
+<p>Chaque table est composée de multiple lignes ayant la même structure.</p>
+<p>Prérequis :</p>
+<ul class="simple">
+<li>les chaînes de caractères</li>
+<li>les listes</li>
+</ul>
+<div class="section" id="importation-du-module-sqlite">
+<h2>Importation du module sqlite<a class="headerlink" href="#importation-du-module-sqlite" title="Lien permanent vers ce titre">¶</a></h2>
+</div>
+<div class="section" id="creation-d-une-base-de-donnee">
+<h2>Création d&#8217;une base de donnée<a class="headerlink" href="#creation-d-une-base-de-donnee" title="Lien permanent vers ce titre">¶</a></h2>
+<ol class="arabic simple">
+<li>Connexion à la base de données</li>
+</ol>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">connexion</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s">&quot;bd-celebrites.sq3&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Cette instruction crée la base si elle n&#8217;existe pas encore (le fichier est créé dans le répértoire courant).</p>
+<ol class="arabic simple" start="2">
+<li>Création d&#8217;un curseur sur la base</li>
+</ol>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">curseur</span> <span class="o">=</span> <span class="n">connexion</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Le curseur servira ensuite à manipuler la base de données.</p>
+<p>Dans toute la suite, on exécute des commandes SQL (données sous forme de chaînes de caractères).</p>
+<ol class="arabic simple" start="3">
+<li>Création d&#8217;une table dans la base</li>
+</ol>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">curseur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s">&quot;CREATE TABLE IF NOT EXISTS celebrites (nom TEXT, prenom TEXT, annee INTEGER)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>La commande crée la table &#8220;celebrite&#8221; si elle n&#8217;existe pas encore.
+On définit sa structure au moment de sa création : chaque ligne de la table est constituée d&#8217;un nom, d&#8217;un prénom et d&#8217;une année.</p>
+<ol class="arabic simple" start="4">
+<li>Ajout de données à la table</li>
+</ol>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">curseur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s">&quot;INSERT INTO celebrites(nom, prenom, annee) VALUES(&#39;Turing&#39;,&#39;Alan&#39;, 1912)&quot;</span><span class="p">)</span>
+<span class="n">curseur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s">&quot;INSERT INTO celebrites(nom, prenom, annee) VALUES(&#39;Lovelace&#39;,&#39;Ada&#39;, 1815)&quot;</span><span class="p">)</span>
+<span class="n">curseur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s">&quot;INSERT INTO celebrites(nom, prenom, annee) VALUES(&#39;Shannon&#39;,&#39;Claude&#39;, 1916)&quot;</span><span class="p">)</span>
+<span class="n">curseur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s">&quot;INSERT INTO celebrites(nom, prenom, annee) VALUES(&#39;Hooper&#39;,&#39;Grace&#39;, 1906)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li>Valider l&#8217;enregistrement dans la base</li>
+</ol>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">connexion</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Sans cette instruction rien ne sera réellement enregistré dans la base de données.</p>
+</div>
+<ol class="arabic simple" start="6">
+<li>Fermer la base</li>
+</ol>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">connexion</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="lecture-de-la-base-de-donnees">
+<h2>Lecture de la base de données<a class="headerlink" href="#lecture-de-la-base-de-donnees" title="Lien permanent vers ce titre">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">connexion</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s">&quot;bd-celebrites.sq3&quot;</span><span class="p">)</span>
+<span class="n">curseur</span>   <span class="o">=</span> <span class="n">connexion</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+
+<span class="n">curseur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s">&quot;SELECT * FROM celebrites&quot;</span><span class="p">)</span>
+<span class="n">resultat</span>  <span class="o">=</span> <span class="n">curseur</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>La liste resultat contient alors tous les enregistrements.</p>
+</div>
+<div class="section" id="modifier-un-enregistrement">
+<h2>Modifier un enregistrement<a class="headerlink" href="#modifier-un-enregistrement" title="Lien permanent vers ce titre">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">connexion</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s">&quot;bd-celebrites.sq3&quot;</span><span class="p">)</span>
+<span class="n">curseur</span>   <span class="o">=</span> <span class="n">connexion</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+
+<span class="n">curseur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s">&quot;UPDATE celebrites SET prenom=&#39;Alan Mathison&#39; WHERE nom=&#39;Turing&#39;&quot;</span><span class="p">)</span>
+<span class="n">connexion</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="pour-aller-un-peu-plus-loin">
+<h2>Pour aller un peu plus loin<a class="headerlink" href="#pour-aller-un-peu-plus-loin" title="Lien permanent vers ce titre">¶</a></h2>
+<ol class="arabic simple">
+<li>Une requête de recherche ciblée</li>
+</ol>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">curseur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s">&quot;SELECT * FROM celebrites WHERE nom = &#39;Turing&#39;&quot;</span><span class="p">)</span>
+<span class="n">resultat</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">curseur</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">resultat</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>La requête recherche et extrait seulement les lignes de la table dont l&#8217;entrée [nom] est &#8216;Turing&#8217;.
+On transforme (transtype) le curseur en liste avant de l&#8217;afficher en tant que résultat.</p>
+<ol class="arabic simple" start="2">
+<li>Utiliser une variable dans une requete</li>
+</ol>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">qui</span> <span class="o">=</span> <span class="s">&quot;Shannon&quot;</span>
+<span class="n">curseur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s">&quot;SELECT * FROM celebrites WHERE nom = &#39;&quot;</span> <span class="o">+</span> <span class="n">qui</span> <span class="o">+</span> <span class="s">&quot;&#39;&quot;</span><span class="p">)</span>
+<span class="n">quand</span> <span class="o">=</span> <span class="mi">1515</span>
+<span class="n">curseur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s">&quot;SELECT * FROM celebrites WHERE annee &gt;= &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">quand</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="exemple-complet">
+<h2>Exemple complet<a class="headerlink" href="#exemple-complet" title="Lien permanent vers ce titre">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">sqlite3</span>
+<span class="n">connexion</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s">&quot;bd-celebrites.sq3&quot;</span><span class="p">)</span>
+<span class="n">curseur</span> <span class="o">=</span> <span class="n">connexion</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+
+<span class="c"># creation d&#39;une table</span>
+<span class="n">curseur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s">&quot;CREATE TABLE IF NOT EXISTS celebrites (nom TEXT, prenom TEXT, annee INTEGER)&quot;</span><span class="p">)</span>
+
+<span class="c"># ajout de données à la base</span>
+<span class="n">curseur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s">&quot;INSERT INTO celebrites(nom, prenom) VALUES(&#39;Turing&#39;,&#39;Alan&#39;, ???)&quot;</span><span class="p">)</span>
+<span class="n">curseur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s">&quot;INSERT INTO celebrites(nom, prenom) VALUES(&#39;Lovelace&#39;,&#39;Ada&#39;)&quot;</span><span class="p">)</span>
+<span class="n">curseur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s">&quot;INSERT INTO celebrites(nom, prenom) VALUES(&#39;Shannon&#39;,&#39;Claude&#39;)&quot;</span><span class="p">)</span>
+<span class="n">curseur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s">&quot;INSERT INTO celebrites(nom, prenom) VALUES(&#39;Hooper&#39;,&#39;Grace&#39;)&quot;</span><span class="p">)</span>
+
+<span class="c"># valider l&#39;enregistrement dans la base</span>
+<span class="n">connexion</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+
+<span class="c"># charger toutes les données de la base dans un tableau</span>
+<span class="n">curseur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s">&quot;SELECT * FROM celebrites&quot;</span><span class="p">)</span>
+<span class="n">resultat</span> <span class="o">=</span> <span class="n">curseur</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+
+<span class="c"># affichage en console du résultat</span>
+<span class="k">print</span><span class="p">(</span><span class="n">resultat</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">resultat</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">r</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">r</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+
+<span class="c"># Modifier un enregistrement</span>
+<span class="n">curseur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s">&quot;UPDATE celebrites SET prenom=&#39;Alan Mathison&#39; WHERE nom=&#39;Turing&#39;&quot;</span><span class="p">)</span>
+<span class="n">connexion</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+
+<span class="c"># Accèder à l&#39;enregistrement</span>
+<span class="n">curseur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s">&quot;SELECT * FROM celebrites WHERE nom = &#39;Turing&#39;&quot;</span><span class="p">)</span>
+<span class="n">resultat</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">curseur</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">resultat</span><span class="p">)</span>
+
+<span class="c"># fermer la base</span>
+<span class="n">connexion</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table des Matières</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Les bases de données sqlite</a><ul>
+<li><a class="reference internal" href="#importation-du-module-sqlite">Importation du module sqlite</a></li>
+<li><a class="reference internal" href="#creation-d-une-base-de-donnee">Création d&#8217;une base de donnée</a></li>
+<li><a class="reference internal" href="#lecture-de-la-base-de-donnees">Lecture de la base de données</a></li>
+<li><a class="reference internal" href="#modifier-un-enregistrement">Modifier un enregistrement</a></li>
+<li><a class="reference internal" href="#pour-aller-un-peu-plus-loin">Pour aller un peu plus loin</a></li>
+<li><a class="reference internal" href="#exemple-complet">Exemple complet</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Sujet précédent</h4>
+  <p class="topless"><a href="random.html"
+                        title="Chapitre précédent">Les nombres aléatoires</a></p>
+  <h3>Cette page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/sqlite.txt"
+           rel="nofollow">Montrer la source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Recherche rapide</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Saisissez un mot clef ou un nom de module, classe ou fonction.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="random.html" title="Les nombres aléatoires"
+             >précédent</a></li>
+        <li><a href="index.html">documentation Fiches pour ISN 1.0</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Groupe IRES.
+      Mis à jour le Mar 26, 2014.
+      Créé avec <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.1.
+    </div>
+  </body>
+</html>

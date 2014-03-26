@@ -10,7 +10,7 @@ Pouvoir lire et/ou écrire dans un fichier est indispensable lorsqu'on souhaite,
 Lire/écrire du texte dans un fichier
 ====================================
 
-* **Créer** un nouveau fichier et y **écrire** - :code:`fich = open(<nom_fichier>, 'w')` et `fich.write(chaine)`::
+* **Créer** un nouveau fichier et y **écrire** - ``fich = open(<nom_fichier>, 'w')`` et ``fich.write(chaine)``::
 
         >>> # Dans quel dossier suis-je ?
         >>> from os import getcwd
@@ -27,6 +27,7 @@ Lire/écrire du texte dans un fichier
         >>> f.close()
 
 * **Lire** un fichier existant - ``fich = open(<nom_fichier>)`` et ``fich.read()``::
+
 
         >>> f = open('test') # oups ...
         Traceback (most recent call last):

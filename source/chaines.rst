@@ -21,7 +21,8 @@ Les chaînes de caractères - type ``str`` pour *strings* - servent à représen
 * La **longueur** d'une chaîne est le nombre de caractères qu'elle contient.
 * **Caractères «spéciaux»**: Saut de ligne - ``\n`` ; tabulation (touche Tab) - ``\t`` ; insérer un backslash ``\\``; ou un délimiteur - ``\'`` ou ``\"``.
 * **Insérer un caractère non accessible au clavier**: on insère son «point de code» unicode via ``\u<code>`` où ``<code>`` doit être remplacé par la valeur adéquate (voir `ce site <http://unicode-table.com>`_). Par exemple, ``\u265E`` devrait donner un cavalier : :raw-html:`&#9822;`.
-  
+* Obtenir la documentation en ligne : ``help(str)`` (taper «q» pour finir)
+
 Opérations de base
 ==================
 
@@ -153,6 +154,13 @@ Parcourt d'une chaîne
         ch[4]=e
         ch[5]=u
 
+* **à l'envers** - ``for car in reversed(chaine):``::
+
+        >>> ch = "bonjour"
+        >>> for c in reversed(ch):
+        ...     print(c, end="")
+        ...
+        ruojnob
 
 Autres opérations utiles
 ========================
@@ -236,3 +244,14 @@ Autres opérations utiles
         >>> message = chEnc.decode('utf-8')
         >>> message
         'aïe'
+
+* Récupérer la liste des lignes - ``str.splitlines()``::
+
+        >>> texte = "un\ndeux\ntrois"
+        >>> print(texte)
+        un
+        deux
+        trois
+        >>> lignes = texte.splitlines()
+        >>> lignes
+        ['un', 'deux', 'trois']
