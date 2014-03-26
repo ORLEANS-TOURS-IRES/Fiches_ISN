@@ -5,10 +5,10 @@
 Fichiers
 *********
 
-Pouvoir lire et/ou écrire dans un fichier est indispensable lorsqu'on souhaite, par exemple, récupérer des informations entre deux exécutions d'un même programme.
+Pouvoir lire et/ou écrire dans un fichier est indispensable lorsqu'on souhaite, par exemple, récupérer/sauvegarder des informations entre deux exécutions d'un même programme. On parle alors de **persistance** de l'information.
 
-Opérations de base
-==================
+Lire/écrire du texte dans un fichier
+====================================
 
 * **Créer** un nouveau fichier et y **écrire** - ``fich = open(<nom_fichier>, 'w')`` et ``fich.write(chaine)``::
 
@@ -92,12 +92,12 @@ Opérations de base
 
   ``'wt'`` est équivalent à ``'w'``. Pour voir un fichier comme une chaîne d'octets, utiliser ``'rb'``, ``'wb'`` , etc.
 
-Persistance des données - ``pickle``
-====================================
+Sauvegarder/restaurer des «objets» python
+=========================================
 
 ``pickle`` est un module qui facilite considérablement la sauvegarde/récupération de données Python par l'intermédiaire de fichiers. 
 
-**Attention** : ces fichiers doivent être ouvert en **mode binaire** ``'b'``.
+.. warning:: Les fichiers doivent être ouverts en **mode binaire** - ``'b'``.
 
 * **Sauvegarder** une ou des données dans un fichier - ``pickle.dump(donne, fichier)``::
 
@@ -134,6 +134,8 @@ Voici un exemple (volontairement très simple !) d'organisation d'un disque:
    fichier3.py
    ...
 
+Les noms complets des fichiers dépendent d'un dossier de référence:
+
 * **Chemin absolu** - depuis la «racine» du disque notée ``/``:
 
   * de *fichier1.txt* : ``/dossier1/fichier1.txt``
@@ -145,3 +147,10 @@ Voici un exemple (volontairement très simple !) d'organisation d'un disque:
   * de *fichier3.py* à partir de **dossier1** : ``../fichier3.py`` (``..`` ~ dossier parent) 
   * de *fichier3.py* à partir de **ss_dossier** : ``../../fichier3.py``
 
+
+.. note:: Un programme possède toujours un dossier de référence appelé **répertoire courant**. C'est normalement le dossier qui contient le fichier du programme. Pour s'en assurer::
+
+        import os
+        # ...
+        rep_courant = os.getcwd() # cwd pour current working directory
+        print(rep_courant)

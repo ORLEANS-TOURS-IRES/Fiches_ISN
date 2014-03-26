@@ -8,19 +8,19 @@ Chaînes de caractères - ``str``
 
 Les chaînes de caractères - type ``str`` pour *strings* - servent à représenter les textes.
 
-* Une chaîne se reconnaît par l'utilisation de délimiteurs:
+* Une chaîne se reconnaît par l'utilisation de **délimiteurs**:
 
   * guillemets simples: ``'permet les guillemets "doubles"'`` ou
-  * guillemets doubles: ``"permet les guillemets 'simple'"``.
+  * guillemets doubles: ``"permet les guillemets 'simples'"``.
 
 * Chaque caractère d'une chaîne est numéroté par un entier (positif ou négatif) appelé **position** ou index:
 
   * Le premier caractère a la position 0, le second la position 1, etc.
   * Le dernier caractère a la position -1, l'avant dernier -2, etc.
 
-* La **longueur** d'une chaînes est le nombre de caractères qu'elle contient.
+* La **longueur** d'une chaîne est le nombre de caractères qu'elle contient.
 * **Caractères «spéciaux»**: Saut de ligne - ``\n`` ; tabulation (touche Tab) - ``\t`` ; insérer un backslash ``\\``; ou un délimiteur - ``\'`` ou ``\"``.
-* **Insérer un caractère non accessible au clavier**: on insère son «point de code» unicode via ``\u<code>`` où ``<code>`` doit être remplacé par la valeur adéquate (voir `ce site <http://unicode-table.com>`_). Par exemple, ``\u265E`` devrait donné « :raw-html:`&#9822;` ».
+* **Insérer un caractère non accessible au clavier**: on insère son «point de code» unicode via ``\u<code>`` où ``<code>`` doit être remplacé par la valeur adéquate (voir `ce site <http://unicode-table.com>`_). Par exemple, ``\u265E`` devrait donner un cavalier : :raw-html:`&#9822;`.
   
 Opérations de base
 ==================
