@@ -1,16 +1,17 @@
-﻿******
-Réseau
-******
+﻿********************
+Communication réseau
+********************
 
-Pour faire dialoguer deux programmes sur le réseau, on utilise un canal de communication appelé **socket**. Le module *socket* sert à cela.
+Pour faire dialoguer deux programmes sur le réseau, on utilise des  *canaux de communication* appelés **sockets**.
 
-* Pour joindre un programme *prog1* qui tourne sur une machine *A*, on a besoin:
-  * de l'**adresse IP** de la machine *A* qui est de la forme ``xxx.xxx.xxx.xxx`` (ex: 192.168.1.1)
-  * d'un numéro pour identifier *prog1* qu'on appelle **port**. Pour un programme «normal», utiliser un port supérieur à 1000 (les autres sont réservés).
+* Pour joindre un programme «prog» qui tourne sur une machine A, on a besoin:
+
+  * de l'**adresse IP de la machine A** qui est de la forme ``xxx.xxx.xxx.xxx`` (ex: 192.168.1.1)
+  * d'un numéro, qui sert à identifier «prog» sur cette machine, appelé **port**.
 
 Le programme qui prend l'initiative de la communication est appelé **client**, celui qui attend qu'on le joigne est appelé **serveur**.
 
-Dans tous les cas, le programme commence par **importer le module socket** - ``import socket as so``.
+Dans tous les cas, le programme commence par **importer le module socket** - ``import socket``.
   
 Création du serveur
 ===================
@@ -18,58 +19,65 @@ Création du serveur
 Structure du programme
 ----------------------
 
-1. Création d’une variable serveur pour gérer la communication TCP/IP
+1. **Création d’un canal de communication** - ``canalVersServeur = socket.socket()``
 
-   .. code-block :: python
+   .. code-block:: python
+           
+           import socket
+           canalVersServeur = socket.socket() # création du «canal de communication»
 
-           serveur = so.socket() # création du «canal de communication»
 
-2. Choix du port d'écoute (supérieur à 1000), ici 6789
+2. Choix du port d'**écoute** (supérieur à 1000, ici 6789) - ``canalVersServeur.bind(adresse)`` et ``.listen(1)``
 
-   .. code-block :: python
+   .. code-block:: python
 
-           ip = '' # chaîne vide pour adresse locale; sinon mettre l'ip
-           port = 6789
-           adresseServeur = ip, port # l'adresse complète de ce programme
-           serveur.bind(addresseServeur) # qu'on associe au canal de communication
-           serveur.listen(1) # déclenche l'écoute sur ce canal.
+           ip = '' # chaîne vide pour adresse locale; sinon mettre l'ip de la machine
+           port = 6789 # les ports inférieurs à 1000 sont «réservés»
+           adresseServeur = ip, port # l'adresse complète de ce programme ...
+           canalVersServeur.bind(addresseServeur) # ... qu'on associe au canal de communication
+           canalVersServeur.listen(1) # puis on lance l'écoute de ce canal.
 	
-3. Attente bloquante d’une connexion d’un nouveau client. Suite à cette instruction, la variable *client* permettra de gérer la communication avec le nouveau client, et la variable *adresseClient* contient son adresse IP.
+3. **Attente bloquante d’une connexion** d’un nouveau client - ``canalVersServeur.accept() -> canalVersClient, adresseClient``
+   
+   Suite à cette instruction, la variable *client* est un canal de communication qui permettra de gérer la communication avec le nouveau client; la variable *adresseClient* contient son adresse IP et son port.
 
-   .. code-block :: python
+   .. code-block:: python
 
-           client, adresseClient = serveur.accept()
-           # bloquant = le code situé après la ligne précédente 
-           # ne sera exécuté que lorsqu'un client se sera connecté
+           canalVersClient, adresseClient = canalVersServeur.accept() # «bloquant» ...
+           # ... = le code situé après la ligne précédente 
+           # ne sera exécuté que lorsqu'un client se sera effectivement connecté
 	
-4. Envoi d’une chaine d'octets (*bytes*) vers le client
+4. **Envoi** d’une chaine d'octets (*bytes*) vers le client - ``canalVersClient.send(message)``
 
-   .. code-block :: python
+   .. code-block:: python
 
            mess = 'Salut !' # chaîne de caractères -> str
            messEnc = mess.encode('utf-8') # encodage: chaîne d'octets -> bytes
-           client.send(messEnc) # envoie du message
+           canalVersClient.send(messEnc) # envoie du message
+           # en une seule ligne ? canalVersClient.send('Salut'.encode('utf-8'))
 	
-5. Réception bloquante d’une chaine et stockage dans la variable *donnees* (1024 caractères maximum)
+5. **Réception** bloquante d’une chaîne d'octets envoyé par le client (1024 caractères maximum) - ``recuEnc = canalVersClient.recv()``
 
-   .. code-block :: python
+   .. code-block:: python
 
-           recuEnc = client.recv(1024) # on reçoit une chaîne d'octets
-           recu = recuEnc.decode('utf-8') # il faut la «décoder»
+           recuEnc = canalVersClient.recv(1024) # bloque jusqu'à réception
+           recu = recuEnc.decode('utf-8') # on a recu une chaîne d'octets : il faut la «décoder»
+           # en une seule ligne ? recu = client.recv(1024).decode('utf-8')
 	
-6. Déconnexion et arrêt du serveur
+6. **Déconnexion et arrêt** du serveur - ``canal*.close()``
 
-   .. code-block :: python
+   .. code-block:: python
 
-           client.close()
-           serveur.close()
+           canalVersClient.close()
+           canalVersServeur.close()
 	
+
 Exemple complet
 ---------------
 
-.. code-block :: python
+.. code-block:: python
 
-        import socket as so
+        import socket
 
         # Identification réseau
         IP = ''
@@ -77,17 +85,17 @@ Exemple complet
         ADRESSE = IP, PORT
 
         # Ouverture du canal de communication 
-        serveur = so.socket()
-        serveur.bind(ADRESSE)
-        serveur.listen(1)
+        canVersServ = socket.socket()
+        canVersServ.bind(ADRESSE)
+        canVersServ.listen(1)
 
         # Attente d'une connexion entrante
-        client, adresseClient = serveur.accept()
+        canVersClient, adresseClient = canVersServ.accept()
         print('Connexion de', adresseClient)
 
         # Boucle de dialogue (de type «perroquet»)
         while True:
-            recuEnc = client.recv(1024)
+            recuEnc = canVersClient.recv(1024)
             if not recuEnc:
                 print('Erreur de réception.')
                 break
@@ -97,88 +105,90 @@ Exemple complet
                 reponse = recu.upper()
                 print('Envoi de :', reponse)
                 reponseEnc = reponse.encode('utf-8')
-                n = client.send(reponseEnc)
+                n = canVersClient.send(reponseEnc)
                 if n != len(reponseEnc):
                     print('Erreur envoi.')
                     break
                 else:
                     print('Envoi ok.')
 
-        # on ferme la connexion proprement
+        # on ferme les connexions proprement
         print('Fermeture de la connexion avec le client.')
-        client.close()
+        canVersClient.close()
         print('Arret du serveur.')
-        serveur.close()
+        canVersServ.close()
 
-Un client TCP en Python
-=======================
+
+Création du client
+==================
 
 Structure du programme
 ----------------------
 
-1. Création d’une variable *client* pour gérer la communication TCP/IP
+1. **Création d’un canal** pour gérer la communication - ``socket.socket()``
 
-   .. code-block :: python
+   .. code-block:: python
 
-           client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+           import socket 
+           client = socket.socket()
 	
-2. Connexion au serveur TCP d’adresse 172.16.180.10 et de port 6789
+2. **Connexion au serveur** en utilisant son adresse et son port - ``socketClient.connect(adresseServeur)``
 
-   .. code-block :: python
+   .. code-block:: python
 
-           client.connect((172.16.180.10, 6789))
+           adrServ = '', 6789 # mettre la véritable ip à la place de ''
+           client.connect(adrServ)
 	
-3. Envoi d’une chaine de caractères vers le serveur
+3. **Envoi** d’une chaîne d'octets vers le serveur - ``socketClient.send(message)``
 
-   .. code-block :: python
+   .. code-block:: python
+           
+           mess = 'Bonjour'
+           messEnc = mess.encode('utf-8')
+           client.send(messEnc)
 
-           client.send(‘Hello’)
+4. **Réception** bloquante d’une chaîne (1024 octets maximum) - ``socketClient.recv(1024)``
 
-4. Réception bloquante d’une chaine et stockage dans la variable *donnees* (1024 caractères maximum)
+   .. code-block:: python
 
-   .. code-block :: python
-
-           donnees = client.recv(1024)
+           recuEnc = client.recv(1024)
+           recu = recuEnc.decode('utf-8')
 	
-5. Déconnexion
+5. **Déconnexion** - ``socketClient.close()``
 
-   .. code-block :: python
+   .. code-block:: python
 
            client.close()
 	
 Exemple complet
 ---------------
 
-.. code-block :: python
+.. code-block:: python
 
-	import socket
+        import socket
 
-	HOST = '172.16.180.10'
-	PORT = 6789       
+        IPSERVEUR = '' # pour test en local; sinon mettre la vraie ip
+        PORT = 6789
 
-	client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-	client.connect((HOST, PORT))
-	print 'Connexion vers ' + HOST + ':' + str(PORT) + ' reussie.'
+        client = socket.socket()
+        client.connect((HOST, PORT))
+        print('Connexion vers ' + HOST + ':' + str(PORT) + ' reussie.')
 
-	message = 'Hello, world'
-	print 'Envoi de :' + message
-	n = client.send(message)
-	if (n != len(message)):
-		print 'Erreur envoi.'
-	else:
-		print 'Envoi ok.'
+        while True:
+            message = input('>>> ')
+            print('Envoi de :', message)
+            messageEnc = message.encode('utf-8')
+            n = client.send(messageEnc)
+            if n != len(messageEnc):
+                print('Erreur envoi.')
+                break
+           else:
+                print('Envoi ok.')
+                print('Reception...')
+                recuEnc = client.recv(1024)
+                recu = recuEnc.decode('utf-8')
+                print('Recu :', recu)
 
-	print 'Reception...'
-	donnees = client.recv(1024)
-	print 'Recu :', donnees
-
-	print 'Deconnexion.'
-	client.close()
-
-Ressources
-----------
-
-Tutoriel sur la programmation sockets Python : http://docs.python.org/2/howto/sockets.html
-
-
+        print('Déconnexion.')
+        client.close()
 
