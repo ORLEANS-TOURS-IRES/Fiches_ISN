@@ -133,7 +133,7 @@ Création du client
 Structure du programme
 ----------------------
 
-1. **Création d’un canal** pour gérer la communication - ``socket.socket()``
+1. **Création d’un canal** pour gérer la communication - ``client = socket.socket()``
 
    .. code-block:: python
 
