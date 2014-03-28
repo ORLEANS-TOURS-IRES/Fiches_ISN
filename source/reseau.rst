@@ -42,7 +42,7 @@ Structure du programme
            port = 6789 # choix du port (doit-être supérieur à 1000)
            adresseServeur = ip, port # adresse complète de ce programme ...
            serveur.bind(addresseServeur) # ... qu'on associe au canal de communication
-           canalVersServeur.listen(1) # puis on lance l'écoute de ce canal.
+           serveur.listen(1) # puis on lance l'écoute de ce canal.
 	
 3. **Attente bloquante d’une connexion** d’un nouveau client - ``serveur.accept() -> client, adresseClient``
    
@@ -96,14 +96,14 @@ Exemple complet
         serveur.bind(ADRESSE) # association à l'adresse du programme ...
         serveur.listen(1) # écoute du réseau
         
-        # si quelqu'un se connecte, on accepte la communication
-        client, adresseClient = serveur.accept() # attente bloquante
+        # on attend une connexion entrante
+        client, adresseClient = serveur.accept()
         print('Connexion de', adresseClient)
 
         # Boucle de dialogue (ici de type «perroquet»)
         while True:
             recu = client.recv(1024)
-            if not recu:
+            if len(recu) == 0:
                 print('Erreur de réception.')
                 break
             else:
@@ -119,7 +119,8 @@ Exemple complet
                 else:
                     print('Envoi ok.')
 
-        # on ferme les connexions proprement
+        # si on est là c'est que la connexion est rompue ;
+        # il faut alors fermer les canaux de communication
         print('Fermeture de la connexion avec le client.')
         client.close()
         print('On se débranche')
