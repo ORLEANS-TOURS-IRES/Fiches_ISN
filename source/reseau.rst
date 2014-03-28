@@ -19,7 +19,7 @@ Pour faire **communiquer** deux programmes (ou plus) sur le réseau, on utilise 
 * Les messages émis sur le réseau doivent-être des chaînes d'octets - de type *bytes*:
 
   * **encoder**: action de convertir une chaîne de caractères - *str* - en une chaîne d'octets - *bytes* - ``str.encode('utf-8')``.
-  * **décoder**: action de convertir une chaîne d'octets - *bytes* - en une chaînes de caractère - *str* - ``bytes.decode('utf-8')``.
+  * **décoder**: action de convertir une chaîne d'octets - *bytes* - en une chaîne de caractères - *str* - ``bytes.decode('utf-8')``.
 
 Création du serveur
 ===================
