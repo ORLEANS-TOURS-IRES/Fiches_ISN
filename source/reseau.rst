@@ -200,3 +200,4 @@ Exemple complet
         print('Déconnexion.')
         client.close()
 
+Pour en apprendre plus sur le sujet voir, par exemple, `http://python.developpez.com/cours/apprendre-python3/?page=page_20`_.
