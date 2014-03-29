@@ -1,5 +1,5 @@
 ﻿********************
-Communication réseau
+Réseau - ``socket``
 ********************
 
 Pour faire **communiquer** deux programmes (ou plus) sur le réseau, on utilise des  *canaux de communication* appelés **sockets**. Voici le minimum à avoir à l'esprit pour pouvoir s'en servir effectivement:

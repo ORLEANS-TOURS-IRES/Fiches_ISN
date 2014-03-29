@@ -1,6 +1,6 @@
-*************
-Les fonctions
-*************
+*******************
+Fonctions - ``def``
+*******************
 
 Les fonctions sont utilisées lorsque des mêmes opérations doivent être réalisées plusieurs fois. Elles aident aussi, pour améliorer la lisibilité du code, à structurer un programme. 
 

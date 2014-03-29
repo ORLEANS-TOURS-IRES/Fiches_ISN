@@ -1,9 +1,9 @@
 .. role:: raw-html(raw)
    :format: html
 
-*********
-Fichiers
-*********
+*******************
+Fichiers - ``open``
+*******************
 
 Pouvoir lire et/ou écrire dans un fichier est indispensable lorsqu'on souhaite, par exemple, récupérer/sauvegarder des informations entre deux exécutions d'un même programme. On parle alors de **persistance** de l'information.
 

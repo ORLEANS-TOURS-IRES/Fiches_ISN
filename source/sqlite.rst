@@ -1,6 +1,6 @@
-***********************
-Bases de données sqlite
-***********************
+******************************
+Bases de données - ``sqlite3``
+******************************
 
 Les bases de données peuvent être un moyen efficace de mémoriser des données, surtout si elles se structurent naturellement sous forme de table.
 

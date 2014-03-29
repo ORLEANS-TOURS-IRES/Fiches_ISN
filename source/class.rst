@@ -1,6 +1,6 @@
-****************************
-Définir ses propres «objets»
-****************************
+******************
+Objets - ``class``
+******************
 
 Un **objet** est une entité informatique qui possède :
 
