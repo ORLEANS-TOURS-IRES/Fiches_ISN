@@ -22,7 +22,7 @@ Les nombres au hasard
 
 2. Nombre flottant entre deux bornes.
 
-Pour tirer un nombre au hasard entre 10 et 12.5::
+   Pour tirer un nombre au hasard entre 10 et 12.5::
 
 	y = uniform(10, 12.5)
 
@@ -31,11 +31,11 @@ Pour tirer un nombre au hasard entre 10 et 12.5::
 	>>> randint(0, 20)
 	20
 
-Les deux bornes sont incluses dans les cas possibles.
+   Les deux bornes sont incluses dans les cas possibles.
  
 4. Générer une probabilité p
 
-32 % de chance de gagner à ce jeu...
+   32 % de chance de gagner à ce jeu...
  
 .. code-block:: python
 
@@ -63,12 +63,13 @@ Les listes aléatoires
 
 3. Extraire au hasard k éléments d'une liste
 
-Extrait aléatoirement trois éléments de la liste::
+   Extrait aléatoirement trois éléments de la liste::
 
 	jeu = sample(liste, 3)
 
-.. warning::
-        La liste n'est pas modifiée (les 3 éléments choisis sont encore présents dans la liste).
+   .. warning::
+        
+           La liste n'est pas modifiée (les 3 éléments choisis sont encore présents dans la liste).
 
 Exemple complet
 ===============
