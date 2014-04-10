@@ -97,7 +97,7 @@ Parcourt d'une liste
         truc
         -2.5
   
-* **Par énumaration** - ``for pos, elt in list:``::
+* **Par énumération** - ``for pos, elt in enumerate(list):``::
 
         >>> l = [3, "truc", -2.5]
         >>> # Rappels:
