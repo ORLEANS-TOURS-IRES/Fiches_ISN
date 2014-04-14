@@ -95,7 +95,7 @@ Opérations de base
         >>> "un deux    trois\nquatre  ".split() # si sep est omis, le découpage se fait sur les espaces ou les sauts de lignes
         ['un', 'deux', 'trois', 'quatre'] 
         >>> ch = 'un,2,,3, quatre'
-        >>> ch.split(',') # Notez les petites différences dans le cas ou sep est précisé
+        >>> ch.split(',') # Notez les petites différences dans le cas où sep est précisé
         ['un', '2', '', '3', ' quatre']
 
 Parcourt d'une chaîne
@@ -143,7 +143,7 @@ Parcourt d'une chaîne
         '5'
         >>> # Note: range(nb) -> 0, 1, 2, 3, ..., nb - 1
         >>> # or pos dans chaîne -> 0, 1, 2, ..., len(ch) - 1 !!!
-        >>> # donc range(len(ch)) -> positions possibles dans chaînes
+        >>> # donc range(len(ch)) -> positions possibles dans chaîne
         >>> for i in range(len(ch)):
         ...     print("ch[" + str(i) + "]=" + ch[i])
         ...
