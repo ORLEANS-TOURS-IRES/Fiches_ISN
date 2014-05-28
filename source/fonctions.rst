@@ -4,12 +4,6 @@ Fonctions - ``def``
 
 Les fonctions sont utilisées lorsque des mêmes opérations doivent être réalisées plusieurs fois. Elles aident aussi, pour améliorer la lisibilité du code, à structurer un programme. 
 
-.. warning:: 
-        Prérequis:
-
-        + il faut ...
-        + il est aussi nécessaire de ...
-
 Qu'est-ce qu'une fonction  ?
 ----------------------------
 
