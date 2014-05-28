@@ -15,7 +15,4 @@ Fiches Python pour ISN
    reseau
    random
    sqlite
-   compression
-   serialisation
-   pickle
-   JSON
+   persistance
