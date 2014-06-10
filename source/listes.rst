@@ -2,7 +2,7 @@
 Listes - ``list``
 *****************
 
-Une **liste** - type ``list`` - est un moyen de regrouper des éléments d'information ou donnés:
+Une **liste** - type ``list`` - est un moyen de regrouper des éléments d'information ou données :
 
   * Les éléments d'une liste sont **ordonnés**;
   * Chaque élément d'une liste est *numéroté* par un entier (positif ou négatif) appelé **position** ou index;
